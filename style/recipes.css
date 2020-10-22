@@ -9,7 +9,18 @@
     border-radius: 3px;
     border-color: yellowgreen;
     text-align: center;
-}
-.recipe-card{
     margin-top: 20px;
+}
+textarea{
+    vertical-align: top;
+}
+
+h6{
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+#plus-icon{
+    height: 20px;
+    padding: 0px;
 }

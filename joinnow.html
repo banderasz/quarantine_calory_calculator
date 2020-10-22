@@ -9,6 +9,7 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/signin.css">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -23,7 +24,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgba(255,255,255,0.85);">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-style">
     <a class="navbar-brand mb-0 h1" href="./home.html">QUARANTINE CALORIE CALCULATOR</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -59,11 +60,11 @@
       <div class="row">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
-          <h2 style="text-align: center; font-weight: normal;">JOIN NOW</h2>
+          <h2>JOIN NOW</h2>
           <nav class="nav justify-content-center">
-            <a class="nav-link active" href="./joinnow.html" style="color: black; font-weight: 500;">JOIN NOW</a>
+            <a class="nav-link active" href="./joinnow.html">JOIN NOW</a>
             <span class="navbar-text"> | </span>
-            <a class="nav-link" href="./signin.html" style="color: black">SIGN IN</a>
+            <a class="nav-link not" href="./signin.html">SIGN IN</a>
           </nav>
         </div>
         <div class="col"></div>
@@ -73,38 +74,34 @@
         <div class="col-9 col-xl-4 col-lg-5 col-md-7 col-sm-9 ">
           <form>
             <div class="form-group">
-              <label class="form-labels" for="person-name" style="display:block; text-align: center;">Name</label>
+              <label class="form-labels" for="person-name">Name</label>
               <input type="text" class="form-control" id="person-name" placeholder="Name">
-              <label class="form-labels" for="email-address"
-                style="display:block; text-align: center; margin-top: 15px;">Email</label>
+              <label class="form-labels" for="email-address">Email</label>
               <input type="email" class="form-control" id="email-address" placeholder="example@example.com">
-              <label class="form-labels" for="gender"
-                style="display:block; text-align: center; margin-top: 15px;">Gender</label>
+              <label class="form-labels" for="gender">Gender</label>
               <select class="form-control custom-select" id="gender">
                 <option value="" disabled selected hidden>Select your gender</option>
                 <option value="woman">Woman</option>
                 <option value="man">Man</option>
               </select>
-              <div class="row" style="margin-top: 15px;">
+              <div class="row">
                 <div class="col">
-                  <label class="form-labels" for="weight" style="display:block; text-align: center;">Weight (kg)</label>
+                  <label class="form-labels" for="weight">Weight (kg)</label>
                   <input type="number" class="form-control" id="weight" placeholder="Weight in kg">
                 </div>
                 <div class="col">
-                  <label class="form-labels" for="height" style="display:block; text-align: center;">Height (cm)</label>
+                  <label class="form-labels" for="height">Height (cm)</label>
                   <input type="number" class="form-control" id="height" placeholder="Height in cm">
                 </div>
               </div>
-              <label class="form-labels" for="activity-level"
-                style="display:block; text-align: center; margin-top: 15px;">Activity level</label>
-              <select class="form-control" id="activity-level" style="text-align: center; margin-top: 15px;">
+              <label class="form-labels" for="activity-level">Activity level</label>
+              <select class="form-control" id="activity-level">
                 <option value="" disabled selected hidden>Select your activity level</option>
                 <option value="low">Low</option>
                 <option value="moderate">Moderate</option>
                 <option value="high">High</option>
               </select>
-              <label class="form-labels" for="household-id"
-                style="display:block; text-align: center; margin-top: 15px;">Hosehold ID</label>
+              <label class="form-labels" for="household-id">Hosehold ID</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <div class="input-group-text">#</div>
@@ -116,11 +113,9 @@
                 <input class="form-check-input" type="checkbox" id="new-household-id">
                 <label class="form-check-label" for="new-household-id">Create a new household</label>
               </div>
-              <label class="form-labels" for="password1"
-                style="display:block; text-align: center; margin-top: 15px;">Password</label>
+              <label class="form-labels" for="password1">Password</label>
               <input type="password" class="form-control" id="password1" placeholder="Password">
-              <label class="form-labels" for="password2"
-                style="display:block; text-align: center; margin-top: 15px;">Password again</label>
+              <label class="form-labels" for="password2">Password again</label>
               <input type="password" class="form-control" id="password2" placeholder="Password again">
               <div class="row" style="margin-top: 25px;">
                 <div class="col text-center">

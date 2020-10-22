@@ -24,7 +24,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: rgba(255,255,255,0.85);">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-style">
     <a class="navbar-brand mb-0 h1" href="./home.html">QUARANTINE CALORIE CALCULATOR</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -60,7 +60,7 @@
       <div class="row">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
-          <h2 style="text-align: center; font-weight: normal;">RECIPES</h2>
+          <h2>RECIPES</h2>
           <nav class="nav justify-content-center">
             <a class="nav-link" id="recipes-type1" href="#">All</a>
             <span class="navbar-text"> | </span>
@@ -79,17 +79,149 @@
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
           <div class="row recipe-card">
-            <div class="col-md-4 align-items-center"> <div class="card recipe-box"><a class="card-link btn recipe-card-link" href="./recipe.html">Recipe 1</a></div></div>
-            <div class="col-md-4 align-items-center"> <div class="card recipe-box"><a class="card-link btn recipe-card-link" href="./recipe.html">Recipe 2</a></div></div>
-            <div class="col-md-4 align-items-center"> <div class="card recipe-box"><a class="card-link btn recipe-card-link" href="./recipe.html">Recipe 3</a></div></div>
+            <div class="col-md-4 align-items-center">
+              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
+                  data-target="#modal-data">Recipe 1</button></div>
+            </div>
+            <div class="col-md-4 align-items-center">
+              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
+                  data-target="#modal-data">Recipe 2</button></div>
+            </div>
+            <div class="col-md-4 align-items-center">
+              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
+                  data-target="#modal-data">Recipe 3</button></div>
+            </div>
           </div>
           <div class="row recipe-card">
-            <div class="col-md-4 align-items-center"> <div class="card recipe-box"><a class="card-link btn recipe-card-link" href="./recipe.html">Recipe 4</a></div></div>
-            <div class="col-md-4 align-items-center"> <div class="card recipe-box"><a class="card-link btn recipe-card-link" href="./recipe.html">Recipe 5</a></div></div>
-            <div class="col-md-4 align-items-center"> <div class="card recipe-box"><a class="card-link btn recipe-card-link" href="./recipe.html">Recipe 6</a></div></div>
+            <div class="col-md-4 align-items-center">
+              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
+                  data-target="#modal-data">Recipe 4</button></div>
+            </div>
+            <div class="col-md-4 align-items-center">
+              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
+                  data-target="#modal-data">Recipe 5</button></div>
+            </div>
+            <div class="col-md-4 align-items-center">
+              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
+                  data-target="#modal-data">Recipe 6</button></div>
+            </div>
           </div>
         </div>
         <div class="col"></div>
+      </div>
+      <div class="row" style="margin-top: 20px;">
+        <div class="col"></div>
+        <div class="col-md-10 col-sm-12">
+          <div class="row recipe-card">
+            <div class="col-md-4 align-items-center"> </div>
+            <div class="col-md-4 align-items-center">
+              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
+                  data-target="#new-modal-data">Add new recipe</button></div>
+            </div>
+            <div class="col-md-4 align-items-center"> </div>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modal-data" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Recipe</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Ingredients</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Apple</td>
+                <td>200 g</td>
+              </tr>
+              <tr>
+                <td>Flour</td>
+                <td>500 g</td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+          <h5>Description</h5>
+          <ol>
+            <li>...</li>
+            <li>...</li>
+            <li>...</li>
+          </ol>
+          <h5>Bon Apetit!</h5>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="new-modal-data" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Recipe</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>Ingredients</h5>
+          <table class="table" id="ingredient-table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" class="form-control form-control-sm" placeholder="Ingredient name"></td>
+                <td>
+                  <div class="input-group input-group-sm">
+                    <input type="text" class="form-control">
+                    <div class="input-group-append">
+                      <span class="input-group-text">g</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col text-center">
+              <button class="btn btn-outline-secondary btn-sm" id="add-ingredient-btn">Add new ingredient</button>
+            </div>
+          </div>
+          <br>
+          <h5>Description</h5>
+          <ol id="steps-list">
+            <li><textarea class="form-control" rows="3"></textarea></li>
+          </ol>
+          <div class="row">
+            <div class="col text-center">
+              <button class="btn btn-outline-secondary btn-sm" id="add-step-btn">Add new step</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel-datas">Cancel</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
     </div>
   </div>
