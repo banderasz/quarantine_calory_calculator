@@ -1,0 +1,15 @@
+#recipes-type1, #recipes-type2, #recipes-type3, #recipes-type4, #recipes-type5{
+    color: black;
+}
+.recipe-card-link{
+    padding: 15px;
+}
+
+.recipe-box{
+    border-radius: 3px;
+    border-color: yellowgreen;
+    text-align: center;
+}
+.recipe-card{
+    margin-top: 20px;
+}
