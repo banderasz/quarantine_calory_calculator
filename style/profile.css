@@ -1,0 +1,20 @@
+#nutin-nav, #weight-nav, #house-nav, #sport-nav, #personal-nav{
+    color:black;
+}
+
+h3{
+    text-align: center;
+}
+
+.table-align{
+    text-align: center;
+}
+
+.nutritien-intake-last-row{
+    border-top: 4px;
+    border-bottom: black;
+}
+
+.td-center, .th-add-new, .th-save{
+    text-align: center;
+}

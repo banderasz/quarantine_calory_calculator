@@ -9,6 +9,7 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/profile.css">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -19,6 +20,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
   <script src="./static/size.js"></script>
+  <script src="./static/profile.js"></script>
 </head>
 
 <body>
@@ -59,10 +61,114 @@
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
           <h2>PROFILE</h2>
+          <nav class="nav justify-content-center">
+            <a class="nav-link" id="nutin-nav" href="#">Nutritien intake</a>
+            <span class="navbar-text"> | </span>
+            <a class="nav-link" id="weight-nav" href="#">Weight</a>
+            <span class="navbar-text"> | </span>
+            <a class="nav-link" id="house-nav" href="#">Household stock</a>
+            <span class="navbar-text"> | </span>
+            <a class="nav-link" id="sport-nav" href="#">Sport</a>
+            <span class="navbar-text"> | </span>
+            <a class="nav-link" id="personal-nav" href="#">Personal</a>
+          </nav>
         </div>
         <div class="col"></div>
       </div>
-      <div class="row" style="margin-top: 20px;">
+      <div class="row nutritien-intake" style="margin-top: 20px;">
+        <div class="col"></div>
+        <div class="col-md-10 col-sm-12">
+          <h3>NUTRITIEN INTAKE</h3>
+          <table class="table table-responsive-lg">
+            <thead>
+              <tr>
+                <th scope="col">NAME</th>
+                <th scope="col">CALORIES(kcal)</th>
+                <th scope="col">PROTEIN(g)</th>
+                <th scope="col">CARBS(g)</th>
+                <th scope="col">SUGAR(g)</th>
+                <th scope="col">FIBER(g)</th>
+                <th scope="col">FAT(g)</th>
+                <th scope="col">WATER(dl)</th>
+              </tr>
+            </thead>
+            <tbody id="nutritien-intake-tbody">
+              <tr>
+                <td>Oatmeal</td>
+                <td class="td-center td-cal">200</td>
+                <td class="td-center td-protein">30</td>
+                <td class="td-center td-carbs">10</td>
+                <td class="td-center td-sugar">20</td>
+                <td class="td-center td-fiber">10</td>
+                <td class="td-center td-fat">5</td>
+                <td class="td-center td-water">1</td>
+              </tr>
+              <tr>
+                <td>Oatmeal</td>
+                <td class="td-center td-cal">200</td>
+                <td class="td-center td-protein">30</td>
+                <td class="td-center td-carbs">10</td>
+                <td class="td-center td-sugar">20</td>
+                <td class="td-center td-fiber">10</td>
+                <td class="td-center td-fat">5</td>
+                <td class="td-center td-water">1</td>
+              </tr>
+              <tr>
+                <td>Oatmeal</td>
+                <td class="td-center td-cal">200</td>
+                <td class="td-center td-protein">30</td>
+                <td class="td-center td-carbs">10</td>
+                <td class="td-center td-sugar">20</td>
+                <td class="td-center td-fiber">10</td>
+                <td class="td-center td-fat">5</td>
+                <td class="td-center td-water">1</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th colspan="8" class="th-add-new"><button class="btn">Add new</button></th>
+                <th colspan="4" class="th-save"><button class="btn">Save</button></th>
+                <th colspan="4" class="th-save"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>TOTAL</td>
+                <td class="td-center" id="total-cal"></td>
+                <td class="td-center" id="total-protein"></td>
+                <td class="td-center" id="total-carbs"></td>
+                <td class="td-center" id="total-sugar"></td>
+                <td class="td-center" id="total-fiber"></td>
+                <td class="td-center" id="total-fat"></td>
+                <td class="td-center" id="total-water"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row weight" style="margin-top: 20px;">
+        <div class="col"></div>
+        <div class="col-md-10 col-sm-12">
+
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row household-stock" style="margin-top: 20px;">
+        <div class="col"></div>
+        <div class="col-md-10 col-sm-12">
+
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row sport" style="margin-top: 20px;">
+        <div class="col"></div>
+        <div class="col-md-10 col-sm-12">
+
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="row personal" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
 
