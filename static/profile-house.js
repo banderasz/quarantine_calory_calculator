@@ -1,12 +1,12 @@
 //Hosuehold stock
 var drinkFoodHouse = false;
-var calSumHouse = 0;
-var proteinSumHouse = 0;
-var carbsSumHouse = 0;
-var sugarSumHouse = 0;
-var fiberSumHouse = 0;
-var fatSumHouse = 0;
-var waterSumHouse = 0;
+var calSumHouse;
+var proteinSumHouse;
+var carbsSumHouse;
+var sugarSumHouse;
+var fiberSumHouse;
+var fatSumHouse;
+var amountSumHouse;
 var inputValueName;
 var inputValueNum;
 var drinkFood = true;
@@ -16,7 +16,7 @@ var carbsAmount;
 var sugarAmount;
 var fiberAmount;
 var fatAmount;
-var waterAmount;
+var amountAmount;
 
 $(document).on('click', '#house-nav', function () {
     $('#house-nav').css('font-weight', '500');
@@ -29,43 +29,16 @@ $(document).on('click', '#house-nav', function () {
     $(".sport").hide();
     $(".personal").hide();
     $('.row.alert-row-nutin').hide();
-
-    $(".td-cal-house").each(function () {
-        calSumHouse += parseFloat($(this).text());
-    });
-    $('#total-cal-house').html(calSumHouse);
-    $(".td-protein-house").each(function () {
-        proteinSumHouse += parseFloat($(this).text());
-    });
-    $('#total-protein-house').html(proteinSumHouse);
-    
-    $(".td-carbs-house").each(function () {
-        carbsSumHouse += parseFloat($(this).text());
-    });
-    $('#total-carbs-house').html(carbsSumHouse);
-    
-    $(".td-sugar-house").each(function () {
-        sugarSumHouse += parseFloat($(this).text());
-    });
-    $('#total-sugar-house').html(sugarSumHouse);
-    
-    $(".td-fiber-house").each(function () {
-        fiberSumHouse += parseFloat($(this).text());
-    });
-    $('#total-fiber-house').html(fiberSumHouse);
-    
-    $(".td-fat-house").each(function () {
-        fatSumHouse += parseFloat($(this).text());
-    });
-    $('#total-fat-house').html(fatSumHouse);
-    
-    $(".td-water-house").each(function () {
-        waterSumHouse += parseFloat($(this).text());
-    });
-    $('#total-water-house').html(waterSumHouse);
+    totalCountHouse();
+    $('#total-amount-house').html(amountSumHouse);
     $(".th-save-cancel-house").hide();
     if (parseFloat($('#total-cal-house').text()) < parseFloat($('#minimum-cal').text())) {
         $('#total-row-house').css('color', 'red');
+        $('.row.alert-row-house').show();
+    }
+    else{
+        $('#total-row-house').css('color', 'black');
+        $('.row.alert-row-house').hide();
     }
 });
 
@@ -168,19 +141,19 @@ $(document).on('click', '.th-save-house', function () {
     }
     else {
         inputValueName = $('#input-value-name-house').val();
-        var amount = $('#input-value-g-house').val();
+        var amount = parseFloat($('#input-value-g-house').val());
         $('#new-td-row-house').remove();
         if (!drinkFoodHouse) {
-            waterAmount = amount;
-            calAmount = 0;
-            proteinAmount = 0;
-            carbsAmount = 0;
-            sugarAmount = 0;
-            fiberAmount = 0;
-            fatAmount = 0;
+            amountAmount = amount;
+            calAmount = amount / 10 * 50;
+            proteinAmount = amount / 10 * 20;
+            carbsAmount = amount / 10 * 1;
+            sugarAmount = amount / 10 * 5;
+            fiberAmount = amount / 10 * 1;
+            fatAmount = amount / 10 * 1;
         }
         else {
-            waterAmount = amount / 100 * 10;
+            amountAmount = amount;
             calAmount = amount / 100 * 500;
             proteinAmount = amount / 100 * 200;
             carbsAmount = amount / 100 * 10;
@@ -189,7 +162,25 @@ $(document).on('click', '.th-save-house', function () {
             fatAmount = amount / 100 * 1;
         }
         $('#household-stock-tbody').find('#new-td-row-house').remove();
-        $('#household-stock-tbody').append($('<tr>')
+        if($("#" + inputValueName).length > 0){
+            calAmount += parseFloat($("#"+inputValueName+" .td-cal-house").text());
+            $("#"+inputValueName+" .td-cal-house").text(calAmount);
+            proteinAmount += parseFloat($("#"+inputValueName+" .td-protein-house").text());
+            $("#"+inputValueName+" .td-protein-house").text(proteinAmount);
+            carbsAmount += parseFloat($("#"+inputValueName+" .td-carbs-house").text());
+            $("#"+inputValueName+" .td-carbs-house").text(carbsAmount);
+            fiberAmount += parseFloat($("#"+inputValueName+" .td-fiber-house").text());
+            $("#"+inputValueName+" .td-fiber-house").text(fiberAmount);
+            sugarAmount += parseFloat($("#"+inputValueName+" .td-sugar-house").text());
+            $("#"+inputValueName+" .td-sugar-house").text(sugarAmount);
+            fatAmount += parseFloat($("#"+inputValueName+" .td-fat-house").text());
+            $("#"+inputValueName+" .td-fat-house").text(fatAmount);
+            amountAmount += parseFloat($("#"+inputValueName+" .td-amount-house").text());
+            $("#"+inputValueName+" .td-amount-house").text(amountAmount);
+        }
+        else{
+            $('#household-stock-tbody').append($('<tr>')
+            .attr('id',inputValueName)
             .append($('<td>')
                 .text(inputValueName)
             )
@@ -218,31 +209,23 @@ $(document).on('click', '.th-save-house', function () {
                 .attr('class', 'td-center td-fat-house')
             )
             .append($('<td>')
-                .text(waterAmount)
-                .attr('class', 'td-center td-water-house')
+                .text(amountAmount)
+                .attr('class', 'td-center td-amount-house')
             )
 
-        );
-        calSumHouse += parseFloat($(".td-cal-house").last().text());
-        $('#total-cal-house').html(calSumHouse);
-        proteinSumHouse += parseFloat($(".td-protein-house").last().text());
-        $('#total-protein-house').html(proteinSumHouse);
-        carbsSumHouse += parseFloat($(".td-carbs-house").last().text());
-        $('#total-carbs-house').html(carbsSumHouse);
-        sugarSumHouse += parseFloat($(".td-sugar-house").last().text());
-        $('#total-sugar-house').html(sugarSumHouse);
-        fiberSumHouse += parseFloat($(".td-fiber-house").last().text());
-        $('#total-fiber-house').html(fiberSumHouse);
-        fatSumHouse += parseFloat($(".td-fat-house").last().text());
-        $('#total-fat-house').html(fatSumHouse);
-        waterSumHouse += parseFloat($(".td-water-house").last().text());
-        $('#total-water-house').html(waterSumHouse);
+        );}
+
+        totalCountHouse();
 
         $(".th-add-new-house").show();
         $(".th-save-cancel-house").hide();
-        if (parseFloat($('#total-cal-house').text()) > parseFloat($('#minimum-cal').text())) {
+        if (parseFloat($('#total-cal-house').text()) < parseFloat($('#minimum-cal').text())) {
             $('#total-row-house').css('color', 'red');
-            $('.row alert-row').append('<div class="alert alert-danger"> You ate more calorie then the minimum.</div>')
+            $('.row.alert-row-house').show();
+        }
+        else{
+            $('#total-row-house').css('color', 'black');
+            $('.row.alert-row-house').hide();
         }
     }
 })
@@ -252,3 +235,46 @@ $(document).on('click', '.th-cancel-house', function () {
     $(".th-add-new-house").show();
     $(".th-save-cancel-house").hide();
 })
+
+function totalCountHouse(){
+    calSumHouse = 0;
+    proteinSumHouse = 0;
+    carbsSumHouse = 0;
+    sugarSumHouse = 0;
+    fiberSumHouse = 0;
+    fatSumHouse = 0;
+    amountSumHouse = 0;
+    $(".td-cal-house").each(function () {
+        calSumHouse += parseFloat($(this).text());
+    });
+    $('#total-cal-house').html(calSumHouse);
+    $(".td-protein-house").each(function () {
+        proteinSumHouse += parseFloat($(this).text());
+    });
+    $('#total-protein-house').html(proteinSumHouse);
+    
+    $(".td-carbs-house").each(function () {
+        carbsSumHouse += parseFloat($(this).text());
+    });
+    $('#total-carbs-house').html(carbsSumHouse);
+    
+    $(".td-sugar-house").each(function () {
+        sugarSumHouse += parseFloat($(this).text());
+    });
+    $('#total-sugar-house').html(sugarSumHouse);
+    
+    $(".td-fiber-house").each(function () {
+        fiberSumHouse += parseFloat($(this).text());
+    });
+    $('#total-fiber-house').html(fiberSumHouse);
+    
+    $(".td-fat-house").each(function () {
+        fatSumHouse += parseFloat($(this).text());
+    });
+    $('#total-fat-house').html(fatSumHouse);
+    
+    $(".td-amount-house").each(function () {
+        amountSumHouse += parseFloat($(this).text());
+    });
+    $('#total-amount-house').html(amountSumHouse);
+}

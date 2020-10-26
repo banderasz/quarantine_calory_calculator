@@ -4,7 +4,6 @@ $(window).ready(function(){
     if (lastWidth < 992) {
         for (let i = 0; i < navText.length; i++) {
             navText.item(i).style.display = "none";
-            console.log(navText.item(i));
         }
     }
     else {

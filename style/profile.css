@@ -20,7 +20,7 @@ h3{
     text-align: center;
 }
 
-#ideal-row{
+#ideal-row, #minimum-row{
     color: green;
 }
 
