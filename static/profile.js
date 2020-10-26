@@ -5,180 +5,249 @@ var sugarSum = 0;
 var fiberSum = 0;
 var fatSum = 0;
 var waterSum = 0;
+var inputValueName;
+var inputValueNum;
+var drinkFood = true;
+var calAmount;
+var proteinAmount;
+var carbsAmount;
+var sugarAmount;
+var fiberAmount;
+var fatAmount;
+var waterAmount;
 
-$(document).ready(function() {
-    $('#nutin-nav').css('font-weight','500');
-    $(".td-cal").each(function(){
+$(document).ready(function () {
+    $('#nutin-nav').css('font-weight', '500');
+    $(".td-cal-nutin").each(function () {
         calSum += parseFloat($(this).text());
-      });
-    $('#total-cal').html(calSum);
-
-    $(".td-protein").each(function(){
+    });
+    $('#total-cal-nutin').html(calSum);
+    $(".td-protein-nutin").each(function () {
         proteinSum += parseFloat($(this).text());
-      });
-    $('#total-protein').html(proteinSum);
+    });
+    $('#total-protein-nutin').html(proteinSum);
 
-    $(".td-carbs").each(function(){
+    $(".td-carbs-nutin").each(function () {
         carbsSum += parseFloat($(this).text());
-      });
-    $('#total-carbs').html(carbsSum);
+    });
+    $('#total-carbs-nutin').html(carbsSum);
 
-    $(".td-sugar").each(function(){
+    $(".td-sugar-nutin").each(function () {
         sugarSum += parseFloat($(this).text());
-      });
-    $('#total-sugar').html(sugarSum);
+    });
+    $('#total-sugar-nutin').html(sugarSum);
 
-    $(".td-fiber").each(function(){
+    $(".td-fiber-nutin").each(function () {
         fiberSum += parseFloat($(this).text());
-      });
-    $('#total-fiber').html(fiberSum);
-    
-    $(".td-fat").each(function(){
+    });
+    $('#total-fiber-nutin').html(fiberSum);
+
+    $(".td-fat-nutin").each(function () {
         fatSum += parseFloat($(this).text());
-      });
-    $('#total-fat').html(fatSum);
+    });
+    $('#total-fat-nutin').html(fatSum);
 
-    $(".td-water").each(function(){
+    $(".td-water-nutin").each(function () {
         waterSum += parseFloat($(this).text());
-      });
-    $('#total-water').html(waterSum);
-    $(".th-save").hide();
+    });
+    $('#total-water-nutin').html(waterSum);
+    $(".th-save-cancel-nutin").hide();
+    if (parseFloat($('#total-cal-nutin').text()) > parseFloat($('#ideal-cal').text())) {
+        $('#total-row-nutin').css('color', 'red');
+        $('.row.alert-row-nutin').show();
+    }
+    else{
+        $('.row.alert-row-nutin').hide();
+    }
+    $('.row.alert-row-house').hide();
+    $(".nutritien-intake").show();
+    $(".household-stock").hide();
+    $(".sport").hide();
+    $(".personal").hide();
 });
 
-$(document).on('click', '#nutin-nav', function() {
-    $('#nutin-nav').css('font-weight','500');
-    $('#weight-nav').css('font-weight','normal');
-    $('#house-nav').css('font-weight','normal');
-    $('#sport-nav').css('font-weight','normal');
-    $('#personal-nav').css('font-weight','normal');
-});
-$(document).on('click', '#weight-nav', function() {
-    $('#weight-nav').css('font-weight','500');
-    $('#nutin-nav').css('font-weight','normal');
-    $('#house-nav').css('font-weight','normal');
-    $('#sport-nav').css('font-weight','normal');
-    $('#personal-nav').css('font-weight','normal');
-});
-$(document).on('click', '#house-nav', function() {
-    $('#house-nav').css('font-weight','500');
-    $('#weight-nav').css('font-weight','normal');
-    $('#nutin-nav').css('font-weight','normal');
-    $('#sport-nav').css('font-weight','normal');
-    $('#personal-nav').css('font-weight','normal');
-});
-$(document).on('click', '#sport-nav', function() {
-    $('#sport-nav').css('font-weight','500');
-    $('#weight-nav').css('font-weight','normal');
-    $('#house-nav').css('font-weight','normal');
-    $('#nutin-nav').css('font-weight','normal');
-    $('#personal-nav').css('font-weight','normal');
-});
-$(document).on('click', '#personal-nav', function() {
-    $('#personal-nav').css('font-weight','500');
-    $('#weight-nav').css('font-weight','normal');
-    $('#house-nav').css('font-weight','normal');
-    $('#sport-nav').css('font-weight','normal');
-    $('#nutin-nav').css('font-weight','normal');
-});
-
-$(document).on('click', '.th-add-new', function(){
+//Nutritien intake
+$(document).on('click', '.th-add-new-food-nutin', function () {
     $('#nutritien-intake-tbody').append($('<tr>')
-                .attr('id','new-td-row')
-                .append($('<td>')
-                    .attr('colspan','2')
-                    .append($('<input>')
-                        .attr('class', 'form-control form-control-sm')
-                        .attr('placeholder','nutritien name')
-                        .attr('type','text')
-                    )
-                )
-                .append($('<td>') 
-                    .attr('colspan','2')
-                    .append($('<div>')
-                        .attr('class', 'input-group input-group-sm')
-                        .append($('<input>')
-                            .attr('type', 'text')
-                            .attr('class', 'form-control')
-                            .attr('placeholder','number in gramms')
-                        )
-                        .append($('<div>')
-                            .attr('class', 'input-group-append')
-                            .append($('<span>')
-                                .attr('class', 'input-group-text')
-                                .text('g')
-                            )
-                        )
-                    )
-                )
-                .append($('<td>'))
-                .append($('<td>'))
-                .append($('<td>'))
-                .append($('<td>'))
-            );
-    $(".th-add-new").hide();
-    $(".th-save").show();
-})
-
-$(document).on('click', '.th-save', function(){
-
-    $('#nutritien-intake-tbody').find('#new-td-row').remove();
-    $('#nutritien-intake-tbody').append($('<tr>')
-                .append($('<td>')
-                    .text('Meal')
-                )
-                .append($('<td>')
-                    .text('200')
-                    .attr('class', 'td-center td-cal')
-                )
-                .append($('<td>')
-                    .text('10')
-                    .attr('class', 'td-center td-protein')
-                )
-                .append($('<td>')
-                    .text('10')
-                    .attr('class', 'td-center td-carbs')
-                )
-                .append($('<td>')
-                    .text('10')
-                    .attr('class', 'td-center td-sugar')
-                )
-                .append($('<td>')
-                    .text('10')
-                    .attr('class', 'td-center td-fiber')
-                )
-                .append($('<td>')
-                    .text('10')
-                    .attr('class', 'td-center td-fat')
-                )
-                .append($('<td>')
-                    .text('10')
-                    .attr('class', 'td-center td-water')
-                )
-                
-            );
-            calSum += parseFloat($(".td-cal").last().text());
-            $('#total-cal').html(calSum);
-            proteinSum += parseFloat($(".td-protein").last().text());
-            $('#total-protein').html(proteinSum);
-            carbsSum += parseFloat($(".td-carbs").last().text());
-            $('#total-carbs').html(carbsSum);
-            sugarSum += parseFloat($(".td-sugar").last().text());
-            $('#total-sugar').html(sugarSum);
-            fiberSum += parseFloat($(".td-fiber").last().text());
-            $('#total-fiber').html(fiberSum);
-            fatSum += parseFloat($(".td-fat").last().text());
-            $('#total-fat').html(fatSum);
-            waterSum += parseFloat($(".td-water").last().text());
-            $('#total-water').html(waterSum);
-    $(".th-add-new").show();
-    $(".th-save").hide();
-})
-
-$(document).on('click', '#add-step-btn', function(){
-    $('#steps-list').append($('<li>')
-                .append($('<textarea>')
+        .attr('id', 'new-td-row')
+        .append($('<td>')
+            .attr('colspan', '2')
+            .append($('<input>')
+                .attr('class', 'form-control form-control-sm')
+                .attr('placeholder', 'Food name')
+                .attr('type', 'text')
+                .attr('id', 'input-value-name')
+            )
+        )
+        .append($('<td>')
+            .attr('colspan', '2')
+            .append($('<div>')
+                .attr('class', 'input-group input-group-sm')
+                .append($('<input>')
+                    .attr('type', 'number')
                     .attr('class', 'form-control')
-                    .attr('rows','3')
+                    .attr('placeholder', 'Amount in gramms')
+                    .attr('id', 'input-value-g')
+                )
+                .append($('<div>')
+                    .attr('class', 'input-group-append')
+                    .append($('<span>')
+                        .attr('class', 'input-group-text')
+                        .text('g')
+                    )
                 )
             )
+        )
+        .append($('<td>'))
+        .append($('<td>'))
+        .append($('<td>'))
+        .append($('<td>'))
+    );
+    $(".th-add-new-nutin").hide();
+    $(".th-save-cancel-nutin").show();
+    drinkFood = true;
+})
+
+$(document).on('click', '.th-add-new-drink-nutin', function () {
+    $('#nutritien-intake-tbody')
+    .append($('<tr>')
+        .attr('id','drink-tr')
+        .append($('<td>')
+            .attr('colspan', '2')
+            .append($('<input>')
+                .attr('class', 'form-control form-control-sm')
+                .attr('placeholder', 'Drink name')
+                .attr('type', 'text')
+                .attr('id', 'input-value-name')
+                .prop('required', 'true')
+            )
+        )
+        .append($('<td>')
+            .attr('colspan', '2')
+            .append($('<div>')
+                .attr('class', 'input-group input-group-sm')
+                .append($('<input>')
+                    .attr('type', 'number')
+                    .attr('class', 'form-control')
+                    .attr('placeholder', 'Amount in dl')
+                    .attr('id', 'input-value-dl')
+                    .prop('required', 'true')
+                )
+                .append($('<div>')
+                    .attr('class', 'input-group-append')
+                    .append($('<span>')
+                        .attr('class', 'input-group-text')
+                        .text('dl')
+                    )
+                )
+            )
+        )
+        .append($('<td>'))
+        .append($('<td>'))
+        .append($('<td>'))
+        .append($('<td>'))
+    );
+    $(".th-add-new-nutin").hide();
+    $(".th-save-cancel-nutin").show();
+    drinkFood = false;
+})
+
+$(document).on('click', '.th-save-nutin', function () {
+    if (!$('#input-value-name').val()) {
+        if(!$('#input-value-g').val() && !$('#input-value-dl').val()){
+            alert('The name and amount box is empty.');
+        }
+        else{
+            alert('The name box is empty.');
+        }
+    }
+    else if (!$('#input-value-g').val() && !$('#input-value-dl').val()) {
+        alert('The amount box is empty.');
+        console.log($('#input-value-dl').val())
+    }
+    else {
+        inputValueName = $('#input-value-name').val();
+        var amount = $('#input-value-g').val();
+        $('#drink-tr').remove();
+        if (!drinkFood) {
+            waterAmount = amount;
+            calAmount = 0;
+            proteinAmount = 0;
+            carbsAmount = 0;
+            sugarAmount = 0;
+            fiberAmount = 0;
+            fatAmount = 0;
+        }
+        else {
+            waterAmount = amount / 100 * 10;
+            calAmount = amount / 100 * 500;
+            proteinAmount = amount / 100 * 200;
+            carbsAmount = amount / 100 * 10;
+            sugarAmount = amount / 100 * 5;
+            fiberAmount = amount / 100 * 1;
+            fatAmount = amount / 100 * 1;
+        }
+        $('#nutritien-intake-tbody').find('#new-td-row').remove();
+        $('#nutritien-intake-tbody').append($('<tr>')
+            .append($('<td>')
+                .text(inputValueName)
+            )
+            .append($('<td>')
+                .text(calAmount)
+                .attr('class', 'td-center td-cal-nutin')
+            )
+            .append($('<td>')
+                .text(proteinAmount)
+                .attr('class', 'td-center td-protein-nutin')
+            )
+            .append($('<td>')
+                .text(carbsAmount)
+                .attr('class', 'td-center td-carbs-nutin')
+            )
+            .append($('<td>')
+                .text(sugarAmount)
+                .attr('class', 'td-center td-sugar-nutin')
+            )
+            .append($('<td>')
+                .text(fiberAmount)
+                .attr('class', 'td-center td-fiber-nutin')
+            )
+            .append($('<td>')
+                .text(fatAmount)
+                .attr('class', 'td-center td-fat-nutin')
+            )
+            .append($('<td>')
+                .text(waterAmount)
+                .attr('class', 'td-center td-water-nutin')
+            )
+
+        );
+        calSum += parseFloat($(".td-cal-nutin").last().text());
+        $('#total-cal-nutin').html(calSum);
+        proteinSum += parseFloat($(".td-protein-nutin").last().text());
+        $('#total-protein-nutin').html(proteinSum);
+        carbsSum += parseFloat($(".td-carbs-nutin").last().text());
+        $('#total-carbs-nutin').html(carbsSum);
+        sugarSum += parseFloat($(".td-sugar-nutin").last().text());
+        $('#total-sugar-nutin').html(sugarSum);
+        fiberSum += parseFloat($(".td-fiber-nutin").last().text());
+        $('#total-fiber-nutin').html(fiberSum);
+        fatSum += parseFloat($(".td-fat-nutin").last().text());
+        $('#total-fat-nutin').html(fatSum);
+        waterSum += parseFloat($(".td-water-nutin").last().text());
+        $('#total-water-nutin').html(waterSum);
+
+        $(".th-add-new-nutin").show();
+        $(".th-save-cancel-nutin").hide();
+        if (parseFloat($('#total-cal-nutin').text()) > parseFloat($('#ideal-cal').text())) {
+            $('#total-row-nutin').css('color', 'red');
+            $('.row.alert-row-nutin').show();
+        }
+    }
+})
+
+$(document).on('click', '.th-cancel-nutin', function () {
+    $('#nutritien-intake-tbody').find('#new-td-row').remove();
+    $(".th-add-new-nutin").show();
+    $(".th-save-cancel-nutin").hide();
 })

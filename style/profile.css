@@ -4,6 +4,7 @@
 
 h3{
     text-align: center;
+    font-weight: 400;
 }
 
 .table-align{
@@ -18,3 +19,12 @@ h3{
 .td-center, .th-add-new, .th-save{
     text-align: center;
 }
+
+#ideal-row{
+    color: green;
+}
+
+.unit-of-measure{
+    font-weight: 400;
+}
+

@@ -19,8 +19,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
   <script src="./static/size.js"></script>
   <script src="./static/profile.js"></script>
+  <script src="./static/profile-house.js"></script>
+  <script src="./static/profile-nav.js"></script>
 </head>
 
 <body>
@@ -60,11 +64,16 @@
       <div class="row">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
+          <div class="row alert-row-nutin justify-content-center">
+            <div class="alert alert-danger text-center"> You ate more calorie then the ideal.</div>
+          </div>
+          <div class="row alert-row-house justify-content-center">
+            <div class="alert alert-danger text-center"> Your household doesn't have enough calorie for a
+              week.</div>
+          </div>
           <h2>PROFILE</h2>
           <nav class="nav justify-content-center">
             <a class="nav-link" id="nutin-nav" href="#">Nutritien intake</a>
-            <span class="navbar-text"> | </span>
-            <a class="nav-link" id="weight-nav" href="#">Weight</a>
             <span class="navbar-text"> | </span>
             <a class="nav-link" id="house-nav" href="#">Household stock</a>
             <span class="navbar-text"> | </span>
@@ -83,81 +92,167 @@
             <thead>
               <tr>
                 <th scope="col">NAME</th>
-                <th scope="col">CALORIES(kcal)</th>
-                <th scope="col">PROTEIN(g)</th>
-                <th scope="col">CARBS(g)</th>
-                <th scope="col">SUGAR(g)</th>
-                <th scope="col">FIBER(g)</th>
-                <th scope="col">FAT(g)</th>
-                <th scope="col">WATER(dl)</th>
+                <th scope="col" class="td-center">CALORIES <span class="unit-of-measure">(kcal)</span></th>
+                <th scope="col" class="td-center">PROTEIN <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">CARBS <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">SUGAR <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">FIBER <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">FAT <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">WATER <span class="unit-of-measure">(dl)</span></th>
               </tr>
             </thead>
             <tbody id="nutritien-intake-tbody">
-              <tr>
-                <td>Oatmeal</td>
-                <td class="td-center td-cal">200</td>
-                <td class="td-center td-protein">30</td>
-                <td class="td-center td-carbs">10</td>
-                <td class="td-center td-sugar">20</td>
-                <td class="td-center td-fiber">10</td>
-                <td class="td-center td-fat">5</td>
-                <td class="td-center td-water">1</td>
-              </tr>
-              <tr>
-                <td>Oatmeal</td>
-                <td class="td-center td-cal">200</td>
-                <td class="td-center td-protein">30</td>
-                <td class="td-center td-carbs">10</td>
-                <td class="td-center td-sugar">20</td>
-                <td class="td-center td-fiber">10</td>
-                <td class="td-center td-fat">5</td>
-                <td class="td-center td-water">1</td>
-              </tr>
-              <tr>
-                <td>Oatmeal</td>
-                <td class="td-center td-cal">200</td>
-                <td class="td-center td-protein">30</td>
-                <td class="td-center td-carbs">10</td>
-                <td class="td-center td-sugar">20</td>
-                <td class="td-center td-fiber">10</td>
-                <td class="td-center td-fat">5</td>
-                <td class="td-center td-water">1</td>
-              </tr>
             </tbody>
             <thead>
               <tr>
-                <th colspan="8" class="th-add-new"><button class="btn">Add new</button></th>
-                <th colspan="4" class="th-save"><button class="btn">Save</button></th>
-                <th colspan="4" class="th-save"></th>
+                <th colspan="8" class="td-center th-add-new-nutin">
+                  <div class="btn-group"> <button class="th-add-new-food-nutin btn btn-outline-secondary">Add new
+                      food</button> <button class="th-add-new-drink-nutin btn btn-outline-secondary">Add new
+                      drink</button>
+                </th>
+                <th colspan="4" class="td-center th-save-cancel-nutin">
+                  <div class="btn-group"> <button class="th-save-nutin btn btn-outline-secondary">Save</button> <button
+                      class="th-cancel-nutin btn btn-outline-secondary">Cancel</button></div>
+                </th>
+                <th colspan="4" class="th-save-cancel-nutin"></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>TOTAL</td>
-                <td class="td-center" id="total-cal"></td>
-                <td class="td-center" id="total-protein"></td>
-                <td class="td-center" id="total-carbs"></td>
-                <td class="td-center" id="total-sugar"></td>
-                <td class="td-center" id="total-fiber"></td>
-                <td class="td-center" id="total-fat"></td>
-                <td class="td-center" id="total-water"></td>
+              <tr id="total-row-nutin">
+                <th>TOTAL</th>
+                <td class="td-center" id="total-cal-nutin"></td>
+                <td class="td-center" id="total-protein-nutin"></td>
+                <td class="td-center" id="total-carbs-nutin"></td>
+                <td class="td-center" id="total-sugar-nutin"></td>
+                <td class="td-center" id="total-fiber-nutin"></td>
+                <td class="td-center" id="total-fat-nutin"></td>
+                <td class="td-center" id="total-water-nutin"></td>
+              </tr>
+              <tr id="ideal-row">
+                <th>IDEAL</th>
+                <td class="td-center" id="ideal-cal">2000</td>
+                <td class="td-center" id="ideal-protein">1200</td>
+                <td class="td-center" id="ideal-carbs">500</td>
+                <td class="td-center" id="ideal-sugar">20</td>
+                <td class="td-center" id="ideal-fiber">300</td>
+                <td class="td-center" id="ideal-fat">100</td>
+                <td class="td-center" id="ideal-water">20</td>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="col"></div>
-      </div>
-      <div class="row weight" style="margin-top: 20px;">
-        <div class="col"></div>
-        <div class="col-md-10 col-sm-12">
-
+          <h3>HISTORY</h3>
+          <table class="table table table-responsive-lg">
+            <thead>
+              <th>DAY(S) BEFORE</th>
+              <th class="td-center">1</th>
+              <th class="td-center">2</th>
+              <th class="td-center">3</th>
+              <th class="td-center">4</th>
+              <th class="td-center">5</th>
+              <th class="td-center">6</th>
+              <th class="td-center">7</th>
+            </thead>
+            <tbody>
+              <th>CALORIES <span class="unit-of-measure">(kcal)</span></th>
+              <td id="td-history-cal-1" class="td-center">2000</td>
+              <td id="td-history-cal-2" class="td-center">2050</td>
+              <td id="td-history-cal-3" class="td-center">2020</td>
+              <td id="td-history-cal-4" class="td-center">1890</td>
+              <td id="td-history-cal-5" class="td-center">1970</td>
+              <td id="td-history-cal-6" class="td-center">1990</td>
+              <td id="td-history-cal-7" class="td-center">2000</td>
+            </tbody>
+          </table>
         </div>
         <div class="col"></div>
       </div>
       <div class="row household-stock" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
-
+          <h3>HOUSEHOLD STOCK</h3>
+          <table class="table table-responsive-lg">
+            <thead>
+              <tr>
+                <th scope="col">NAME</th>
+                <th scope="col" class="td-center">CALORIES <span class="unit-of-measure">(kcal)</span></th>
+                <th scope="col" class="td-center">PROTEIN <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">CARBS <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">SUGAR <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">FIBER <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">FAT <span class="unit-of-measure">(g)</span></th>
+                <th scope="col" class="td-center">AMOUNT <span class="unit-of-measure">(g)</span></th>
+              </tr>
+            </thead>
+            <tbody id="household-stock-tbody">
+              <tr>
+                <td>Oat</td>
+                <td class="td-center td-cal-house">200</td>
+                <td class="td-center td-protein-house">30</td>
+                <td class="td-center td-carbs-house">10</td>
+                <td class="td-center td-sugar-house">20</td>
+                <td class="td-center td-fiber-house">10</td>
+                <td class="td-center td-fat-house">5</td>
+                <td class="td-center td-water-house">1</td>
+              </tr>
+              <tr>
+                <td>Milk</td>
+                <td class="td-center td-cal-house">200</td>
+                <td class="td-center td-protein-house">30</td>
+                <td class="td-center td-carbs-house">10</td>
+                <td class="td-center td-sugar-house">20</td>
+                <td class="td-center td-fiber-house">10</td>
+                <td class="td-center td-fat-house">5</td>
+                <td class="td-center td-water-house">100</td>
+              </tr>
+              <tr>
+                <td>Cookies</td>
+                <td class="td-center td-cal-house">200</td>
+                <td class="td-center td-protein-house">30</td>
+                <td class="td-center td-carbs-house">10</td>
+                <td class="td-center td-sugar-house">20</td>
+                <td class="td-center td-fiber-house">10</td>
+                <td class="td-center td-fat-house">5</td>
+                <td class="td-center td-water-house">1</td>
+              </tr>
+            </tbody>
+            <thead>
+              <tr>
+                <th colspan="8" class="td-center th-add-new-house">
+                  <div class="btn-group"> <button class="th-add-new-food-house btn btn-outline-secondary">Add new
+                      food</button> <button class="th-add-new-drink-house btn btn-outline-secondary">Add new
+                      drink</button>
+                </th>
+                <th colspan="4" class="td-center th-save-cancel-house">
+                  <div class="btn-group"> <button class="th-save-house btn btn-outline-secondary">Save</button> <button
+                      class="th-cancel-house btn btn-outline-secondary">Cancel</button></div>
+                </th>
+                <th colspan="4" class="th-save-cancel-house"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="total-row-house">
+                <th>TOTAL</th>
+                <td class="td-center" id="total-cal-house"></td>
+                <td class="td-center" id="total-protein-house"></td>
+                <td class="td-center" id="total-carbs-house"></td>
+                <td class="td-center" id="total-sugar-house"></td>
+                <td class="td-center" id="total-fiber-house"></td>
+                <td class="td-center" id="total-fat-house"></td>
+                <td class="td-center" id="total-water-house"></td>
+              </tr>
+              <tr id="minimum-row">
+                <th><span class="d-inline-block" tabindex="0" data-toggle="tooltip"
+                    title="Minimum stock for a week for the whole household">MINIMUM</span></th>
+                <td class="td-center" id="minimum-cal">2000</td>
+                <td class="td-center" id="minimum-protein">1200</td>
+                <td class="td-center" id="minimum-carbs">500</td>
+                <td class="td-center" id="minimum-sugar">20</td>
+                <td class="td-center" id="minimum-fiber">300</td>
+                <td class="td-center" id="minimum-fat">100</td>
+                <td class="td-center" id="minimum-water">20</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="col"></div>
       </div>
