@@ -42,7 +42,7 @@
         </li>
         <span class="navbar-text hide">|</span>
         <li class="nav-item">
-          <a class="nav-link" href="./contactus.html">CONTACT US</a>
+          <a class="nav-link" href="./aboutus.html">ABOUT US</a>
         </li>
         <span class="navbar-text hide logged-out">|</span>
         <li class="nav-item logged-out">
@@ -109,20 +109,6 @@
         </div>
         <div class="col"></div>
       </div>
-      <div class="row" style="margin-top: 20px;">
-        <div class="col"></div>
-        <div class="col-md-10 col-sm-12">
-          <div class="row recipe-card">
-            <div class="col-md-4 align-items-center"> </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#new-modal-data">Add new recipe</button></div>
-            </div>
-            <div class="col-md-4 align-items-center"> </div>
-          </div>
-        </div>
-        <div class="col"></div>
-      </div>
     </div>
   </div>
   <div class="modal fade" id="modal-data" tabindex="-1" role="dialog">
@@ -165,62 +151,6 @@
         </div>
         <div class="modal-footer justify-content-center">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="new-modal-data" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Recipe</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5>Ingredients</h5>
-          <table class="table" id="ingredient-table">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="text" class="form-control form-control-sm" placeholder="Ingredient name"></td>
-                <td>
-                  <div class="input-group input-group-sm">
-                    <input type="text" class="form-control">
-                    <div class="input-group-append">
-                      <span class="input-group-text">g</span>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="row">
-            <div class="col text-center">
-              <button class="btn btn-outline-secondary btn-sm" id="add-ingredient-btn">Add new ingredient</button>
-            </div>
-          </div>
-          <br>
-          <h5>Description</h5>
-          <ol id="steps-list">
-            <li><textarea class="form-control" rows="3"></textarea></li>
-          </ol>
-          <div class="row">
-            <div class="col text-center">
-              <button class="btn btn-outline-secondary btn-sm" id="add-step-btn">Add new step</button>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancel-datas">Cancel</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
