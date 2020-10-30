@@ -29,6 +29,7 @@ $(document).on('click', '#house-nav', function () {
     $(".sport").hide();
     $(".personal").hide();
     $('.row.alert-row-nutin').hide();
+    $('.row.alert-row-sport').hide();
     totalCountHouse();
     $('#total-amount-house').html(amountSumHouse);
     $(".th-save-cancel-house").hide();

@@ -60,6 +60,7 @@ $(document).ready(function () {
         $('.row.alert-row-nutin').hide();
     }
     $('.row.alert-row-house').hide();
+    $('.row.alert-row-sport').hide();
     $(".nutritien-intake").show();
     $(".household-stock").hide();
     $(".sport").hide();

@@ -25,6 +25,7 @@
   <script src="./static/profile.js"></script>
   <script src="./static/profile-house.js"></script>
   <script src="./static/profile-nav.js"></script>
+  <script src="./static/sport.js"></script>
 </head>
 
 <body>
@@ -68,8 +69,10 @@
             <div class="alert alert-danger text-center"> You ate more calorie then the ideal.</div>
           </div>
           <div class="row alert-row-house justify-content-center">
-            <div class="alert alert-danger text-center"> Your household doesn't have enough calorie for a
-              week.</div>
+            <div class="alert alert-danger text-center"> Your household doesn't have enough calorie for a week.</div>
+          </div>
+          <div class="row alert-row-sport justify-content-center">
+            <div class="alert alert-danger text-center"> You haven't done any sport today.</div>
           </div>
           <h2>PROFILE</h2>
           <nav class="nav justify-content-center">
@@ -229,7 +232,64 @@
       <div class="row sport" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
-
+          <h3>SPORT</h3>
+          <table class="table table-responsive-lg">
+            <thead>
+              <tr>
+                <th scope="col">NAME</th>
+                <th scope="col" class="td-center">CALORIES <span class="unit-of-measure">(kcal)</span></th>
+                <th scope="col" class="td-center">DURATION <span class="unit-of-measure">(mins)</span></th>
+              </tr>
+            </thead>
+            <tbody id="sport-tbody">
+            </tbody>
+            <thead>
+              <tr>
+                <th colspan="3" class="td-center th-add-new-sport">
+                  <button class="th-add-new-sport-btn btn btn-outline-secondary">Add new sport</button>
+                </th>
+                <th colspan="3" class="td-center th-save-cancel-sport">
+                  <div class="btn-group"> <button class="th-save-sport btn btn-outline-secondary">Save</button> <button
+                      class="th-cancel-sport btn btn-outline-secondary">Cancel</button></div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="total-row-sport">
+                <th>TOTAL</th>
+                <td class="td-center" id="total-cal-sport"></td>
+                <td class="td-center" id="total-duration"></td>
+              </tr>
+              <tr id="ideal-row-sport">
+                <th>IDEAL</th>
+                <td class="td-center" id="ideal-cal-sport">500</td>
+                <td class="td-center" id="ideal-duration">60</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>HISTORY</h3>
+          <table class="table table table-responsive-lg">
+            <thead>
+              <th>DAY(S) BEFORE</th>
+              <th class="td-center">1</th>
+              <th class="td-center">2</th>
+              <th class="td-center">3</th>
+              <th class="td-center">4</th>
+              <th class="td-center">5</th>
+              <th class="td-center">6</th>
+              <th class="td-center">7</th>
+            </thead>
+            <tbody>
+              <th>BURNED CALORIES <span class="unit-of-measure">(kcal)</span></th>
+              <td id="td-history-cal-1" class="td-center">200</td>
+              <td id="td-history-cal-2" class="td-center">350</td>
+              <td id="td-history-cal-3" class="td-center">202</td>
+              <td id="td-history-cal-4" class="td-center">189</td>
+              <td id="td-history-cal-5" class="td-center">400</td>
+              <td id="td-history-cal-6" class="td-center">450</td>
+              <td id="td-history-cal-7" class="td-center">800</td>
+            </tbody>
+          </table>
         </div>
         <div class="col"></div>
       </div>
