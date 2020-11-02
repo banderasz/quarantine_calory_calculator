@@ -7,20 +7,20 @@
   <title>PROFILE</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./style/style.css">
   <link rel="stylesheet" href="./style/profile.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <script src="./static/size.js"></script>
   <script src="./static/profile-nutritien.js"></script>
   <script src="./static/profile-house.js"></script>
@@ -311,21 +311,24 @@
           <h3>PERSONAL</h3>
           <div class="row personal-row">
             <div class="col text-right"><span class="align-middle font-h6">NAME</span></div>
-            <div class="col text-left" id="personal-name"><span class="align-middle" id="personal-name-span"></span></div>
+            <div class="col text-left" id="personal-name"><span class="align-middle" id="personal-name-span"></span>
+            </div>
             <div class="col text-left" id="personal-name-edit">
               <input type="text" class="form-control-sm form-control text-capitalize" id="personal-name-edit-input">
             </div>
           </div>
           <div class="row personal-row">
             <div class="col text-right"><span class="align-middle font-h6">EMAIL</span></div>
-            <div class="col text-left" id="personal-email"><span class="align-middle" id="personal-email-span"></span></div>
+            <div class="col text-left" id="personal-email"><span class="align-middle" id="personal-email-span"></span>
+            </div>
             <div class="col text-left" id="personal-email-edit">
               <input type="text" class="form-control form-control-sm" id="personal-email-edit-input" disabled>
             </div>
           </div>
           <div class="row personal-row">
             <div class="col text-right"><span class="align-middle font-h6">GENDER</span></div>
-            <div class="col text-left" id="personal-gender"><span class="align-middle" id="personal-gender-span"></span></div>
+            <div class="col text-left" id="personal-gender"><span class="align-middle" id="personal-gender-span"></span>
+            </div>
             <div class="col text-left" id="personal-gender-edit">
               <select class="form-control form-control-sm" id="gender">
                 <option value="Woman">Woman</option>
@@ -335,7 +338,8 @@
           </div>
           <div class="row personal-row">
             <div class="col text-right"><span class="align-middle font-h6">WEIGHT</span></div>
-            <div class="col text-left" id="personal-weight"><span class="align-middle" id="personal-weight-span"></span></div>
+            <div class="col text-left" id="personal-weight"><span class="align-middle" id="personal-weight-span"></span>
+            </div>
             <div class="col text-left" id="personal-weight-edit">
               <div class="input-group input-group-sm">
                 <input type="number" class="form-control" id="personal-weight-edit-input">
@@ -347,7 +351,8 @@
           </div>
           <div class="row personal-row">
             <div class="col text-right"><span class="align-middle font-h6">HEIGHT</span></div>
-            <div class="col text-left" id="personal-height"><span class="align-middle" id="personal-height-span"></span></div>
+            <div class="col text-left" id="personal-height"><span class="align-middle" id="personal-height-span"></span>
+            </div>
             <div class="col text-left" id="personal-height-edit">
               <div class="input-group input-group-sm">
                 <input type="number" class="form-control" id="personal-height-edit-input">
@@ -359,7 +364,8 @@
           </div>
           <div class="row personal-row">
             <div class="col text-right"><span class="align-middle font-h6">ACTIVITY LEVEL</span></div>
-            <div class="col text-left" id="personal-activity"><span class="align-middle" id="personal-activity-span"></span></div>
+            <div class="col text-left" id="personal-activity"><span class="align-middle"
+                id="personal-activity-span"></span></div>
             <div class="col text-left" id="personal-activity-edit">
               <select class="form-control form-control-sm" id="activity-level">
                 <option value="Low">Low</option>
@@ -370,14 +376,16 @@
           </div>
           <div class="row personal-row">
             <div class="col text-right"><span class="align-middle font-h6">HOUSEHOLD ID</span></div>
-            <div class="col text-left" id="personal-household"><span class="align-middle" id="personal-household-span"></span></div>
-            <div class="col text-left" id="personal-household-edit"><div class="input-group input-group-sm">
+            <div class="col text-left" id="personal-household"><span class="align-middle"
+                id="personal-household-span"></span></div>
+            <div class="col text-left" id="personal-household-edit">
               <div class="input-group input-group-sm">
-                <div class="input-group-prepend">
-                  <div class="input-group-text">#</div>
+                <div class="input-group input-group-sm">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">#</div>
                   </div>
-                  <input type="text" class="form-control" id="personal-household-edit-input" placeholder="Example: 12255a"
-                  style="float:right;">
+                  <input type="text" class="form-control" id="personal-household-edit-input"
+                    placeholder="Example: 12255a" style="float:right;">
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="personal-new-household-id">
@@ -405,18 +413,50 @@
             </div>
           </div>
           <div class="row">
-            <div class="col text-center button-margin" id="personal-edit"><div class="btn-group"> <button class="btn btn-outline-secondary" id="personal-edit-btn">EDIT DATA</button> <button
-              class="btn btn-outline-secondary" id="personal-edit-password-btn">EDIT PASSWORD</button></div></div>
+            <div class="col text-center button-margin" id="personal-edit">
+              <div class="btn-group"> <button class="btn btn-outline-secondary" id="personal-edit-btn">EDIT
+                  DATA</button> <button class="btn btn-outline-secondary" id="personal-edit-password-btn">EDIT
+                  PASSWORD</button></div>
+            </div>
           </div>
           <div class="row">
-            <div class="col text-center button-margin" id="personal-save-cancel"><div class="btn-group"> <button class="btn btn-outline-secondary" id="personal-save-btn">Save</button> <button
-              class="btn btn-outline-secondary" id="personal-cancel-btn">Cancel</button></div></div>
+            <div class="col text-center button-margin" id="personal-save-cancel">
+              <div class="btn-group"> <button class="btn btn-outline-secondary" id="personal-save-btn">Save</button>
+                <button class="btn btn-outline-secondary" id="personal-cancel-btn">Cancel</button></div>
+            </div>
           </div>
         </div>
         <div class="col"></div>
       </div>
     </div>
   </div>
+
+  <!--Modal to create new sport-->
+  <div class="modal" id="new-sport-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add new sport</h4>
+          <button type="button" class="close add-new-sport-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <h5>New sport name</h5>
+          <input type="text" class="form-control form-control-sm" id="new-sport-name" placeholder="New sport name">
+          <br>
+          <h5>Burned calories in 60mins</h5>
+          <input type="number" class="form-control form-control-sm" id="new-sport-cals"
+            placeholder="Calories in kcal">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary add-new-sport-close" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="add-new-sport-save">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

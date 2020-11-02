@@ -1,8 +1,9 @@
-var inputValueNameSport;
-var calAmountSport;
 var calSumSport = 0;
 var durationSum = 0;
+var selectedSport={};
+var sports = [];
 
+//navigation - sport site
 $(document).on('click', '#sport-nav', function () {
     $('#sport-nav').css('font-weight', '500');
     $('#weight-nav').css('font-weight', 'normal');
@@ -36,16 +37,16 @@ $(document).on('click', '#sport-nav', function () {
     }
 });
 
+//add new sport activity
 $(document).on('click', '.th-add-new-sport-btn', function () {
     $('#sport-tbody').append($('<tr>')
         .attr('id', 'new-td-row-sport')
         .append($('<td>')
             .attr('colspan', '2')
-            .append($('<input>')
+            .append($('<select>')
                 .attr('class', 'form-control form-control-sm')
                 .attr('placeholder', 'Sport name')
-                .attr('type', 'text')
-                .attr('id', 'input-value-name')
+                .attr('id', 'sport-select')
             )
         )
         .append($('<td>')
@@ -67,31 +68,50 @@ $(document).on('click', '.th-add-new-sport-btn', function () {
             )
         )
     );
+    fillSportSelect();
     $(".th-add-new-sport").hide();
     $(".th-save-cancel-sport").show();
 })
 
+$(document).on('change','#sport-select', function(){
+    if($(this).children(":selected").attr("id") == 'add-new-sport-option'){
+        $('#sport-select option[value=""]').attr('selected', 'selected');
+        $('#new-sport-modal').modal('show');
+    }
+})
+
+//save new sport activity
 $(document).on('click', '.th-save-sport', function () {
-    if (!$('#input-value-name').val() && !$('#input-value-mins').val()) {
+    if ($('#sport-select option:selected').val()=="empty" && !$('#input-value-mins').val()) {
         alert('The name and duration box is empty.');
     }
-    else if (!$('#input-value-name').val() && $('#input-value-mins').val()) {
+    else if ($('#sport-select option:selected').val()=="empty" && $('#input-value-mins').val()) {
         alert('The name box is empty.');
     }
-    else if ($('#input-value-name').val() && !$('#input-value-mins').val()) {
+    else if ($('#sport-select option:selected').val()!="empty" && !$('#input-value-mins').val()) {
         alert('The duration box is empty.');
     }
     else {
-        inputValueNameSport = $('#input-value-name').val();
+        var inputValueNameSport = $('#sport-select option:selected').text();
+        console.log(inputValueNameSport);
+        sports.forEach((value)=>{
+            console.log(value.name)
+            if(value.name == inputValueNameSport){
+                selectedSport.name = value.name;
+                console.log(selectedSport.name);
+                selectedSport.calories = value.calories;
+                console.log(selectedSport.calories);
+            }
+        })
         var duration = $('#input-value-mins').val();
-        calAmountSport = duration/60*350;
+        var calAmountSport = duration/60*selectedSport.calories;
         $('#sport-tbody').find('#new-td-row-sport').remove();
         $('#sport-tbody').append($('<tr>')
             .append($('<td>')
                 .text(inputValueNameSport)
             )
             .append($('<td>')
-                .text(calAmountSport)
+                .text(calAmountSport.toFixed(0))
                 .attr('class', 'td-center td-cal-sport')
             )
             .append($('<td>')
@@ -117,8 +137,46 @@ $(document).on('click', '.th-save-sport', function () {
     }
 })
 
+//cancel adding new sport activity
 $(document).on('click', '.th-cancel-sport', function () {
     $('#sport-tbody').find('#new-td-row-sport').remove();
     $(".th-add-new-sport").show();
     $(".th-save-cancel-sport").hide();
 })
+
+//cancel adding new sport activity
+$(document).on('click', '#add-new-sport-save', function () {
+    console.log("pushed");
+    var newSport = {};
+    newSport.name = $('#new-sport-name').val();
+    newSport.calories = parseFloat($('#new-sport-cals').val());
+    sports.push(newSport);
+    fillSportSelect();
+    $('#new-sport-modal').modal('hide');
+    $('#new-sport-name').val('');
+    $('#new-sport-cals').val('');
+})
+
+//cancel adding new sport activity
+$(document).on('click', '.add-new-sport-close', function () {
+    $('#new-sport-name').val('');
+    $('#new-sport-cals').val('');
+})
+
+function fillSportSelect(){
+    $('#sport-select option').each(function(){
+        $(this).remove();
+    })
+    $('#sport-select').append('<option value="empty" disabled selected hidden>Select the sport</option>')
+    
+    sports.forEach((value) => {
+        $("#sport-select").append($('<option>')
+            .attr('value', value.name)
+            .text(value.name)
+        )
+    })
+    $("#sport-select").append($('<option>')
+            .attr('id','add-new-sport-option')
+            .text('Add new sport')
+        )
+}

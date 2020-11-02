@@ -61,15 +61,6 @@ $(document).on('click', '#personal-edit-password-btn', function () {
     //hide-show
     editPasswordMode();
 
-    //settings
-    $('#personal-name-edit-input').attr('value', personalName);
-    $('#personal-email-edit-input').attr('value', personalEmail);
-    $('#personal-weight-edit-input').attr('value', personalWeight);
-    $('#personal-height-edit-input').attr('value', personalHeight);
-    $('#gender option[value="' + personalGender + '"]').attr('selected', 'selected');
-    $('#activity-level option[value="' + personalActivity + '"]').attr('selected', 'selected');
-    $('#personal-household-edit-input').attr('value', personalHousehold);
-
     //buttons
     $('#personal-edit').hide();
     $('#personal-save-cancel').show();
