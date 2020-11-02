@@ -116,7 +116,7 @@ $(document).on('click', '.th-add-new-drink-house', function () {
     isFoodHouse = false;
     $('#household-stock-tbody')
     .append($('<tr>')
-        .attr('id','new-td-row-house')
+        .attr('id','drink-tr-house')
         .append($('<td>')
             .attr('colspan', '2')
             .append($('<select>')
