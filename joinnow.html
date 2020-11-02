@@ -10,15 +10,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./style/style.css">
   <link rel="stylesheet" href="./style/signin.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="./static/size.js"></script>
   <script src="./static/join.js"></script>
 </head>
@@ -72,14 +74,16 @@
       <div class="row" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-9 col-xl-4 col-lg-5 col-md-7 col-sm-9 ">
-          <form>
+
+          <!--Join/Registration form-->
+          <form id="join-now-form">
             <div class="form-group">
               <label class="form-labels" for="person-name">Name</label>
-              <input type="text" class="form-control" id="person-name" placeholder="Name">
+              <input type="text" class="form-control" id="person-name" placeholder="Name" required>
               <label class="form-labels" for="email-address">Email</label>
-              <input type="email" class="form-control" id="email-address" placeholder="example@example.com">
+              <input type="email" class="form-control" id="email-address" placeholder="example@example.com" required>
               <label class="form-labels" for="gender">Gender</label>
-              <select class="form-control custom-select" id="gender">
+              <select class="form-control custom-select" id="gender" required>
                 <option value="" disabled selected hidden>Select your gender</option>
                 <option value="woman">Woman</option>
                 <option value="man">Man</option>
@@ -87,15 +91,15 @@
               <div class="row">
                 <div class="col">
                   <label class="form-labels" for="weight">Weight (kg)</label>
-                  <input type="number" class="form-control" id="weight" placeholder="Weight in kg">
+                  <input type="number" class="form-control" id="weight" placeholder="Weight in kg" required>
                 </div>
                 <div class="col">
                   <label class="form-labels" for="height">Height (cm)</label>
-                  <input type="number" class="form-control" id="height" placeholder="Height in cm">
+                  <input type="number" class="form-control" id="height" placeholder="Height in cm" required>
                 </div>
               </div>
               <label class="form-labels" for="activity-level">Activity level</label>
-              <select class="form-control" id="activity-level">
+              <select class="form-control" id="activity-level" required>
                 <option value="" disabled selected hidden>Select your activity level</option>
                 <option value="low">Low</option>
                 <option value="moderate">Moderate</option>
@@ -114,12 +118,10 @@
                 <label class="form-check-label" for="new-household-id">Create a new household</label>
               </div>
               <label class="form-labels" for="password1">Password</label>
-              <input type="password" class="form-control" id="password1" placeholder="Password">
-              <label class="form-labels" for="password2">Password again</label>
-              <input type="password" class="form-control" id="password2" placeholder="Password again">
+              <input type="password" class="form-control" id="password" placeholder="Password" required>
               <div class="row" style="margin-top: 25px;">
                 <div class="col text-center">
-                  <a class="btn btn-outline-success" href="./profile.html">JOIN NOW</a>
+                  <button type='submit' class="btn btn-outline-success" id="join-now-btn">JOIN NOW</button>
                 </div>
               </div>
             </div>

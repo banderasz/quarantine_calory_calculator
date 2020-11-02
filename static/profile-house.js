@@ -129,6 +129,8 @@ $(document).on('click', '.th-add-new-drink-house', function () {
 })
 
 $(document).on('click', '.th-save-house', function () {
+    
+    //not every input is filled
     if (!$('#input-value-name-house').val()) {
         if(!$('#input-value-g-house').val() && !$('#input-value-dl-house').val()){
             alert('The name and amount box is empty.');
@@ -140,6 +142,8 @@ $(document).on('click', '.th-save-house', function () {
     else if (!$('#input-value-g-house').val() && !$('#input-value-dl-house').val()) {
         alert('The amount box is empty.');
     }
+
+    //every input is filled
     else {
         inputValueName = $('#input-value-name-house').val();
         var amount = parseFloat($('#input-value-g-house').val());
@@ -163,6 +167,8 @@ $(document).on('click', '.th-save-house', function () {
             fatAmount = amount / 100 * 1;
         }
         $('#household-stock-tbody').find('#new-td-row-house').remove();
+
+        //if the nutritien is already in the household stock
         if($("#" + inputValueName).length > 0){
             calAmount += parseFloat($("#"+inputValueName+" .td-cal-house").text());
             $("#"+inputValueName+" .td-cal-house").text(calAmount);
@@ -179,11 +185,14 @@ $(document).on('click', '.th-save-house', function () {
             amountAmount += parseFloat($("#"+inputValueName+" .td-amount-house").text());
             $("#"+inputValueName+" .td-amount-house").text(amountAmount);
         }
+
+        //if the nutritien is not in the household stock yet
         else{
             $('#household-stock-tbody').append($('<tr>')
             .attr('id',inputValueName)
             .append($('<td>')
                 .text(inputValueName)
+                .attr('class', 'td-name-house')
             )
             .append($('<td>')
                 .text(calAmount)

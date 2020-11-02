@@ -18,6 +18,8 @@ var waterAmount;
 
 $(document).ready(function () {
     $('#nutin-nav').css('font-weight', '500');
+
+    //count sums
     $(".td-cal-nutin").each(function () {
         calSum += parseFloat($(this).text());
     });
@@ -51,7 +53,17 @@ $(document).ready(function () {
         waterSum += parseFloat($(this).text());
     });
     $('#total-water-nutin').html(waterSum);
+
+    //hide-show elements
     $(".th-save-cancel-nutin").hide();
+    $('.row.alert-row-house').hide();
+    $('.row.alert-row-sport').hide();
+    $(".nutritien-intake").show();
+    $(".household-stock").hide();
+    $(".sport").hide();
+    $(".personal").hide();
+
+    //compare ideal and total
     if (parseFloat($('#total-cal-nutin').text()) > parseFloat($('#ideal-cal').text())) {
         $('#total-row-nutin').css('color', 'red');
         $('.row.alert-row-nutin').show();
@@ -59,12 +71,6 @@ $(document).ready(function () {
     else{
         $('.row.alert-row-nutin').hide();
     }
-    $('.row.alert-row-house').hide();
-    $('.row.alert-row-sport').hide();
-    $(".nutritien-intake").show();
-    $(".household-stock").hide();
-    $(".sport").hide();
-    $(".personal").hide();
 });
 
 //Nav
@@ -193,6 +199,11 @@ $(document).on('click', '.th-save-nutin', function () {
     else {
         inputValueName = $('#input-value-name').val();
         var amount = $('#input-value-g').val();
+        $(".td-name-house").each(function () {
+            if($(this).text()==inputValueName){
+                
+            }
+        });
         $('#drink-tr').remove();
         if (!drinkFood) {
             waterAmount = amount;
