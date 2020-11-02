@@ -7,7 +7,7 @@ var fatSum = 0;
 var waterSum = 0;
 var inputValueName;
 var inputValueNum;
-var drinkFood = true;
+var isFood;
 var calAmount;
 var proteinAmount;
 var carbsAmount;
@@ -15,6 +15,9 @@ var sugarAmount;
 var fiberAmount;
 var fatAmount;
 var waterAmount;
+var selectedFood ={};
+var selectedDrink ={};
+var isNutin;
 
 $(document).ready(function () {
     $('#nutin-nav').css('font-weight', '500');
@@ -68,12 +71,14 @@ $(document).ready(function () {
         $('#total-row-nutin').css('color', 'red');
         $('.row.alert-row-nutin').show();
     }
-    else{
+    else {
         $('.row.alert-row-nutin').hide();
     }
+
+    isNutin = true;
 });
 
-//Nav
+//navigation - nutritien intake site
 $(document).on('click', '#nutin-nav', function () {
     $('#nutin-nav').css('font-weight', '500');
     $('#weight-nav').css('font-weight', 'normal');
@@ -86,7 +91,7 @@ $(document).on('click', '#nutin-nav', function () {
         $('#total-row').css('color', 'red');
         $('.row.alert-row-nutin').show();
     }
-    else{
+    else {
         $('.row.alert-row-nutin').hide();
     }
     $(".nutritien-intake").show();
@@ -95,19 +100,21 @@ $(document).on('click', '#nutin-nav', function () {
     $(".personal").hide();
     $('.row.alert-row-house').hide();
     $('.row.alert-row-sport').hide();
+
+    isNutin = true;
 });
 
-//Nutritien intake
+//add new food
 $(document).on('click', '.th-add-new-food-nutin', function () {
+    isFood = true;
     $('#nutritien-intake-tbody').append($('<tr>')
-        .attr('id', 'new-td-row')
+        .attr('id', 'food-tr')
         .append($('<td>')
             .attr('colspan', '2')
-            .append($('<input>')
+            .append($('<select>')
                 .attr('class', 'form-control form-control-sm')
-                .attr('placeholder', 'Food name')
-                .attr('type', 'text')
-                .attr('id', 'input-value-name')
+                .attr('id', 'food-select')
+                .prop('required', 'true')
             )
         )
         .append($('<td>')
@@ -119,6 +126,7 @@ $(document).on('click', '.th-add-new-food-nutin', function () {
                     .attr('class', 'form-control')
                     .attr('placeholder', 'Amount in gramms')
                     .attr('id', 'input-value-g')
+                    .prop('required', 'true')
                 )
                 .append($('<div>')
                     .attr('class', 'input-group-append')
@@ -134,96 +142,293 @@ $(document).on('click', '.th-add-new-food-nutin', function () {
         .append($('<td>'))
         .append($('<td>'))
     );
+
+    fillFoodSelect();
+
     $(".th-add-new-nutin").hide();
     $(".th-save-cancel-nutin").show();
-    drinkFood = true;
 })
 
-$(document).on('click', '.th-add-new-drink-nutin', function () {
-    $('#nutritien-intake-tbody')
-    .append($('<tr>')
-        .attr('id','drink-tr')
-        .append($('<td>')
-            .attr('colspan', '2')
-            .append($('<input>')
-                .attr('class', 'form-control form-control-sm')
-                .attr('placeholder', 'Drink name')
-                .attr('type', 'text')
-                .attr('id', 'input-value-name')
-                .prop('required', 'true')
-            )
+//fill select with the options
+function fillFoodSelect() {
+    $('#food-select option').each(function () {
+        $(this).remove();
+    })
+    $('#food-select').append('<option value="" disabled selected hidden>Select the food</option>')
+
+    foods.forEach((value) => {
+        $("#food-select").append($('<option>')
+            .attr('value', value.name)
+            .text(value.name)
         )
-        .append($('<td>')
-            .attr('colspan', '2')
-            .append($('<div>')
-                .attr('class', 'input-group input-group-sm')
-                .append($('<input>')
-                    .attr('type', 'number')
-                    .attr('class', 'form-control')
-                    .attr('placeholder', 'Amount in dl')
-                    .attr('id', 'input-value-dl')
+    })
+    $("#food-select").append($('<option>')
+        .attr('id', 'add-new-food-option')
+        .text('Add new food')
+    )
+}
+
+//when select add new food
+$(document).on('change', '#food-select', function () {
+    if ($(this).children(":selected").attr("id") == 'add-new-food-option') {
+        $('#food-select option[value=""]').attr('selected', 'selected');
+        $('#new-food-modal').modal('show');
+    }
+})
+
+//save new food
+$(document).on('click', '#add-new-food-save', function () {
+    if ($('#new-food-name').val() == '' || $('#new-food-protein').val() == '' || $('#new-food-carbs').val() == '' || $('#new-food-sugar').val() == '' || $('#new-food-fiber').val() == '' || $('#new-food-fat').val() == '' || $('#new-food-water').val() == '') {
+        alert("You didn't fill every box.");
+    }
+    else {
+        var isNotExists = true;
+        var newFood = {};
+        newFood.name = $('#new-food-name').val().toLowerCase();
+        newFood.protein = parseFloat($('#new-food-protein').val());
+        newFood.carbs = parseFloat($('#new-food-carbs').val());
+        newFood.sugar = parseFloat($('#new-food-sugar').val());
+        newFood.fiber = parseFloat($('#new-food-fiber').val());
+        newFood.fat = parseFloat($('#new-food-fat').val());
+        newFood.water = parseFloat($('#new-food-water').val());
+        foods.forEach((value) => {
+            if (value.name.toLowerCase() == newFood.name) {
+                isNotExists = false;
+            }
+        })
+        if (isNotExists) {
+            newFood.name = newFood.name.charAt(0).toUpperCase() + newFood.name.slice(1);
+            foods.push(newFood);
+        }
+        else {
+            alert("This food is already in the database.")
+        }
+
+        if(isNutin){
+            fillFoodSelect();
+        }
+        else{
+            fillFoodSelectHouse();
+        }
+        
+        foodInputEmpty();
+        $('#new-food-modal').modal('hide');
+    }
+})
+
+//cancel adding new food
+$(document).on('click', '.add-new-food-close', function () {
+    foodInputEmpty();
+    if(isNutin){
+            fillFoodSelect();
+        }
+        else{
+            fillFoodSelectHouse();
+        }
+})
+
+function foodInputEmpty(){
+        $('#new-food-name').val('');
+        $('#new-food-protein').val('');
+        $('#new-food-carbs').val('');
+        $('#new-food-sugar').val('');
+        $('#new-food-fiber').val('');
+        $('#new-food-fat').val('');
+        $('#new-food-water').val('');
+}
+
+
+//add new drink
+$(document).on('click', '.th-add-new-drink-nutin', function () {
+    isFood = false;
+    $('#nutritien-intake-tbody')
+        .append($('<tr>')
+            .attr('id', 'drink-tr')
+            .append($('<td>')
+                .attr('colspan', '2')
+                .append($('<select>')
+                    .attr('class', 'form-control form-control-sm')
+                    .attr('id', 'drink-select')
                     .prop('required', 'true')
                 )
+            )
+            .append($('<td>')
+                .attr('colspan', '2')
                 .append($('<div>')
-                    .attr('class', 'input-group-append')
-                    .append($('<span>')
-                        .attr('class', 'input-group-text')
-                        .text('dl')
+                    .attr('class', 'input-group input-group-sm')
+                    .append($('<input>')
+                        .attr('type', 'number')
+                        .attr('class', 'form-control')
+                        .attr('placeholder', 'Amount in ml')
+                        .attr('id', 'input-value-ml')
+                        .prop('required', 'true')
+                    )
+                    .append($('<div>')
+                        .attr('class', 'input-group-append')
+                        .append($('<span>')
+                            .attr('class', 'input-group-text')
+                            .text('ml')
+                        )
                     )
                 )
             )
-        )
-        .append($('<td>'))
-        .append($('<td>'))
-        .append($('<td>'))
-        .append($('<td>'))
-    );
+            .append($('<td>'))
+            .append($('<td>'))
+            .append($('<td>'))
+            .append($('<td>'))
+        );
+
+    fillDrinkSelect();
+
     $(".th-add-new-nutin").hide();
     $(".th-save-cancel-nutin").show();
-    drinkFood = false;
 })
 
-$(document).on('click', '.th-save-nutin', function () {
-    if (!$('#input-value-name').val()) {
-        if(!$('#input-value-g').val() && !$('#input-value-dl').val()){
-            alert('The name and amount box is empty.');
-        }
-        else{
-            alert('The name box is empty.');
-        }
+//fill select with the options
+function fillDrinkSelect() {
+    $('#drink-select option').each(function () {
+        $(this).remove();
+    })
+    $('#drink-select').append('<option value="" disabled selected hidden>Select the drink</option>')
+
+    drinks.forEach((value) => {
+        $("#drink-select").append($('<option>')
+            .attr('value', value.name)
+            .text(value.name)
+        )
+    })
+    $("#drink-select").append($('<option>')
+        .attr('id', 'add-new-drink-option')
+        .text('Add new drink')
+    )
+}
+
+//when select add new drink
+$(document).on('change', '#drink-select', function () {
+    if ($(this).children(":selected").attr("id") == 'add-new-drink-option') {
+        $('#drink-select option[value=""]').attr('selected', 'selected');
+        $('#new-drink-modal').modal('show');
     }
-    else if (!$('#input-value-g').val() && !$('#input-value-dl').val()) {
-        alert('The amount box is empty.');
-        console.log($('#input-value-dl').val())
+})
+
+//save new drink
+$(document).on('click', '#add-new-drink-save', function () {
+    if ($('#new-drink-name').val() == '' || $('#new-drink-protein').val() == '' || $('#new-drink-carbs').val() == '' || $('#new-drink-sugar').val() == '' || $('#new-drink-fiber').val() == '' || $('#new-drink-fat').val() == '' || $('#new-drink-water').val() == '') {
+        alert("You didn't fill every box.");
     }
     else {
-        inputValueName = $('#input-value-name').val();
-        var amount = $('#input-value-g').val();
-        $(".td-name-house").each(function () {
-            if($(this).text()==inputValueName){
-                
+        var isNotExists = true;
+        var newDrink = {};
+        newDrink.name = $('#new-drink-name').val().toLowerCase();
+        newDrink.protein = parseFloat($('#new-drink-protein').val());
+        newDrink.carbs = parseFloat($('#new-drink-carbs').val());
+        newDrink.sugar = parseFloat($('#new-drink-sugar').val());
+        newDrink.fiber = parseFloat($('#new-drink-fiber').val());
+        newDrink.fat = parseFloat($('#new-drink-fat').val());
+        newDrink.water = parseFloat($('#new-drink-water').val());
+        drinks.forEach((value) => {
+            if (value.name.toLowerCase() == newDrink.name) {
+                isNotExists = false;
             }
-        });
-        $('#drink-tr').remove();
-        if (!drinkFood) {
-            waterAmount = amount;
-            calAmount = 0;
-            proteinAmount = 0;
-            carbsAmount = 0;
-            sugarAmount = 0;
-            fiberAmount = 0;
-            fatAmount = 0;
+        })
+        if (isNotExists) {
+            newDrink.name = newDrink.name.charAt(0).toUpperCase() + newDrink.name.slice(1);
+            drinks.push(newDrink);
         }
         else {
-            waterAmount = amount / 100 * 10;
-            calAmount = amount / 100 * 500;
-            proteinAmount = amount / 100 * 200;
-            carbsAmount = amount / 100 * 10;
-            sugarAmount = amount / 100 * 5;
-            fiberAmount = amount / 100 * 1;
-            fatAmount = amount / 100 * 1;
+            alert("This drink is already in the database.")
         }
-        $('#nutritien-intake-tbody').find('#new-td-row').remove();
+
+        if(isNutin){
+            fillDrinkSelect();
+        }
+        else{
+            fillDrinkSelectHouse();
+        }
+
+        drinkInputEmpty();
+        $('#new-drink-modal').modal('hide');
+    }
+})
+
+//cancel adding new drink
+$(document).on('click', '.add-new-drink-close', function () {
+    drinkInputEmpty();
+    if(isNutin){
+        fillDrinkSelect();
+    }
+    else{
+        fillDrinkSelectHouse();
+    }
+})
+
+function drinkInputEmpty(){
+        $('#new-drink-name').val('');
+        $('#new-drink-protein').val('');
+        $('#new-drink-carbs').val('');
+        $('#new-drink-sugar').val('');
+        $('#new-drink-fiber').val('');
+        $('#new-drink-fat').val('');
+        $('#new-drink-water').val('');
+}
+
+//save adding new nutritien intake
+$(document).on('click', '.th-save-nutin', function () {
+    if ((!$('#food-select').val() && !$('#drink-select').val()) || (!$('#input-value-g').val() && !$('#input-value-ml').val())) {
+        alert("You have to fill every box.");
+    }
+    else {
+        var amount;
+        if(isFood){
+            inputValueName = $('#food-select option:selected').text();
+            amount = $('#input-value-g').val();
+            foods.forEach((value) => {
+                if (value.name == inputValueName) {
+                    selectedFood.name = value.name;
+                    selectedFood.protein = value.protein;
+                    selectedFood.carbs = value.carbs;
+                    selectedFood.sugar = value.sugar;
+                    selectedFood.fiber = value.fiber;
+                    selectedFood.fat = value.fat;
+                    selectedFood.water = value.water;
+                }
+            })
+            $('#food-tr').remove();
+            
+            proteinAmount = amount / 100 * selectedFood.protein;
+            carbsAmount = amount / 100 * selectedFood.carbs;
+            sugarAmount = amount / 100 * selectedFood.sugar;
+            fiberAmount = amount / 100 * selectedFood.fiber;
+            fatAmount = amount / 100 * selectedFood.fat;
+            waterAmount = amount / 100 * selectedFood.water;
+
+            calAmount = proteinAmount*4 + carbsAmount*4 + fatAmount*4;
+        }
+        else{
+            inputValueName = $('#drink-select option:selected').text();
+            amount = $('#input-value-ml').val();
+            drinks.forEach((value) => {
+                if (value.name == inputValueName) {
+                    selectedDrink.name = value.name;
+                    selectedDrink.protein = value.protein;
+                    selectedDrink.carbs = value.carbs;
+                    selectedDrink.sugar = value.sugar;
+                    selectedDrink.fiber = value.fiber;
+                    selectedDrink.fat = value.fat;
+                    selectedDrink.water = value.water;
+                }
+            })
+            $('#drink-tr').remove();
+
+            proteinAmount = amount / 100 * selectedDrink.protein;
+            carbsAmount = amount / 100 * selectedDrink.carbs;
+            sugarAmount = amount / 100 * selectedDrink.sugar;
+            fiberAmount = amount / 100 * selectedDrink.fiber;
+            fatAmount = amount / 100 * selectedDrink.fat;
+            waterAmount = amount / 100 * selectedDrink.water;
+
+            calAmount = proteinAmount*4 + carbsAmount*4 + fatAmount*4;
+        }
         $('#nutritien-intake-tbody').append($('<tr>')
             .append($('<td>')
                 .text(inputValueName)
@@ -283,7 +488,12 @@ $(document).on('click', '.th-save-nutin', function () {
 })
 
 $(document).on('click', '.th-cancel-nutin', function () {
-    $('#nutritien-intake-tbody').find('#new-td-row').remove();
+    if(isFood){
+        $('#food-tr').remove();
+    }
+    else{
+        $('#drink-tr').remove();
+    }
     $(".th-add-new-nutin").show();
     $(".th-save-cancel-nutin").hide();
 })

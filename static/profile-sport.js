@@ -45,7 +45,6 @@ $(document).on('click', '.th-add-new-sport-btn', function () {
             .attr('colspan', '2')
             .append($('<select>')
                 .attr('class', 'form-control form-control-sm')
-                .attr('placeholder', 'Sport name')
                 .attr('id', 'sport-select')
                 .prop('required', true)
             )
@@ -75,6 +74,7 @@ $(document).on('click', '.th-add-new-sport-btn', function () {
     $(".th-save-cancel-sport").show();
 })
 
+//when select add new sport
 $(document).on('change', '#sport-select', function () {
     if ($(this).children(":selected").attr("id") == 'add-new-sport-option') {
         $('#sport-select option[value=""]').attr('selected', 'selected');
@@ -84,21 +84,15 @@ $(document).on('change', '#sport-select', function () {
 
 //save new sport activity
 $(document).on('click', '.th-save-sport', function () {
-    var allOK = true;
     if (!$('#sport-select option:selected').val() || !$('#input-value-mins').val()) {
-        allOK = false;
         alert("Fill all input fields.")
     }
-    if (allOK) {
+    else {
         var inputValueNameSport = $('#sport-select option:selected').text();
-        console.log(inputValueNameSport);
         sports.forEach((value) => {
-            console.log(value.name)
             if (value.name == inputValueNameSport) {
                 selectedSport.name = value.name;
-                console.log(selectedSport.name);
                 selectedSport.calories = value.calories;
-                console.log(selectedSport.calories);
             }
         })
         var duration = $('#input-value-mins').val();
@@ -144,7 +138,7 @@ $(document).on('click', '.th-cancel-sport', function () {
 
 //save new sport activity
 $(document).on('click', '#add-new-sport-save', function () {
-    if (!$('#new-sport-name').val()) {
+    if (!$('#new-sport-name').val() || !$('#new-sport-cals').val()) {
         alert("You didn't fill every box.")
     }
     else {
@@ -154,20 +148,20 @@ $(document).on('click', '#add-new-sport-save', function () {
         newSport.calories = parseFloat($('#new-sport-cals').val());
         sports.forEach((value) => {
             if (value.name.toLowerCase() == newSport.name) {
-                isNotExists =false;
+                isNotExists = false;
             }
         })
         if (isNotExists) {
             newSport.name = newSport.name.charAt(0).toUpperCase() + newSport.name.slice(1);
             sports.push(newSport);
         }
-        else{
+        else {
             alert("This sport is already in the database.")
         }
         fillSportSelect();
-            $('#new-sport-modal').modal('hide');
-            $('#new-sport-name').val('');
-            $('#new-sport-cals').val('');
+        $('#new-sport-modal').modal('hide');
+        $('#new-sport-name').val('');
+        $('#new-sport-cals').val('');
     }
 })
 

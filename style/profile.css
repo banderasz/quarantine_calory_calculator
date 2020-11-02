@@ -20,6 +20,14 @@ h3{
     text-align: center;
 }
 
+.td-left{
+    text-align: left;
+}
+
+.td-right{
+    text-align: right;
+}
+
 #ideal-row, #minimum-row, #ideal-row-sport{
     color: green;
 }
