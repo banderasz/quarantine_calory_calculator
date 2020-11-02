@@ -29,6 +29,8 @@
 </head>
 
 <body>
+
+  <!--Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-style">
     <a class="navbar-brand mb-0 h1" href="./home.html">QUARANTINE CALORIE CALCULATOR</a>
 
@@ -60,6 +62,8 @@
       </ul>
     </div>
   </nav>
+
+  <!--Navigation in the site-->
   <div>
     <div class="container" style="padding-top: 80px;">
       <div class="row">
@@ -87,6 +91,8 @@
         </div>
         <div class="col"></div>
       </div>
+
+      <!--Nutritien intake site-->
       <div class="row nutritien-intake" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
@@ -169,6 +175,8 @@
         </div>
         <div class="col"></div>
       </div>
+
+      <!--Household stock site-->
       <div class="row household-stock" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
@@ -229,6 +237,8 @@
         </div>
         <div class="col"></div>
       </div>
+
+      <!--Sport site-->
       <div class="row sport" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
@@ -293,6 +303,8 @@
         </div>
         <div class="col"></div>
       </div>
+
+      <!--Personal site-->
       <div class="row personal" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
@@ -372,10 +384,29 @@
                   <label class="form-check-label" for="personal-new-household-id">Create a new household</label>
                 </div>
               </div>
+            </div>
           </div>
+          <div class="row password-row">
+            <div class="col text-right"><span class="align-middle font-h6">CURRENT PASSWORD</span></div>
+            <div class="col text-left" id="current-password">
+              <input type="password" class="form-control-sm form-control text-capitalize" id="current-password-input">
+            </div>
+          </div>
+          <div class="row password-row">
+            <div class="col text-right"><span class="align-middle font-h6">NEW PASSWORD</span></div>
+            <div class="col text-left" id="new-password">
+              <input type="password" class="form-control-sm form-control text-capitalize" id="new-password-input">
+            </div>
+          </div>
+          <div class="row password-row">
+            <div class="col text-right"><span class="align-middle font-h6">NEW PASSWORD AGAIN</span></div>
+            <div class="col text-left" id="new-password-again">
+              <input type="password" class="form-control-sm form-control text-capitalize" id="new-password-again-input">
+            </div>
           </div>
           <div class="row">
-            <div class="col text-center button-margin" id="personal-edit"><button class="btn btn-outline-secondary" id="personal-edit-btn">EDIT</button></div>
+            <div class="col text-center button-margin" id="personal-edit"><div class="btn-group"> <button class="btn btn-outline-secondary" id="personal-edit-btn">EDIT DATA</button> <button
+              class="btn btn-outline-secondary" id="personal-edit-password-btn">EDIT PASSWORD</button></div></div>
           </div>
           <div class="row">
             <div class="col text-center button-margin" id="personal-save-cancel"><div class="btn-group"> <button class="btn btn-outline-secondary" id="personal-save-btn">Save</button> <button
