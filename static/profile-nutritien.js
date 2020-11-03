@@ -15,8 +15,8 @@ var sugarAmount;
 var fiberAmount;
 var fatAmount;
 var waterAmount;
-var selectedFood ={};
-var selectedDrink ={};
+var selectedFood = {};
+var selectedDrink = {};
 var isNutin;
 
 $(document).ready(function () {
@@ -204,13 +204,13 @@ $(document).on('click', '#add-new-food-save', function () {
             alert("This food is already in the database.")
         }
 
-        if(isNutin){
+        if (isNutin) {
             fillFoodSelect();
         }
-        else{
+        else {
             fillFoodSelectHouse();
         }
-        
+
         foodInputEmpty();
         $('#new-food-modal').modal('hide');
     }
@@ -219,22 +219,22 @@ $(document).on('click', '#add-new-food-save', function () {
 //cancel adding new food
 $(document).on('click', '.add-new-food-close', function () {
     foodInputEmpty();
-    if(isNutin){
-            fillFoodSelect();
-        }
-        else{
-            fillFoodSelectHouse();
-        }
+    if (isNutin) {
+        fillFoodSelect();
+    }
+    else {
+        fillFoodSelectHouse();
+    }
 })
 
-function foodInputEmpty(){
-        $('#new-food-name').val('');
-        $('#new-food-protein').val('');
-        $('#new-food-carbs').val('');
-        $('#new-food-sugar').val('');
-        $('#new-food-fiber').val('');
-        $('#new-food-fat').val('');
-        $('#new-food-water').val('');
+function foodInputEmpty() {
+    $('#new-food-name').val('');
+    $('#new-food-protein').val('');
+    $('#new-food-carbs').val('');
+    $('#new-food-sugar').val('');
+    $('#new-food-fiber').val('');
+    $('#new-food-fat').val('');
+    $('#new-food-water').val('');
 }
 
 
@@ -339,10 +339,10 @@ $(document).on('click', '#add-new-drink-save', function () {
             alert("This drink is already in the database.")
         }
 
-        if(isNutin){
+        if (isNutin) {
             fillDrinkSelect();
         }
-        else{
+        else {
             fillDrinkSelectHouse();
         }
 
@@ -354,22 +354,22 @@ $(document).on('click', '#add-new-drink-save', function () {
 //cancel adding new drink
 $(document).on('click', '.add-new-drink-close', function () {
     drinkInputEmpty();
-    if(isNutin){
+    if (isNutin) {
         fillDrinkSelect();
     }
-    else{
+    else {
         fillDrinkSelectHouse();
     }
 })
 
-function drinkInputEmpty(){
-        $('#new-drink-name').val('');
-        $('#new-drink-protein').val('');
-        $('#new-drink-carbs').val('');
-        $('#new-drink-sugar').val('');
-        $('#new-drink-fiber').val('');
-        $('#new-drink-fat').val('');
-        $('#new-drink-water').val('');
+function drinkInputEmpty() {
+    $('#new-drink-name').val('');
+    $('#new-drink-protein').val('');
+    $('#new-drink-carbs').val('');
+    $('#new-drink-sugar').val('');
+    $('#new-drink-fiber').val('');
+    $('#new-drink-fat').val('');
+    $('#new-drink-water').val('');
 }
 
 //save adding new nutritien intake
@@ -379,9 +379,9 @@ $(document).on('click', '.th-save-nutin', function () {
     }
     else {
         var amount;
-        if(isFood){
+        if (isFood) {
             inputValueName = $('#food-select option:selected').text();
-            amount = $('#input-value-g').val();
+            amount = parseFloat($('#input-value-g').val());
             foods.forEach((value) => {
                 if (value.name == inputValueName) {
                     selectedFood.name = value.name;
@@ -394,17 +394,17 @@ $(document).on('click', '.th-save-nutin', function () {
                 }
             })
             $('#food-tr').remove();
-            
-            proteinAmount = amount / 100 * selectedFood.protein;
-            carbsAmount = amount / 100 * selectedFood.carbs;
-            sugarAmount = amount / 100 * selectedFood.sugar;
-            fiberAmount = amount / 100 * selectedFood.fiber;
-            fatAmount = amount / 100 * selectedFood.fat;
-            waterAmount = amount / 100 * selectedFood.water;
 
-            calAmount = proteinAmount*4 + carbsAmount*4 + fatAmount*4;
+            proteinAmount = (amount / 100 * selectedFood.protein).toFixed(0);
+            carbsAmount = (amount / 100 * selectedFood.carbs).toFixed(0);
+            sugarAmount = (amount / 100 * selectedFood.sugar).toFixed(0);
+            fiberAmount = (amount / 100 * selectedFood.fiber).toFixed(0);
+            fatAmount = (amount / 100 * selectedFood.fat).toFixed(0);
+            waterAmount = (amount / 100 * selectedFood.water).toFixed(0);
+
+            calAmount = proteinAmount * 4 + carbsAmount * 4 + fatAmount * 4;
         }
-        else{
+        else {
             inputValueName = $('#drink-select option:selected').text();
             amount = $('#input-value-ml').val();
             drinks.forEach((value) => {
@@ -420,14 +420,14 @@ $(document).on('click', '.th-save-nutin', function () {
             })
             $('#drink-tr').remove();
 
-            proteinAmount = amount / 100 * selectedDrink.protein;
-            carbsAmount = amount / 100 * selectedDrink.carbs;
-            sugarAmount = amount / 100 * selectedDrink.sugar;
-            fiberAmount = amount / 100 * selectedDrink.fiber;
-            fatAmount = amount / 100 * selectedDrink.fat;
-            waterAmount = amount / 100 * selectedDrink.water;
+            proteinAmount = (amount / 100 * selectedDrink.protein).toFixed(0);
+            carbsAmount = (amount / 100 * selectedDrink.carbs).toFixed(0);
+            sugarAmount = (amount / 100 * selectedDrink.sugar).toFixed(0);
+            fiberAmount = (amount / 100 * selectedDrink.fiber).toFixed(0);
+            fatAmount = (amount / 100 * selectedDrink.fat).toFixed(0);
+            waterAmount = (amount / 100 * selectedDrink.water).toFixed(0);
 
-            calAmount = proteinAmount*4 + carbsAmount*4 + fatAmount*4;
+            calAmount = proteinAmount * 4 + carbsAmount * 4 + fatAmount * 9;
         }
         $('#nutritien-intake-tbody').append($('<tr>')
             .append($('<td>')
@@ -478,6 +478,37 @@ $(document).on('click', '.th-save-nutin', function () {
         waterSum += parseFloat($(".td-water-nutin").last().text());
         $('#total-water-nutin').html(waterSum);
 
+        //delet from household
+        $("#household-stock-tbody tr").each(function () {
+            if ($(this).attr("id") == inputValueName) {
+                if (parseFloat($("#" + inputValueName + " .td-amount-house").text()) - amount > 0) {
+                    var calAmountHouse = parseFloat($("#" + inputValueName + " .td-cal-house").text());
+                    $("#" + inputValueName + " .td-cal-house").text(calAmountHouse - calAmount);
+                    var proteinAmountHouse = parseFloat($("#" + inputValueName + " .td-protein-house").text());
+                    $("#" + inputValueName + " .td-protein-house").text(proteinAmountHouse - proteinAmount);
+                    var carbsAmountHouse = parseFloat($("#" + inputValueName + " .td-carbs-house").text());
+                    $("#" + inputValueName + " .td-carbs-house").text(carbsAmountHouse - carbsAmount);
+                    var fiberAmountHouse = parseFloat($("#" + inputValueName + " .td-fiber-house").text());
+                    $("#" + inputValueName + " .td-fiber-house").text(fiberAmountHouse - fiberAmount);
+                    var sugarAmountHouse = parseFloat($("#" + inputValueName + " .td-sugar-house").text());
+                    $("#" + inputValueName + " .td-sugar-house").text(sugarAmountHouse - sugarAmount);
+                    var fatAmountHouse = parseFloat($("#" + inputValueName + " .td-fat-house").text());
+                    $("#" + inputValueName + " .td-fat-house").text(fatAmountHouse - fatAmount);
+                    var amountHouse = parseFloat($("#" + inputValueName + " .td-amount-house").text());
+                    $("#" + inputValueName + " .td-amount-house").text(amountHouse - amount);
+                }
+                else{
+                    $("#" + inputValueName + " .td-cal-house").text(0);
+                    $("#" + inputValueName + " .td-protein-house").text(0);
+                    $("#" + inputValueName + " .td-carbs-house").text(0);
+                    $("#" + inputValueName + " .td-sugar-house").text(0);
+                    $("#" + inputValueName + " .td-fiber-house").text(0);
+                    $("#" + inputValueName + " .td-fat-house").text(0);
+                    $("#" + inputValueName + " .td-amount-house").text(0);
+                }
+            }
+        })
+
         $(".th-add-new-nutin").show();
         $(".th-save-cancel-nutin").hide();
         if (parseFloat($('#total-cal-nutin').text()) > parseFloat($('#ideal-cal').text())) {
@@ -488,10 +519,10 @@ $(document).on('click', '.th-save-nutin', function () {
 })
 
 $(document).on('click', '.th-cancel-nutin', function () {
-    if(isFood){
+    if (isFood) {
         $('#food-tr').remove();
     }
-    else{
+    else {
         $('#drink-tr').remove();
     }
     $(".th-add-new-nutin").show();

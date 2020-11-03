@@ -31,7 +31,7 @@ $(document).on('click', '#house-nav', function () {
         $('#total-row-house').css('color', 'red');
         $('.row.alert-row-house').show();
     }
-    else{
+    else {
         $('#total-row-house').css('color', 'black');
         $('.row.alert-row-house').hide();
     }
@@ -115,41 +115,41 @@ $(document).on('change', '#food-select-house', function () {
 $(document).on('click', '.th-add-new-drink-house', function () {
     isFoodHouse = false;
     $('#household-stock-tbody')
-    .append($('<tr>')
-        .attr('id','drink-tr-house')
-        .append($('<td>')
-            .attr('colspan', '2')
-            .append($('<select>')
-                .attr('class', 'form-control form-control-sm')
-                .attr('id', 'drink-select-house')
-                .prop('required', 'true')
-            )
-        )
-        .append($('<td>')
-            .attr('colspan', '2')
-            .append($('<div>')
-                .attr('class', 'input-group input-group-sm')
-                .append($('<input>')
-                    .attr('type', 'number')
-                    .attr('class', 'form-control')
-                    .attr('placeholder', 'Amount in ml')
-                    .attr('id', 'input-value-ml-house')
+        .append($('<tr>')
+            .attr('id', 'drink-tr-house')
+            .append($('<td>')
+                .attr('colspan', '2')
+                .append($('<select>')
+                    .attr('class', 'form-control form-control-sm')
+                    .attr('id', 'drink-select-house')
                     .prop('required', 'true')
                 )
+            )
+            .append($('<td>')
+                .attr('colspan', '2')
                 .append($('<div>')
-                    .attr('class', 'input-group-append')
-                    .append($('<span>')
-                        .attr('class', 'input-group-text')
-                        .text('ml')
+                    .attr('class', 'input-group input-group-sm')
+                    .append($('<input>')
+                        .attr('type', 'number')
+                        .attr('class', 'form-control')
+                        .attr('placeholder', 'Amount in ml')
+                        .attr('id', 'input-value-ml-house')
+                        .prop('required', 'true')
+                    )
+                    .append($('<div>')
+                        .attr('class', 'input-group-append')
+                        .append($('<span>')
+                            .attr('class', 'input-group-text')
+                            .text('ml')
+                        )
                     )
                 )
             )
-        )
-        .append($('<td>'))
-        .append($('<td>'))
-        .append($('<td>'))
-        .append($('<td>'))
-    );
+            .append($('<td>'))
+            .append($('<td>'))
+            .append($('<td>'))
+            .append($('<td>'))
+        );
 
     fillDrinkSelectHouse();
 
@@ -193,9 +193,9 @@ $(document).on('click', '.th-save-house', function () {
     else {
         var amount;
         var unit;
-        if(isFoodHouse){
+        if (isFoodHouse) {
             inputValueName = $('#food-select-house option:selected').text();
-            amount = $('#input-value-g-house').val();
+            amount = parseFloat($('#input-value-g-house').val());
             foods.forEach((value) => {
                 if (value.name == inputValueName) {
                     selectedFoodHouse.name = value.name;
@@ -207,18 +207,18 @@ $(document).on('click', '.th-save-house', function () {
                 }
             })
             $('#food-tr-house').remove();
-            
-            proteinAmount = amount / 100 * selectedFoodHouse.protein;
-            carbsAmount = amount / 100 * selectedFoodHouse.carbs;
-            sugarAmount = amount / 100 * selectedFoodHouse.sugar;
-            fiberAmount = amount / 100 * selectedFoodHouse.fiber;
-            fatAmount = amount / 100 * selectedFoodHouse.fat;
 
-            calAmount = proteinAmount*4 + carbsAmount*4 + fatAmount*4;
+            proteinAmount = (amount / 100 * selectedFoodHouse.protein).toFixed(0);
+            carbsAmount = (amount / 100 * selectedFoodHouse.carbs).toFixed(0);
+            sugarAmount = (amount / 100 * selectedFoodHouse.sugar).toFixed(0);
+            fiberAmount = (amount / 100 * selectedFoodHouse.fiber).toFixed(0);
+            fatAmount = (amount / 100 * selectedFoodHouse.fat).toFixed(0);
+
+            calAmount = proteinAmount * 4 + carbsAmount * 4 + fatAmount * 9;
 
             unit = "g";
         }
-        else{
+        else {
             inputValueName = $('#drink-select-house option:selected').text();
             amount = $('#input-value-ml-house').val();
             drinks.forEach((value) => {
@@ -233,77 +233,82 @@ $(document).on('click', '.th-save-house', function () {
             })
             $('#drink-tr-house').remove();
 
-            proteinAmount = amount / 100 * selectedDrinkHouse.protein;
-            carbsAmount = amount / 100 * selectedDrinkHouse.carbs;
-            sugarAmount = amount / 100 * selectedDrinkHouse.sugar;
-            fiberAmount = amount / 100 * selectedDrinkHouse.fiber;
-            fatAmount = amount / 100 * selectedDrinkHouse.fat;
+            proteinAmount = (amount / 100 * selectedDrinkHouse.protein).toFixed(0);
+            carbsAmount = (amount / 100 * selectedDrinkHouse.carbs).toFixed(0);
+            sugarAmount = (amount / 100 * selectedDrinkHouse.sugar).toFixed(0);
+            fiberAmount = (amount / 100 * selectedDrinkHouse.fiber).toFixed(0);
+            fatAmount = (amount / 100 * selectedDrinkHouse.fat).toFixed(0);
 
-            calAmount = proteinAmount*4 + carbsAmount*4 + fatAmount*4;
+            calAmount = proteinAmount * 4 + carbsAmount * 4 + fatAmount * 9;
 
             unit = "ml";
         }
 
+        var isExists = false;
         //if the nutritien is already in the household stock
-        if($("#" + inputValueName).length > 0){
-            calAmount += parseFloat($("#"+inputValueName+" .td-cal-house").text());
-            $("#"+inputValueName+" .td-cal-house").text(calAmount);
-            proteinAmount += parseFloat($("#"+inputValueName+" .td-protein-house").text());
-            $("#"+inputValueName+" .td-protein-house").text(proteinAmount);
-            carbsAmount += parseFloat($("#"+inputValueName+" .td-carbs-house").text());
-            $("#"+inputValueName+" .td-carbs-house").text(carbsAmount);
-            fiberAmount += parseFloat($("#"+inputValueName+" .td-fiber-house").text());
-            $("#"+inputValueName+" .td-fiber-house").text(fiberAmount);
-            sugarAmount += parseFloat($("#"+inputValueName+" .td-sugar-house").text());
-            $("#"+inputValueName+" .td-sugar-house").text(sugarAmount);
-            fatAmount += parseFloat($("#"+inputValueName+" .td-fat-house").text());
-            $("#"+inputValueName+" .td-fat-house").text(fatAmount);
-            amountAmount += parseFloat($("#"+inputValueName+" .td-amount-house").text());
-            $("#"+inputValueName+" .td-amount-house").text(amountAmount);
-        }
+        $("#household-stock-tbody tr").each(function () {
+            if ($(this).attr("id") == inputValueName) {
+                calAmount += parseFloat($("#" + inputValueName + " .td-cal-house").text());
+                $("#" + inputValueName + " .td-cal-house").text(calAmount);
+                proteinAmount += parseFloat($("#" + inputValueName + " .td-protein-house").text());
+                $("#" + inputValueName + " .td-protein-house").text(proteinAmount);
+                carbsAmount += parseFloat($("#" + inputValueName + " .td-carbs-house").text());
+                $("#" + inputValueName + " .td-carbs-house").text(carbsAmount);
+                fiberAmount += parseFloat($("#" + inputValueName + " .td-fiber-house").text());
+                $("#" + inputValueName + " .td-fiber-house").text(fiberAmount);
+                sugarAmount += parseFloat($("#" + inputValueName + " .td-sugar-house").text());
+                $("#" + inputValueName + " .td-sugar-house").text(sugarAmount);
+                fatAmount += parseFloat($("#" + inputValueName + " .td-fat-house").text());
+                $("#" + inputValueName + " .td-fat-house").text(fatAmount); 
+                amount += parseFloat($("#" + inputValueName + " .td-amount-house").text());
+                $("#" + inputValueName + " .td-amount-house").text(amount);
+                isExists = true;
+            }
+        })
 
         //if the nutritien is not in the household stock yet
-        else{
+        if(!isExists) {
             $('#household-stock-tbody').append($('<tr>')
-            .attr('id',inputValueName)
-            .append($('<td>')
-                .text(inputValueName)
-                .attr('class', 'td-name-house')
-            )
-            .append($('<td>')
-                .text(calAmount)
-                .attr('class', 'td-center td-cal-house')
-            )
-            .append($('<td>')
-                .text(proteinAmount)
-                .attr('class', 'td-center td-protein-house')
-            )
-            .append($('<td>')
-                .text(carbsAmount)
-                .attr('class', 'td-center td-carbs-house')
-            )
-            .append($('<td>')
-                .text(sugarAmount)
-                .attr('class', 'td-center td-sugar-house')
-            )
-            .append($('<td>')
-                .text(fiberAmount)
-                .attr('class', 'td-center td-fiber-house')
-            )
-            .append($('<td>')
-                .text(fatAmount)
-                .attr('class', 'td-center td-fat-house')
-            )
-            .append($('<td>')
-                .text(amount)
-                .attr('class', 'td-right td-amount-house')
-            )
-            .append($('<td>')
-                .text(unit)
-                .attr('class', 'td-left td-unit-house')
-            )
+                .attr('id', inputValueName)
+                .append($('<td>')
+                    .text(inputValueName)
+                    .attr('class', 'td-name-house')
+                )
+                .append($('<td>')
+                    .text(calAmount)
+                    .attr('class', 'td-center td-cal-house')
+                )
+                .append($('<td>')
+                    .text(proteinAmount)
+                    .attr('class', 'td-center td-protein-house')
+                )
+                .append($('<td>')
+                    .text(carbsAmount)
+                    .attr('class', 'td-center td-carbs-house')
+                )
+                .append($('<td>')
+                    .text(sugarAmount)
+                    .attr('class', 'td-center td-sugar-house')
+                )
+                .append($('<td>')
+                    .text(fiberAmount)
+                    .attr('class', 'td-center td-fiber-house')
+                )
+                .append($('<td>')
+                    .text(fatAmount)
+                    .attr('class', 'td-center td-fat-house')
+                )
+                .append($('<td>')
+                    .text(amount)
+                    .attr('class', 'td-right td-amount-house')
+                )
+                .append($('<td>')
+                    .text(unit)
+                    .attr('class', 'td-left td-unit-house')
+                )
 
-        );}
+            );
+        }
 
         totalCountHouse();
 
@@ -313,7 +318,7 @@ $(document).on('click', '.th-save-house', function () {
             $('#total-row-house').css('color', 'red');
             $('.row.alert-row-house').show();
         }
-        else{
+        else {
             $('#total-row-house').css('color', 'black');
             $('.row.alert-row-house').hide();
         }
@@ -321,17 +326,17 @@ $(document).on('click', '.th-save-house', function () {
 })
 
 $(document).on('click', '.th-cancel-house', function () {
-    if(isFoodHouse){
+    if (isFoodHouse) {
         $('#food-tr-house').remove();
     }
-    else{
+    else {
         $('#drink-tr-house').remove();
     }
     $(".th-add-new-house").show();
     $(".th-save-cancel-house").hide();
 })
 
-function totalCountHouse(){
+function totalCountHouse() {
     calSumHouse = 0;
     proteinSumHouse = 0;
     carbsSumHouse = 0;
@@ -346,22 +351,22 @@ function totalCountHouse(){
         proteinSumHouse += parseFloat($(this).text());
     });
     $('#total-protein-house').html(proteinSumHouse);
-    
+
     $(".td-carbs-house").each(function () {
         carbsSumHouse += parseFloat($(this).text());
     });
     $('#total-carbs-house').html(carbsSumHouse);
-    
+
     $(".td-sugar-house").each(function () {
         sugarSumHouse += parseFloat($(this).text());
     });
     $('#total-sugar-house').html(sugarSumHouse);
-    
+
     $(".td-fiber-house").each(function () {
         fiberSumHouse += parseFloat($(this).text());
     });
     $('#total-fiber-house').html(fiberSumHouse);
-    
+
     $(".td-fat-house").each(function () {
         fatSumHouse += parseFloat($(this).text());
     });
