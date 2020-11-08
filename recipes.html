@@ -77,50 +77,54 @@
       </div>
       <div class="row" style="margin-top: 20px;">
         <div class="col"></div>
-        <div class="col-md-10 col-sm-12">
-          <div class="row recipe-card">
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 1</button></div>
-            </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 2</button></div>
-            </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 3</button></div>
-            </div>
-          </div>
-          <div class="row recipe-card">
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 4</button></div>
-            </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 5</button></div>
-            </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 6</button></div>
-            </div>
-          </div>
+        <div class="col-md-10 col-sm-12" id="recipes-site-content">
         </div>
         <div class="col"></div>
       </div>
     </div>
   </div>
-  <div class="modal fade" id="modal-data" tabindex="-1" role="dialog">
+
+  <!--Open a recipe modal-->
+  <div class="modal fade" id="open-recipe-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Recipe</h4>
+          <h4 class="modal-title" id="open-recipe-name"></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <div class="row">
+            <div class="col"><h5>Recipe type: <span id="open-recipe-type"></span></h5></div>
+          </div>
+          <br>
+          <h5>Nutritien data</h5>
+          <table class="table table-responsive-lg">
+            <thead>
+              <tr>
+                <th scope="col">Calories</th>
+                <th scope="col">Protein</th>
+                <th scope="col">Carbs</th>
+                <th scope="col">Sugar</th>
+                <th scope="col">Fiber</th>
+                <th scope="col">Fat</th>
+                <th scope="col">Water</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="open-recipe-cal"></td>
+                <td id="open-recipe-protein"></td>
+                <td id="open-recipe-carbs"></td>
+                <td id="open-recipe-sugar"></td>
+                <td id="open-recipe-fiber"></td>
+                <td id="open-recipe-fat"></td>
+                <td id="open-recipe-water"></td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
           <h5>Ingredients</h5>
           <table class="table">
             <thead>
@@ -129,23 +133,12 @@
                 <th scope="col">Amount</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>Apple</td>
-                <td>200 g</td>
-              </tr>
-              <tr>
-                <td>Flour</td>
-                <td>500 g</td>
-              </tr>
+            <tbody id="open-recipe-tbody">
             </tbody>
           </table>
           <br>
           <h5>Description</h5>
-          <ol>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
+          <ol id="open-recipe-steps">
           </ol>
           <h5>Bon Apetit!</h5>
         </div>

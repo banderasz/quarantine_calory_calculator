@@ -1,9 +1,16 @@
 var joinName;
+var joinEmail;
+var joinGender;
+var joinWeight;
+var joinHeight;
+var joinActivity;
+var joinHousehold;
+var joinPass;
 
 $(document).on('change', '#new-household-id', function () {
     if (this.checked) {
-        $("#household-id").prop('readonly', true); 
-        $("#household-id").val( Math.random().toString(36).substr(2, 9));    
+        $("#household-id").prop('readonly', true);
+        $("#household-id").val(Math.random().toString(36).substr(2, 9));
     }
     else {
         $("#household-id").prop('readonly', false);
@@ -26,7 +33,25 @@ $(document).on('click', '#join-now-btn', function () {
     })
 
     if (allAreFilled) {
-        window.location.href = './profile.html'
+        joinName = $('#person-name').val();
+        capitalize();
+        joinEmail = $('#email-address').val();
+        joinGender = $('#gender option:selected').text();
+        joinWeight = $('#weight').val();
+        joinHeight = $('#height').val();
+        joinActivity = $('#activity-level option:selected').text();
+        joinHousehold = $('#household-id').val();
+        joinPass = $('#password').val();
+        alert('your registration is succesful')
+        $('#person-name').val('');
+        $('#email-address').val('');
+        $('#gender').prop('selectedIndex', 0);
+        $('#weight').val('');
+        $('#height').val('');
+        $('#activity-level').prop('selectedIndex', 0);
+        $('#household-id').val('');
+        $('#new-household-id').prop('checked', true);
+        $('#password').val('');
     }
 });
 

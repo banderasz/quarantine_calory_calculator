@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RECIPES</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./style/style.css">
-    <link rel="stylesheet" href="./style/recipes.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
-    <script src="./static/size.js"></script>
-    <script src="./static/recipe.js"></script>
-    <script src="./static/select-elements.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RECIPES</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/recipes.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="./static/size.js"></script>
+  <script src="./static/recipe.js"></script>
+  <script src="./static/select-elements.js"></script>
+</head>
 
 <body>
 
   <!--Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-style">
-    <a class="navbar-brand mb-0 h1" href="./home.html">QUARANTINE CALORIE CALCULATOR</a>
+    <a class="navbar-brand mb-0 h1" href="./home-logged-in.html">QUARANTINE CALORIE CALCULATOR</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -60,7 +60,7 @@
   </nav>
 
   <!--Recipes site content-->
-  <div>
+  <div >
     <div class="container" style="padding-top: 80px;">
       <div class="row">
         <div class="col"></div>
@@ -82,35 +82,7 @@
       </div>
       <div class="row" style="margin-top: 20px;">
         <div class="col"></div>
-        <div class="col-md-10 col-sm-12">
-          <div class="row recipe-card">
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 1</button></div>
-            </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 2</button></div>
-            </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 3</button></div>
-            </div>
-          </div>
-          <div class="row recipe-card">
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 4</button></div>
-            </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 5</button></div>
-            </div>
-            <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#modal-data">Recipe 6</button></div>
-            </div>
-          </div>
+        <div class="col-md-10 col-sm-12" id="recipes-site-content">
         </div>
         <div class="col"></div>
       </div>
@@ -120,8 +92,8 @@
           <div class="row recipe-card">
             <div class="col-md-4 align-items-center"> </div>
             <div class="col-md-4 align-items-center">
-              <div class="card recipe-box"><button class="card-link btn recipe-card-link" data-toggle="modal"
-                  data-target="#new-modal-data">Add new recipe</button></div>
+              <div class="card recipe-box"><button class="card-link btn recipe-card-link2" data-toggle="modal"
+                  data-target="#new-recipe-modal">Add new recipe</button></div>
             </div>
             <div class="col-md-4 align-items-center"> </div>
           </div>
@@ -131,17 +103,47 @@
     </div>
   </div>
 
-  <!--Recipe modal-->
-  <div class="modal fade" id="modal-data" tabindex="-1" role="dialog">
+  <!--Open a recipe modal-->
+  <div class="modal fade" id="open-recipe-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Recipe</h4>
+          <h4 class="modal-title" id="open-recipe-name"></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <div class="row">
+            <div class="col"><h5>Recipe type: <span id="open-recipe-type"></span></h5></div>
+          </div>
+          <br>
+          <h5>Nutritien data</h5>
+          <table class="table table-responsive-lg">
+            <thead>
+              <tr>
+                <th scope="col">Calories</th>
+                <th scope="col">Protein</th>
+                <th scope="col">Carbs</th>
+                <th scope="col">Sugar</th>
+                <th scope="col">Fiber</th>
+                <th scope="col">Fat</th>
+                <th scope="col">Water</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="open-recipe-cal"></td>
+                <td id="open-recipe-protein"></td>
+                <td id="open-recipe-carbs"></td>
+                <td id="open-recipe-sugar"></td>
+                <td id="open-recipe-fiber"></td>
+                <td id="open-recipe-fat"></td>
+                <td id="open-recipe-water"></td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
           <h5>Ingredients</h5>
           <table class="table">
             <thead>
@@ -150,23 +152,12 @@
                 <th scope="col">Amount</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>Apple</td>
-                <td>200 g</td>
-              </tr>
-              <tr>
-                <td>Flour</td>
-                <td>500 g</td>
-              </tr>
+            <tbody id="open-recipe-tbody">
             </tbody>
           </table>
           <br>
           <h5>Description</h5>
-          <ol>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
+          <ol id="open-recipe-steps">
           </ol>
           <h5>Bon Apetit!</h5>
         </div>
@@ -177,17 +168,37 @@
     </div>
   </div>
 
-  <!--New recipe modal-->
-  <div class="modal fade" id="new-modal-data" tabindex="-1" role="dialog">
+  <!--Modal to create new recipe-->
+  <div class="modal" id="new-recipe-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Recipe</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h4 class="modal-title">New recipe</h4>
+          <button type="button" class="close add-new-recipe-close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
+          <div class="row">
+            <div class="col-4">
+              <h5>Recipe name</h5>
+            </div>
+            <div class="col-8"><input type="text" class="form-control form-control-sm" id="new-recipe-name"
+                placeholder="New recipe name"></div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <h5>Recipe type</h5>
+            </div>
+            <div class="col-8"><select id="recipe-type-select" class="form-control form-control-sm">
+                <option value="" disabled selected hidden>Select the type of the recipe</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Snack">Snack</option>
+              </select></div>
+          </div>
+          <br>
           <h5>Ingredients</h5>
           <table class="table" id="ingredient-table">
             <thead>
@@ -196,29 +207,19 @@
                 <th scope="col">Amount</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td><input type="text" class="form-control form-control-sm" placeholder="Ingredient name"></td>
-                <td>
-                  <div class="input-group input-group-sm">
-                    <input type="text" class="form-control">
-                    <div class="input-group-append">
-                      <span class="input-group-text">g</span>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+            <tbody id="ingredient-table-tbody">
             </tbody>
           </table>
           <div class="row">
             <div class="col text-center">
-              <button class="btn btn-outline-secondary btn-sm" id="add-ingredient-btn">Add new ingredient</button>
+              <div class="btn-group btn-group-sm"> <button class="th-add-new-food-recipe btn btn-outline-secondary">Add new
+                  food</button> <button class="th-add-new-drink-recipe btn btn-outline-secondary">Add new
+                  drink</button> </div>
             </div>
           </div>
           <br>
           <h5>Description</h5>
           <ol id="steps-list">
-            <li><textarea class="form-control" rows="3"></textarea></li>
           </ol>
           <div class="row">
             <div class="col text-center">
@@ -227,8 +228,166 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary add-new-recipe-close" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary add-new-recipe-save">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal to create new food-->
+  <div class="modal" id="new-food-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add new sport</h4>
+          <button type="button" class="close add-new-sport-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <h5>New food name</h5>
+            <input type="text" class="form-control form-control-sm" id="new-food-name" required
+              placeholder="New food name">
+            <br>
+            <h5>Protein in 100g</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-food-protein" required
+                placeholder="Protein in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Carbohydrates in 100g</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-food-carbs" required
+                placeholder="Carbs in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Sugar in 100g</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-food-sugar" required
+                placeholder="Sugar in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Fiber in 100g</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-food-fiber" required
+                placeholder="Fiber in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Fat in 100g</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-food-fat" required
+                placeholder="Fat in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Water in 100g</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-food-water" required
+                placeholder="Water in ml">
+              <div class="input-group-append">
+                <span class="input-group-text">ml</span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary add-new-food-close" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="add-new-food-save">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal to create new drink-->
+  <div class="modal" id="new-drink-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add new sport</h4>
+          <button type="button" class="close add-new-sport-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <h5>New drink name</h5>
+            <input type="text" class="form-control form-control-sm" id="new-drink-name" required
+              placeholder="New drink name">
+            <br>
+            <h5>Protein in 100ml</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-drink-protein" required
+                placeholder="Protein in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Carbohydrates in 100ml</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-drink-carbs" required
+                placeholder="Carbs in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Sugar in 100ml</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-drink-sugar" required
+                placeholder="Sugar in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Fiber in 100ml</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-drink-fiber" required
+                placeholder="Fiber in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Fat in 100ml</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-drink-fat" required
+                placeholder="Fat in g">
+              <div class="input-group-append">
+                <span class="input-group-text">g</span>
+              </div>
+            </div>
+            <br>
+            <h5>Water in 100ml</h5>
+            <div class="input-group input-group-sm">
+              <input type="number" class="form-control form-control-sm" id="new-drink-water" required
+                placeholder="Water in ml">
+              <div class="input-group-append">
+                <span class="input-group-text">ml</span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary add-new-drink-close" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="add-new-drink-save">Save</button>
         </div>
       </div>
     </div>

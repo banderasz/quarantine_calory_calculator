@@ -21,19 +21,19 @@
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+  <script src="./static/open-profile.js"></script>
   <script src="./static/size.js"></script>
   <script src="./static/profile-nutritien.js"></script>
   <script src="./static/profile-house.js"></script>
   <script src="./static/profile-personal.js"></script>
   <script src="./static/profile-sport.js"></script>
-  <script src="./static/select-elements.js"></script>
 </head>
 
 <body>
 
   <!--Navigation bar-->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-style">
-    <a class="navbar-brand mb-0 h1" href="./home.html">QUARANTINE CALORIE CALCULATOR</a>
+    <a class="navbar-brand mb-0 h1" href="./home-logged-in.html">QUARANTINE CALORIE CALCULATOR</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -72,6 +72,9 @@
         <div class="col-md-10 col-sm-12">
           <div class="row alert-row-nutin justify-content-center">
             <div class="alert alert-danger text-center"> You ate more calorie then the ideal.</div>
+          </div>
+          <div class="row alert-row-nutin-water justify-content-center">
+            <div class="alert alert-danger text-center"> You didn't drink the ideal amount.</div>
           </div>
           <div class="row alert-row-house justify-content-center">
             <div class="alert alert-danger text-center"> Your household doesn't have enough calorie for a week.</div>
@@ -116,7 +119,8 @@
             <thead>
               <tr>
                 <th colspan="8" class="td-center th-add-new-nutin">
-                  <div class="btn-group"> <button class="th-add-new-food-nutin btn btn-outline-secondary">Add new
+                  <div class="btn-group"> <button class="th-add-new-recipe-nutin btn btn-outline-secondary">Add new
+                    recipe</button> <button class="th-add-new-food-nutin btn btn-outline-secondary">Add new
                       food</button> <button class="th-add-new-drink-nutin btn btn-outline-secondary">Add new
                       drink</button>
                 </th>
@@ -138,15 +142,11 @@
                 <td class="td-center" id="total-fat-nutin"></td>
                 <td class="td-center" id="total-water-nutin"></td>
               </tr>
-              <tr id="ideal-row">
+              <tr id="ideal-row-nutin">
                 <th>IDEAL</th>
-                <td class="td-center" id="ideal-cal">2000</td>
-                <td class="td-center" id="ideal-protein"></td>
-                <td class="td-center" id="ideal-carbs"></td>
-                <td class="td-center" id="ideal-sugar"></td>
-                <td class="td-center" id="ideal-fiber"></td>
-                <td class="td-center" id="ideal-fat"></td>
-                <td class="td-center" id="ideal-water">2000</td>
+                <td class="td-center" id="ideal-cal-nutin"></td>
+                <td colspan="5"></td>
+                <td class="td-center" id="ideal-water-nutin"></td>
               </tr>
             </tbody>
           </table>
@@ -164,13 +164,13 @@
             </thead>
             <tbody>
               <th>CALORIES <span class="unit-of-measure">(kcal)</span></th>
-              <td id="td-history-cal-1" class="td-center">2000</td>
-              <td id="td-history-cal-2" class="td-center">2050</td>
-              <td id="td-history-cal-3" class="td-center">2020</td>
-              <td id="td-history-cal-4" class="td-center">1890</td>
-              <td id="td-history-cal-5" class="td-center">1970</td>
-              <td id="td-history-cal-6" class="td-center">1990</td>
-              <td id="td-history-cal-7" class="td-center">2000</td>
+              <td id="td-history-cal-1-nutin" class="td-center">2000</td>
+              <td id="td-history-cal-2-nutin" class="td-center">2050</td>
+              <td id="td-history-cal-3-nutin" class="td-center">2020</td>
+              <td id="td-history-cal-4-nutin" class="td-center">1890</td>
+              <td id="td-history-cal-5-nutin" class="td-center">1970</td>
+              <td id="td-history-cal-6-nutin" class="td-center">1990</td>
+              <td id="td-history-cal-7-nutin" class="td-center">2000</td>
             </tbody>
           </table>
         </div>
@@ -203,7 +203,7 @@
                 <th colspan="9" class="td-center th-add-new-house">
                   <div class="btn-group"> <button class="th-add-new-food-house btn btn-outline-secondary">Add new
                       food</button> <button class="th-add-new-drink-house btn btn-outline-secondary">Add new
-                      drink</button>
+                      drink</button> </div>
                 </th>
                 <th colspan="4" class="td-center th-save-cancel-house">
                   <div class="btn-group"> <button class="th-save-house btn btn-outline-secondary">Save</button> <button
@@ -221,13 +221,12 @@
                 <td class="td-center" id="total-sugar-house"></td>
                 <td class="td-center" id="total-fiber-house"></td>
                 <td class="td-center" id="total-fat-house"></td>
-                <td></td>
-                <td></td>
+                <td colspan="2"></td>
               </tr>
-              <tr id="minimum-row">
+              <tr id="minimum-row-house">
                 <th><span class="d-inline-block" tabindex="0" data-toggle="tooltip"
                     title="Minimum stock for a week for the whole household">MINIMUM</span></th>
-                <td class="td-center" id="minimum-cal">2000</td>
+                <td class="td-center" id="minimum-cal-house">2000</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -272,12 +271,12 @@
               <tr id="total-row-sport">
                 <th>TOTAL</th>
                 <td class="td-center" id="total-cal-sport"></td>
-                <td class="td-center" id="total-duration"></td>
+                <td class="td-center" id="total-duration-sport"></td>
               </tr>
               <tr id="ideal-row-sport">
                 <th>IDEAL</th>
-                <td class="td-center" id="ideal-cal-sport">500</td>
-                <td class="td-center" id="ideal-duration">60</td>
+                <td class="td-center" id="ideal-cal-sport"></td>
+                <td class="td-center" id="ideal-duration-sport"></td>
               </tr>
             </tbody>
           </table>
@@ -295,13 +294,13 @@
             </thead>
             <tbody>
               <th>BURNED CALORIES <span class="unit-of-measure">(kcal)</span></th>
-              <td id="td-history-cal-1" class="td-center">200</td>
-              <td id="td-history-cal-2" class="td-center">350</td>
-              <td id="td-history-cal-3" class="td-center">202</td>
-              <td id="td-history-cal-4" class="td-center">189</td>
-              <td id="td-history-cal-5" class="td-center">400</td>
-              <td id="td-history-cal-6" class="td-center">450</td>
-              <td id="td-history-cal-7" class="td-center">800</td>
+              <td id="td-history-cal-1-sport" class="td-center"></td>
+              <td id="td-history-cal-2-sport" class="td-center"></td>
+              <td id="td-history-cal-3-sport" class="td-center"></td>
+              <td id="td-history-cal-4-sport" class="td-center"></td>
+              <td id="td-history-cal-5-sport" class="td-center"></td>
+              <td id="td-history-cal-6-sport" class="td-center"></td>
+              <td id="td-history-cal-7-sport" class="td-center"></td>
             </tbody>
           </table>
         </div>
@@ -599,6 +598,73 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary add-new-drink-close" data-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-primary" id="add-new-drink-save">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal to create new recipe-->
+  <div class="modal" id="new-recipe-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Recipe</h4>
+          <button type="button" class="close add-new-recipe-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-4">
+              <h5>Recipe name</h5>
+            </div>
+            <div class="col-8"><input type="text" class="form-control form-control-sm" id="new-recipe-name"
+                placeholder="New recipe name"></div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <h5>Recipe type</h5>
+            </div>
+            <div class="col-8"><select id="recipe-type-select" class="form-control form-control-sm">
+                <option value="" disabled selected hidden>Select the type of the recipe</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                <option value="Snack">Snack</option>
+              </select></div>
+          </div>
+          <br>
+          <h5>Ingredients</h5>
+          <table class="table" id="ingredient-table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+              </tr>
+            </thead>
+            <tbody id="ingredient-table-tbody">
+            </tbody>
+          </table>
+          <div class="row">
+            <div class="col text-center">
+              <div class="btn-group"> <button class="th-add-new-food-recipe btn btn-outline-secondary">Add new
+                food</button> <button class="th-add-new-drink-recipe btn btn-outline-secondary">Add new
+                drink</button> </div>
+            </div>
+          </div>
+          <br>
+          <h5>Description</h5>
+          <ol id="steps-list">
+          </ol>
+          <div class="row">
+            <div class="col text-center">
+              <button class="btn btn-outline-secondary btn-sm" id="add-step-btn">Add new step</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary add-new-recipe-close" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary add-new-recipe-save">Save changes</button>
         </div>
       </div>
     </div>

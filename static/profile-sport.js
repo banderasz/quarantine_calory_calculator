@@ -1,46 +1,37 @@
-var calSumSport = 0;
-var durationSum = 0;
-var selectedSport = {};
-var sports = [];
-
 //navigation - sport site
 $(document).on('click', '#sport-nav', function () {
+    cancelNewSport();
+
+    //nav
     $('#sport-nav').css('font-weight', '500');
     $('#weight-nav').css('font-weight', 'normal');
     $('#house-nav').css('font-weight', 'normal');
     $('#nutin-nav').css('font-weight', 'normal');
     $('#personal-nav').css('font-weight', 'normal');
+
+    //sites hide&show
     $(".nutritien-intake").hide();
     $(".household-stock").hide();
     $(".sport").show();
     $(".personal").hide();
+
+    //alerts
     $('.row.alert-row-nutin').hide();
+    $('.row.alert-row-nutin-water').hide();
     $('.row.alert-row-house').hide();
+
+    //buttons
     $(".th-add-new-sport").show();
     $(".th-save-cancel-sport").hide();
-
-    $(".td-cal-sport").each(function () {
-        calSumSport += parseFloat($(this).text());
-    });
-    $('#total-cal-sport').html(calSumSport);
-    $(".td-duration-sport").each(function () {
-        durationSum += parseFloat($(this).text());
-    });
-    $('#total-duration').html(durationSum);
-    if (parseFloat($('#total-cal-sport').text()) < parseFloat($('#ideal-cal-sport').text())) {
-        $('#total-row-sport').css('color', 'red');
-        $('.row.alert-row-sport').show();
-    }
-    else {
-        $('#total-row-sport').css('color', 'black');
-        $('.row.alert-row-sport').hide();
-    }
+    
+    //compare
+    compareTotalAndIdealSport();
 });
 
 //add new sport activity
 $(document).on('click', '.th-add-new-sport-btn', function () {
     $('#sport-tbody').append($('<tr>')
-        .attr('id', 'new-td-row-sport')
+        .attr('id', 'tr-new-sport')
         .append($('<td>')
             .attr('colspan', '2')
             .append($('<select>')
@@ -88,53 +79,61 @@ $(document).on('click', '.th-save-sport', function () {
         alert("Fill all input fields.")
     }
     else {
-        var inputValueNameSport = $('#sport-select option:selected').text();
+        let sportInputValueName = $('#sport-select option:selected').text();
         sports.forEach((value) => {
-            if (value.name == inputValueNameSport) {
-                selectedSport.name = value.name;
-                selectedSport.calories = value.calories;
+            if (value.name == sportInputValueName) {
+                sportSelected.name = value.name;
+                sportSelected.calories = value.calories;
             }
-        })
-        var duration = $('#input-value-mins').val();
-        var calAmountSport = duration / 60 * selectedSport.calories;
-        $('#sport-tbody').find('#new-td-row-sport').remove();
+        });
+        let sportDuration = parseFloat($('#input-value-mins').val());
+        $('#sport-tbody').find('#tr-new-sport').remove();
+        let sportCalAmount = sportDuration / 60 * sportSelected.calories;
         $('#sport-tbody').append($('<tr>')
             .append($('<td>')
-                .text(inputValueNameSport)
+                .text(sportInputValueName)
             )
             .append($('<td>')
-                .text(calAmountSport.toFixed(0))
+                .text(sportCalAmount)
                 .attr('class', 'td-center td-cal-sport')
             )
             .append($('<td>')
-                .text(duration)
+                .text(sportDuration)
                 .attr('class', 'td-center td-duration-sport')
             )
         );
-        calSumSport += parseFloat($(".td-cal-sport").last().text());
-        $('#total-cal-sport').html(calSumSport);
-        durationSum += parseFloat($(".td-duration-sport").last().text());
-        $('#total-duration').html(durationSum);
+        let sportNewToday = {};
+        sportNewToday.name = sportInputValueName;
+        sportNewToday.calories = sportCalAmount;
+        sportNewToday.duration = sportDuration;
 
+        todaySport.push(sportNewToday);
+
+        //count sum
+        sportCalSum += sportCalAmount;
+        $('#total-cal-sport').html(sportCalSum);
+        sportDurationSum += sportDuration;
+        $('#total-duration').html(sportDurationSum);
+
+        //buttons
         $(".th-add-new-sport").show();
         $(".th-save-cancel-sport").hide();
-        if (parseFloat($('#total-cal-sport').text()) < parseFloat($('#ideal-cal-sport').text())) {
-            $('#total-row-sport').css('color', 'red');
-            $('.row.alert-row-sport').show();
-        }
-        else {
-            $('#total-row-sport').css('color', 'black');
-            $('.row.alert-row-sport').hide();
-        }
+        
+        compareTotalAndIdealSport();
     }
 })
 
 //cancel adding new sport activity
 $(document).on('click', '.th-cancel-sport', function () {
-    $('#sport-tbody').find('#new-td-row-sport').remove();
+    cancelNewSport();
+})
+
+//close adding new sport activity today
+function cancelNewSport(){
+    $('#tr-new-sport').remove();
     $(".th-add-new-sport").show();
     $(".th-save-cancel-sport").hide();
-})
+}
 
 //save new sport activity
 $(document).on('click', '#add-new-sport-save', function () {
@@ -142,16 +141,16 @@ $(document).on('click', '#add-new-sport-save', function () {
         alert("You didn't fill every box.")
     }
     else {
-        var isNotExists = true;
-        var newSport = {};
+        let sportIsNotExists = true;
+        let newSport = {};
         newSport.name = $('#new-sport-name').val().toLowerCase();
         newSport.calories = parseFloat($('#new-sport-cals').val());
         sports.forEach((value) => {
             if (value.name.toLowerCase() == newSport.name) {
-                isNotExists = false;
+                sportIsNotExists = false;
             }
         })
-        if (isNotExists) {
+        if (sportIsNotExists) {
             newSport.name = newSport.name.charAt(0).toUpperCase() + newSport.name.slice(1);
             sports.push(newSport);
         }

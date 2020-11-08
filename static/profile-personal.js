@@ -1,13 +1,3 @@
-var personalName = "Gipsz Jakab";
-var personalEmail = "gipszjakab@gmail.com";
-var personalGender = "Man";
-var personalWeight = 70;
-var personalHeight = 185;
-var personalActivity = "Moderate";
-var personalHousehold = "123ad560";
-var isDataEdit;
-
-
 //navigation - personal site
 $(document).on('click', '#personal-nav', function () {
     $('#personal-nav').css('font-weight', '500');

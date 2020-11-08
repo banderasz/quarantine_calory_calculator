@@ -28,8 +28,14 @@ h3{
     text-align: right;
 }
 
-#ideal-row, #minimum-row, #ideal-row-sport{
+#ideal-row-nutin, #minimum-row-house, #ideal-row-sport{
     color: green;
+}
+
+#total-row-nutin, #ideal-row-nutin, #total-row-house, #minimum-row-house, 
+#total-row-sport, #ideal-row-sport
+{
+    font-weight: 500;
 }
 
 .unit-of-measure{
