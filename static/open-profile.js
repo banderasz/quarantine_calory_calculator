@@ -1,8 +1,8 @@
 //Global arrays
-var foods = [];
-var drinks = [];
-var recipes = [];
-var sports = [];
+var foods = []; //{name, protein, carbs, sugar, fiber, fat, water}
+var drinks = []; //{name, protein, carbs, sugar, fiber, fat, water}
+var recipes = []; //{name, type, protein, carbs, sugar, fiber, fat, water, ingredients, description}
+var sports = []; // ez kell ha van idő {name, calories}
 var isNutin;
 var isNewRecipe = false;
 
@@ -31,18 +31,18 @@ var nutinWaterAmount;
 
 var newNutin = {};
 
-var todayNutin = [];
+var todayNutin = []; // aznapi kajabevitel {name, protein, carbs, sugar, fiber, fat, water}
 
-var nutinHistory1 = 200;
-var nutinHistory2 = 300;
-var nutinHistory3 = 400;
-var nutinHistory4 = 500;
-var nutinHistory5 = 200;
-var nutinHistory6 = 300;
-var nutinHistory7 = 400;
+var nutinHistory1 = 200; //kell
+var nutinHistory2 = 300; //kell
+var nutinHistory3 = 400; //kell
+var nutinHistory4 = 500; //kell
+var nutinHistory5 = 200; //kell
+var nutinHistory6 = 300; //kell
+var nutinHistory7 = 400; //kell
 
-var nutinIdealCal = 2000;
-var nutinIdealWater = 2000;
+var nutinIdealCal = 2000; //számolni kell
+var nutinIdealWater = 2000; //számolni kell
 
 //Household site
 var houseIsFood;
@@ -67,9 +67,9 @@ var houseFatSum;
 
 var houseSelected = {};
 
-var householdStock = [];
+var householdStock = []; //kell {name, carbs, fat, fiber, protein, amount, unit}
 
-var houseMinCal = 20000;
+var houseMinCal = 20000; //kell számolni
 
 //Sport site
 var sportCalSum;
@@ -77,7 +77,7 @@ var sportDurationSum;
 
 var sportSelected = {};
 
-var todaySport = [];
+var todaySport = []; //kell ha van idő {name, calories, duration}
 
 var sportHistory1 = 200;
 var sportHistory2 = 300;
@@ -87,17 +87,18 @@ var sportHistory5 = 200;
 var sportHistory6 = 300;
 var sportHistory7 = 400;
 
-var sportIdealCal = 500;
-var sportIdealDuration = 30;
+var sportIdealCal = 500; //kell ha van idő (számolni)
+var sportIdealDuration = 30; //kell ha van idő (számolni)
 
-//Personal site
-var personalName = "Gipsz Jakab";
-var personalEmail = "gipszjakab@gmail.com";
-var personalGender = "Man";
-var personalWeight = 70;
-var personalHeight = 185;
-var personalActivity = "Moderate";
-var personalHousehold = "123ad560";
+//Personal site //Ezek db-ből
+var personalName = "Gipsz Jakab"; //kell
+var personalEmail = "gipszjakab@gmail.com"; //kell
+var personalGender = "Man"; //kell
+var personalWeight = 70; //kell
+var personalHeight = 185; //kell
+var personalActivity = "Moderate"; //kell
+var personalHousehold = "123ad560"; //kell
+
 var isDataEdit;
 
 $(document).ready(function () {
@@ -244,7 +245,7 @@ function houseSiteFill() {
                     .attr('class', 'td-name-house')
                 )
                 .append($('<td>')
-                    .text(value.calories)
+                    .text(value.protein*4+value.carbs*4+value.fat*9)
                     .attr('class', 'td-center td-cal-house')
                 )
                 .append($('<td>')

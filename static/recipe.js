@@ -1,6 +1,6 @@
-var foods = [];
-var drinks = [];
-var recipes = [];
+var foods = []; //{name, protein, carbs, sugar, fiber, fat, water}
+var drinks = []; //{name, protein, carbs, sugar, fiber, fat, water}
+var recipes = []; //{name, type, protein, carbs, sugar, fiber, fat, water, ingredients, description}
 var isNewRecipe = false;
 
 

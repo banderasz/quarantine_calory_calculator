@@ -212,6 +212,7 @@ $(document).on('click', '.th-save-house', function () {
         if (houseIsFood) {
             houseInputValueName = $('#food-select-house option:selected').text();
             houseAmount = parseFloat($('#input-value-g-house').val());
+            houseSelected.amount = houseAmount;
             foods.forEach((value) => {
                 if (value.name == houseInputValueName) {
                     houseSelected.name = value.name;
@@ -241,7 +242,7 @@ $(document).on('click', '.th-save-house', function () {
             $('#drink-tr-house').remove();
             houseUnit = "ml";
         }
-
+        houseSelected.unit = houseUnit;
         houseProteinAmount = Math.round(houseAmount / 100 * houseSelected.protein);
         houseCarbsAmount = Math.round(houseAmount / 100 * houseSelected.carbs);
         houseSugarAmount = Math.round(houseAmount / 100 * houseSelected.sugar);
@@ -268,6 +269,17 @@ $(document).on('click', '.th-save-house', function () {
                 $("#" + houseInputValueName + " .td-fat-house").text(houseFatAmount);
                 houseAmount += parseFloat($("#" + houseInputValueName + " .td-amount-house").text());
                 $("#" + houseInputValueName + " .td-amount-house").text(houseAmount);
+                householdStock.forEach((element)=>{
+                    if(element.name == houseInputValueName){
+                        element.protein = houseProteinAmount;
+                        element.carbs = houseCarbsAmount;
+                        element.sugar = houseSugarAmount;
+                        element.fiber = houseFiberAmount;
+                        element.fat = houseFatAmount;
+                        element.amount = houseAmount;
+                        element.unit = houseUnit;
+                    }
+                })
                 houseIsExists = true;
             }
         })
@@ -314,6 +326,7 @@ $(document).on('click', '.th-save-house', function () {
                 )
 
             );
+            householdStock.push(houseSelected);
         }
         //count sum
         houseCalSum += houseCalAmount;
