@@ -1,0 +1,12 @@
+body{
+    background: no-repeat top linear-gradient(rgba(140,198,63,0.6) 0px, rgba(255,255,255,0.6) 200px);
+}
+
+#navbar-style{
+    background-color: rgba(255,255,255,0.85);
+}
+
+h2{
+    text-align: center;
+    font-weight: normal;
+}

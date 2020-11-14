@@ -1,0 +1,30 @@
+#recipes-type1, #recipes-type2, #recipes-type3, #recipes-type4, #recipes-type5{
+    color: black;
+}
+.recipe-card-link, .recipe-card-link2{
+    padding: 15px;
+}
+
+.recipe-box{
+    border-radius: 3px;
+    border-color: yellowgreen;
+    text-align: center;
+    margin-top: 20px;
+}
+textarea{
+    vertical-align: top;
+}
+
+h6{
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+#plus-icon{
+    height: 20px;
+    padding: 0px;
+}
+
+#open-recipe-type{
+    font-weight: 400;
+}

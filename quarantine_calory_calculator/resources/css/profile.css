@@ -1,0 +1,55 @@
+#nutin-nav, #weight-nav, #house-nav, #sport-nav, #personal-nav{
+    color:black;
+}
+
+h3{
+    text-align: center;
+    font-weight: 400;
+}
+
+.table-align{
+    text-align: center;
+}
+
+.nutritien-intake-last-row{
+    border-top: 4px;
+    border-bottom: black;
+}
+
+.td-center, .th-add-new, .th-save{
+    text-align: center;
+}
+
+.td-left{
+    text-align: left;
+}
+
+.td-right{
+    text-align: right;
+}
+
+#ideal-row-nutin, #minimum-row-house, #ideal-row-sport{
+    color: green;
+}
+
+#total-row-nutin, #ideal-row-nutin, #total-row-house, #minimum-row-house, 
+#total-row-sport, #ideal-row-sport
+{
+    font-weight: 500;
+}
+
+.unit-of-measure{
+    font-weight: 400;
+}
+
+.button-margin{
+    margin-top: 20px;
+}
+
+.personal-row, .password-row{
+    margin-top: 10px;
+}
+
+.font-h6{
+    font-weight: 500;
+}
