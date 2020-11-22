@@ -20,6 +20,10 @@ class CreateFoodUsersTable extends Migration
             $table->float("weight");
             $table->timestamp("logged_at");
             $table->timestamps();
+
+            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
         });
     }
 

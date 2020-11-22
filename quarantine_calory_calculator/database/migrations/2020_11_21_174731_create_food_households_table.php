@@ -19,6 +19,9 @@ class CreateFoodHouseholdsTable extends Migration
             $table->unsignedBigInteger("food_id");
             $table->float("weight");
             $table->timestamps();
+
+            $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');
+            $table->foreign('household_id')->references('id')->on('households')->onDelete('cascade');
         });
     }
 
