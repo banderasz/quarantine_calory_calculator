@@ -14,32 +14,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+    return view('origin.home');
+})->name("home");
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-////Route::post("/joinnow","JoinNowController@register")->name("joinnow-post");
-//Route::post("/joinnow",function(Request $request){
-//    $request-input("name");
-//    $request-validate()
-//
-//    new User----
-//
-//    return redirect("")-with("message", "User saved!");
-//})->name("joinnow-post");
+    Route::get("/profile", "App\Http\Controllers\UserController@index")->name("profile");
 
-
+    Route::prefix("recipes")->group(function (){
+        Route::get("index","App\Http\Controllers\RecipeController@index")->name("recipes.index");
+        Route::post("store","App\Http\Controllers\RecipeController@store")->name("recipes.store");
+    });
 
 });
 
-Route::get("/home", function(){
-    return view("origin.home");
-})->name("home");
+Route::get("/register", function(){
+    return redirect("/joinnow");
+})->name("register");
+
+Route::get("/login", function(){
+    return redirect("/signin");
+})->name("login");
 
 Route::get("/joinnow", function(){
     return view("origin.joinnow");

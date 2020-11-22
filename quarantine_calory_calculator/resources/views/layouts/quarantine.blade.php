@@ -18,7 +18,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <script src="{{asset("js/app.js")}}"></script>
+{{--    <script src="{{asset("js/app.js")}}"></script>--}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.css"/>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.22/datatables.min.js"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('.table-datatable').DataTable();
+        } );
+    </script>
 </head>
 
 <body>
@@ -43,19 +52,65 @@
                 <a class="nav-link" href="./aboutus.html">ABOUT US</a>
             </li>
             <span class="navbar-text hide logged-out">|</span>
-            <li class="nav-item logged-out">
-                <a class="nav-link" href="{{route("joinnow")}}">JOIN NOW</a>
-            </li>
-            <span class="navbar-text hide logged-out">|</span>
-            <li class="nav-item logged-out">
-                <a class="nav-link" href="{{route("signin")}}">SIGN IN</a>
-            </li>
+            @guest
+                <li class="nav-item logged-out">
+                    <a class="nav-link" href="{{route("joinnow")}}">JOIN NOW</a>
+                </li>
+                <span class="navbar-text hide logged-out">|</span>
+                <li class="nav-item logged-out">
+                    <a class="nav-link" href="{{route("signin")}}">SIGN IN</a>
+                </li>
+            @else
+                <li class="nav-item logged-in">
+                    <a class="nav-link" href="{{route("profile")}}">PROFILE</a>
+                </li>
+                <span class="navbar-text hide logged-out">|</span>
+                <li class="nav-item logged-in">
+
+                    <form method="post" action="/logout">
+                        @csrf
+                        <button type="submit" class="btn btn-link nav-link">LOG OUT</button>
+                    </form>
+                </li>
+            @endguest
         </ul>
     </div>
 </nav>
 
 <div>
     <div class="container" style="padding-top: 80px;">
+{{--        @if(\Illuminate\Support\Facades\Session::has('errors'))--}}
+{{--            <div class="alert alert-danger text-center">--}}
+{{--                @foreach(\Illuminate\Support\Facades\Session::get('errors') as $error)--}}
+{{--                    <div>--}}
+{{--                        {{$error}}--}}
+{{--                    </div>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        @endif--}}
+        @if(\Illuminate\Support\Facades\Session::has('warnings'))
+            <div class="alert alert-warning text-center">
+                @foreach(\Illuminate\Support\Facades\Session::get('warnings') as $warning)
+                    <div>
+                        {{$warning}}
+                    </div>
+                @endforeach
+            </div>
+        @endif
+        @if(\Illuminate\Support\Facades\Session::has('messages'))
+            <div class="alert alert-success text-center">
+                @foreach(\Illuminate\Support\Facades\Session::get('messages') as $message)
+                    <div>
+                        {{$message}}
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
+</div>
+
+<div>
+    <div class="container">
         {{$slot}}
     </div>
 </div>

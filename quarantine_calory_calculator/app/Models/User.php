@@ -63,4 +63,29 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getBMIAttribute()
+    {
+        return $this->weight / $this->height ** 2;
+    }
+
+    public function getCaloryDemandAttribute()
+    {
+        if ($this->activity == "low"){
+            $act = 1.2;
+        }
+        elseif ($this->activity == "moderate"){
+            $act = 1.55;
+        }
+        else{
+            $act = 1.8;
+        }
+        if ($this->gender == "woman"){
+            return ($this->weight * 10 + $this->height * 6.25 - 300)*$act;
+        }
+        else{
+            return ($this->weight * 10 + $this->height * 6.25 - 150)*$act;
+        }
+
+    }
 }

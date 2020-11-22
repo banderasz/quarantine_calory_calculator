@@ -20,16 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e928075-1b8c-4f9c-b2d0-462a777f6ebb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../contactus.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../joinnow.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../profile.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../recipes.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../signin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static/join.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static/size.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../style/style.css" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FoodFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FoodHouseholdFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FoodRecipeFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/FoodUserFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/HouseholdFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/factories/RecipeFactory.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/origin/profile.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/recipes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/quarantine.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/quarantine.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/origin/signin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/origin/signin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +46,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -173,14 +187,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/origin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/factories" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Andras\Documents\quarantine_calory_calculator\quarantine_calory_calculator\resources\views\origin" />
+      <recent name="C:\Users\Andras\Documents\quarantine_calory_calculator\quarantine_calory_calculator\database\factories" />
       <recent name="C:\Users\Andras\Documents\quarantine_calory_calculator\quarantine_calory_calculator\app\View\Components" />
+      <recent name="C:\Users\Andras\Documents\quarantine_calory_calculator\quarantine_calory_calculator\resources\views\origin" />
+      <recent name="C:\Users\Andras\Documents\quarantine_calory_calculator\quarantine_calory_calculator\resources\views\layouts" />
     </key>
   </component>
   <component name="RunManager">
@@ -198,7 +215,9 @@
       <option name="presentableId" value="Default" />
       <updated>1605298877875</updated>
       <workItem from="1605298878986" duration="7381000" />
-      <workItem from="1605365235947" duration="12391000" />
+      <workItem from="1605365235947" duration="13504000" />
+      <workItem from="1605977999138" duration="15696000" />
+      <workItem from="1606000609831" duration="1776000" />
     </task>
     <servers />
   </component>
@@ -218,17 +237,33 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="569" y="275" width="593" height="273" key="#com.intellij.ide.actionMacro.EditMacrosDialog" timestamp="1605991550302">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="569" y="275" width="593" height="273" key="#com.intellij.ide.actionMacro.EditMacrosDialog/0.0.1536.824@0.0.1536.824" timestamp="1605991550302" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1605994336916">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1605994336916" />
+    <state x="562" y="188" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605994896120">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="562" y="188" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1605994896120" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605385567508">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605385567508" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1605379897786">
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1605998183282">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1605379897786" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1605381834304">
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1605998183282" />
+    <state x="277" y="57" key="SettingsEditor" timestamp="1606000597283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1605381834304" />
+    <state x="277" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1606000597283" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1606000659133">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606000659133" />
   </component>
 </project>
