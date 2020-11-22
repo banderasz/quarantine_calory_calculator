@@ -14,11 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $foods = $user->foods->where("created_at",">=",Carbon::today());
-
-
-        $recipes = Recipe::all();
-        return view("origin.nutrition", compact("user", "foods", "recipes"));
+        return view("origin.profil", compact("user"));
     }
 
 

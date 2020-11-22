@@ -42,7 +42,7 @@ class FoodHouseholdController extends Controller
     {
         $user = Auth::user();
         $request->validate([
-            "weight" => "required|numeric|gt:0",
+            "weight" => "required|numeric|gt:0|max:100000",
         ]);
         $household = Household::where('name', '=', $user->household)->firstOrFail();
         $food = Food::find($request->input('food'));

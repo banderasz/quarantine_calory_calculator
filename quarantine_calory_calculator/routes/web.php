@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get("/profile", "App\Http\Controllers\UserController@index")->name("profile");
+    Route::get("/nutrition", "App\Http\Controllers\FoodUserController@index")->name("nutrition");
     Route::post("/nutrition.store", "App\Http\Controllers\FoodUserController@store")->name("nutrition.store");
 
     Route::get("/household", "App\Http\Controllers\HouseholdController@index")->name("household");

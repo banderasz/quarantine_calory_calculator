@@ -46,10 +46,6 @@
             </li>
             <span class="navbar-text hide">|</span>
             <li class="nav-item">
-                <a class="nav-link" href="{{route("recipes")}}">RECIPES</a>
-            </li>
-            <span class="navbar-text hide">|</span>
-            <li class="nav-item">
                 <a class="nav-link" href="{{route("aboutus")}}">ABOUT US</a>
             </li>
             <span class="navbar-text hide logged-out">|</span>
@@ -62,6 +58,15 @@
                     <a class="nav-link" href="{{route("signin")}}">SIGN IN</a>
                 </li>
             @else
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("recipes")}}">RECIPES</a>
+                </li>
+                <span class="navbar-text hide">|</span>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route("food")}}">FOODS</a>
+                </li>
+                <span class="navbar-text hide">|</span>
                 <li class="nav-item logged-in">
                     <a class="nav-link" href="{{route("profile")}}">PROFILE</a>
                 </li>

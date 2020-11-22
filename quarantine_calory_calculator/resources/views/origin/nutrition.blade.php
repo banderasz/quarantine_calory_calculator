@@ -1,4 +1,18 @@
 <x-quarantine-layout>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-md-10 col-sm-12">
+            <h2>NUTRITIONS</h2>
+            <nav class="nav justify-content-center">
+                <a class="nav-link active" href="{{route("profile")}}">PROFIL</a>
+                <span class="navbar-text"> | </span>
+                <a class="nav-link active" href="{{route("nutrition")}}">NUTRITIONS</a>
+                <span class="navbar-text"> | </span>
+                <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD</a>
+            </nav>
+        </div>
+        <div class="col"></div>
+    </div>
 
     <div class="container">
 

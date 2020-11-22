@@ -23,7 +23,7 @@ class HouseholdController extends Controller
         foreach ($household->users as $user){
             $summausercalory += $user->CaloryDemand;
         }
-
-        return view("origin.storage", compact("user", "foods", "household", "all_foods", "summafoodcalory", 'summausercalory'));
+        $days = round($summafoodcalory/100 / $summausercalory,1);
+        return view("origin.storage", compact("user", "foods", "household", "all_foods", 'days'));
     }
 }

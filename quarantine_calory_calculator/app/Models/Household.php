@@ -20,7 +20,6 @@ class Household extends Model
     }
 
     public function users(){
-        dd($this->hasMany('App\Models\User', "name"));
-        return $this->hasMany('App\Models\User', "name");
+        return $this->hasMany('App\Models\User', "household", "name");
     }
 }

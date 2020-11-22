@@ -6,6 +6,7 @@ use App\Models\FoodHousehold;
 use App\Models\FoodUser;
 use App\Models\Household;
 use App\Models\Recipe;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,12 @@ class FoodUserController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+        $foods = $user->foods->where("created_at",">=",Carbon::today());
+
+
+        $recipes = Recipe::all();
+        return view("origin.nutrition", compact("user", "foods", "recipes"));
     }
 
     /**
