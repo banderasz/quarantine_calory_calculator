@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     public function getBMIAttribute()
     {
-        return $this->weight / $this->height ** 2;
+        return $this->weight / ($this->height/100) ** 2;
     }
 
     public function getCaloryDemandAttribute()
@@ -87,5 +87,35 @@ class User extends Authenticatable
             return ($this->weight * 10 + $this->height * 6.25 - 150)*$act;
         }
 
+    }
+
+    public function getProteinDemandAttribute()
+    {
+        return $this->CaloryDemand/2100 * 50;
+
+    }public function getCarbDemandAttribute()
+    {
+        return $this->CaloryDemand/2100 * 310;
+
+    }public function getFatDemandAttribute()
+    {
+        return $this->CaloryDemand/2100 * 70;
+
+    }public function getSugarDemandAttribute()
+    {
+        return $this->CaloryDemand/2100 * 90;
+
+    }public function getFiberDemandAttribute()
+    {
+        return $this->CaloryDemand/2100 * 30;
+
+    }public function getWaterDemandAttribute()
+    {
+        return $this->CaloryDemand/2100 * 1500;
+
+    }
+
+    public function foods(){
+        return $this->belongsToMany(Food::class, "food_users")->withPivot("weight");
     }
 }

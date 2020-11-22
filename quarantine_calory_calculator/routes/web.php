@@ -20,10 +20,16 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get("/profile", "App\Http\Controllers\UserController@index")->name("profile");
+    Route::post("/nutrition.store", "App\Http\Controllers\FoodUserController@store")->name("nutrition.store");
 
     Route::prefix("recipes")->group(function (){
-        Route::get("index","App\Http\Controllers\RecipeController@index")->name("recipes.index");
+        Route::get("","App\Http\Controllers\RecipeController@index")->name("recipes");
         Route::post("store","App\Http\Controllers\RecipeController@store")->name("recipes.store");
+    });
+
+    Route::prefix("food")->group(function (){
+        Route::get("","App\Http\Controllers\FoodController@index")->name("food");
+        Route::post("store","App\Http\Controllers\FoodController@store")->name("food.store");
     });
 
 });

@@ -57,7 +57,7 @@
                         <tr>
                             <th colspan="8" class="td-center th-add-new-nutin">
                                 <div class="btn-group">
-                                    <a class="th-add-new-recipe-nutin btn btn-outline-secondary" href="{{route("recipes.index")}}">Add new
+                                    <a class="th-add-new-recipe-nutin btn btn-outline-secondary" href="{{route("recipes")}}">Add new
                                         recipe
                                     </a>
                                     <button class="th-add-new-food-nutin btn btn-outline-secondary">Add new

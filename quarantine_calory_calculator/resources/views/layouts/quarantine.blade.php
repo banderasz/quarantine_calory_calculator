@@ -45,7 +45,7 @@
             </li>
             <span class="navbar-text hide">|</span>
             <li class="nav-item">
-                <a class="nav-link" href="./recipes.html">RECIPES</a>
+                <a class="nav-link" href="{{route("recipes")}}">RECIPES</a>
             </li>
             <span class="navbar-text hide">|</span>
             <li class="nav-item">
