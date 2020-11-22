@@ -28,6 +28,7 @@
             $('.table-datatable').DataTable();
         } );
     </script>
+    ä
 </head>
 
 <body>
@@ -49,7 +50,7 @@
             </li>
             <span class="navbar-text hide">|</span>
             <li class="nav-item">
-                <a class="nav-link" href="./aboutus.html">ABOUT US</a>
+                <a class="nav-link" href="{{route("aboutus")}}">ABOUT US</a>
             </li>
             <span class="navbar-text hide logged-out">|</span>
             @guest

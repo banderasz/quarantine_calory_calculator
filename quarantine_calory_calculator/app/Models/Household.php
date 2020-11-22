@@ -13,4 +13,14 @@ class Household extends Model
      * @var mixed
      */
     private $name;
+
+    public function foods()
+    {
+        return $this->belongsToMany(Food::class, "food_households")->withPivot("weight");
+    }
+
+    public function users(){
+        dd($this->hasMany('App\Models\User', "name"));
+        return $this->hasMany('App\Models\User', "name");
+    }
 }

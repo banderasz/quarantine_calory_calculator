@@ -20,8 +20,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e928075-1b8c-4f9c-b2d0-462a777f6ebb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FoodHouseholdController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/FoodRecipeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/origin/aboutus.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/origin/storage.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/recipes/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/origin/joinnow.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/origin/joinnow.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FoodUserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FoodUserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HouseholdController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HouseholdController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RecipeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RecipeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Household.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Household.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Recipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_21_174805_create_food_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_21_174805_create_food_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/food/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/food/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/quarantine.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/quarantine.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/origin/nutrition.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/origin/nutrition.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/recipes/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/recipes/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +53,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -170,9 +188,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -203,7 +222,9 @@
       <workItem from="1605298878986" duration="7381000" />
       <workItem from="1605365235947" duration="13504000" />
       <workItem from="1605977999138" duration="15696000" />
-      <workItem from="1606000609831" duration="10285000" />
+      <workItem from="1606000609831" duration="10884000" />
+      <workItem from="1606053525929" duration="3684000" />
+      <workItem from="1606064029149" duration="9092000" />
     </task>
     <servers />
   </component>
@@ -235,18 +256,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="562" y="188" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1605994896120" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606013834515">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606078386386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606013834515" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606078386386" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1605385567508">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605385567508" />
-    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1606008469521">
+    <state x="369" y="135" key="NewPhpClassDialog" timestamp="1606075145308">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1606008469521" />
+    <state x="369" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1606075145308" />
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1606074889107">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1606074889107" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1606000597283">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -255,6 +280,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1606006664069" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1606079090001">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1606079090001" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1606000659133">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

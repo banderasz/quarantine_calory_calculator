@@ -16,29 +16,42 @@
             </tr>
             </thead>
             <tbody>
+
             @foreach($foods as $food)
                 <tr>
                     <td>{{$food->name}}</td>
-                    <td>{{$food->Calory}}</td>
-                    <td>{{$food->protein}}</td>
-                    <td>{{$food->carb}}</td>
-                    <td>{{$food->sugar}}</td>
-                    <td>{{$food->fiber}}</td>
-                    <td>{{$food->fat}}</td>
-                    <td>{{$food->water}}</td>
+                    <td>{{$food->Calory * $food->pivot->weight/100}}</td>
+                    <td>{{$food->protein * $food->pivot->weight/100}}</td>
+                    <td>{{$food->carb * $food->pivot->weight/100}}</td>
+                    <td>{{$food->sugar * $food->pivot->weight/100}}</td>
+                    <td>{{$food->fiber * $food->pivot->weight/100}}</td>
+                    <td>{{$food->fat * $food->pivot->weight/100}}</td>
+                    <td>{{$food->water * $food->pivot->weight/100}}</td>
                 </tr>
             @endforeach
-            <tr>
-                <td>IDEAL</td>
-                <td>{{$user->CaloryDemand}}</td>
-                <td>{{$user->ProteinDemand}}</td>
-                <td>{{$user->CarbDemand}}</td>
-                <td>{{$user->SugarDemand}}</td>
-                <td>{{$user->FiberDemand}}</td>
-                <td>{{$user->FatDemand}}</td>
-                <td>{{$user->WaterDemand}}</td>
-            </tr>
             </tbody>
+            <tfoot>
+            <th>SUM</th>
+            <th class="@if($user->calory_sum_today>$user->calory_demand) table-danger @else table-success @endif">{{$user->calory_sum_today}}</th>
+            <th class="@if($user->protein_sum_today<$user->protein_demand) table-danger @else table-success @endif">{{$user->protein_sum_today}}</th>
+            <th class="@if($user->carb_sum_today>$user->carb_demand) table-danger @else table-success @endif">{{$user->carb_sum_today}}</th>
+            <th class="@if($user->sugar_sum_today>$user->sugar_demand) table-danger @else table-success @endif">{{$user->sugar_sum_today}}</th>
+            <th class="@if($user->fiber_sum_today<$user->fiber_demand) table-danger @else table-success @endif">{{$user->fiber_sum_today}}</th>
+            <th class="@if($user->fat_sum_today>$user->fat_demand) table-danger @else table-success @endif">{{$user->fat_sum_today}}</th>
+            <th class="@if($user->water_sum_today<$user->water_demand) table-danger @else table-success @endif">{{$user->water_sum_today}}</th>
+            </tr>
+            <tr>
+
+                <th>IDEAL</th>
+                <th>{{$user->CaloryDemand}}</th>
+                <th>{{$user->ProteinDemand}}</th>
+                <th>{{$user->CarbDemand}}</th>
+                <th>{{$user->SugarDemand}}</th>
+                <th>{{$user->FiberDemand}}</th>
+                <th>{{$user->FatDemand}}</th>
+                <th>{{$user->WaterDemand}}</th>
+            </tr>
+            </tfoot>
         </table>
 
         <form action="{{route('nutrition.store')}}" method="post">

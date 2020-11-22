@@ -13,7 +13,11 @@
             <tbody>
             @foreach($recipes as $recipe)
                 <tr>
-                    <td>{{$recipe->name}}</td>
+                    <td>
+                        <a class="btn-link" href="{{route('recipes.show',$recipe)}}">
+                            {{$recipe->name}}
+                        </a>
+                    </td>
                     <td>{{$recipe->description}}</td>
                     <td>{{$recipe->type}}</td>
                 </tr>

@@ -22,9 +22,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get("/profile", "App\Http\Controllers\UserController@index")->name("profile");
     Route::post("/nutrition.store", "App\Http\Controllers\FoodUserController@store")->name("nutrition.store");
 
+    Route::get("/household", "App\Http\Controllers\HouseholdController@index")->name("household");
+    Route::post("/storage.store", "App\Http\Controllers\FoodHouseholdController@store")->name("storage.store");
+
     Route::prefix("recipes")->group(function (){
         Route::get("","App\Http\Controllers\RecipeController@index")->name("recipes");
         Route::post("store","App\Http\Controllers\RecipeController@store")->name("recipes.store");
+        Route::get("show/{recipe}","App\Http\Controllers\RecipeController@show")->name("recipes.show");
+        Route::post("foods/store","App\Http\Controllers\FoodRecipeController@store")->name("recipes.food.store");
     });
 
     Route::prefix("food")->group(function (){
@@ -49,3 +54,7 @@ Route::get("/joinnow", function(){
 Route::get("/signin", function(){
     return view("origin.signin");
 })->name("signin");
+
+Route::get("/aboutus", function(){
+    return view("origin.aboutus");
+})->name("aboutus");

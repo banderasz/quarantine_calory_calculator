@@ -18,7 +18,6 @@ class CreateFoodUsersTable extends Migration
             $table->unsignedBigInteger("user_id");
             $table->unsignedBigInteger("food_id");
             $table->float("weight");
-            $table->timestamp("logged_at");
             $table->timestamps();
 
             $table->foreign('food_id')->references('id')->on('food')->onDelete('cascade');

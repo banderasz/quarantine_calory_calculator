@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Food;
 use App\Models\FoodHousehold;
 use App\Models\FoodUser;
 use App\Models\Household;
@@ -9,7 +10,7 @@ use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FoodUserController extends Controller
+class FoodHouseholdController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -43,48 +44,29 @@ class FoodUserController extends Controller
         $request->validate([
             "weight" => "required|numeric|gt:0",
         ]);
-        $recipe = Recipe::find($request->input('recipe'));
-        $foodusers = FoodUser::all();
-
         $household = Household::where('name', '=', $user->household)->firstOrFail();
+        $food = Food::find($request->input('food'));
         $foodhouseholds = FoodHousehold::all();
-
-        foreach ($recipe->foods as $food) {
-            $flag = false;
-            foreach ($foodusers as $savedfooduser){
-                if($savedfooduser->food_id == $food->id && $savedfooduser->user_id == $user->id){
-                    $savedfooduser->weight += $request->input('weight')*$food->pivot->weight/$recipe->SummaWeight;
-                    $savedfooduser->save();
-                    $flag = true;
-                }
+        $flag = false;
+        foreach ($foodhouseholds as $savedfoodhousehold){
+            if($savedfoodhousehold->food_id == $food->id && $savedfoodhousehold->household_id == $household->id){
+                $savedfoodhousehold->weight += $request->input('weight');
+                $savedfoodhousehold->save();
+                $flag = true;
             }
-            if(!$flag){
-                $fooduser = new FoodUser();
-                $fooduser->user_id = $user->id;
-                $fooduser->food_id = $food->id;
-                $fooduser->weight = $request->input('weight')*$food->pivot->weight/$recipe->SummaWeight;
-                $fooduser->save();
-            }
-
-            foreach ($foodhouseholds as $savedfoodhousehold){
-                if($savedfoodhousehold->food_id == $food->id && $savedfoodhousehold->household_id == $household->id){
-                    if ($savedfoodhousehold->weight - $request->input('weight')*$food->pivot->weight/$recipe->SummaWeight > 0){
-                        $savedfoodhousehold->weight -= $request->input('weight')*$food->pivot->weight/$recipe->SummaWeight;
-                        $savedfoodhousehold->save();
-                    }
-                    else{
-                        $savedfoodhousehold->delete();
-                    }
-
-
-                }
-            }
-
+        }
+        if(!$flag){
+            $foodhousehold = new FoodHousehold();
+            $foodhousehold->household_id =$household->id;
+            $foodhousehold->food_id = $food->id;
+            $foodhousehold->weight = $request->input('weight');
+            $foodhousehold->save();
         }
 
 
 
-        return back()->with("messages",["Nutritions succesfully saved!"]);
+
+        return back()->with("messages",["Storage succesfully saved!"]);
     }
 
     /**

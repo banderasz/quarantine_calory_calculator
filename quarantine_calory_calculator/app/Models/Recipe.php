@@ -9,7 +9,15 @@ class Recipe extends Model
 {
     use HasFactory;
     public function foods(){
-        dd($this->belongsToMany(Food::class, "food_recipes")->withPivot("weight"));
         return $this->belongsToMany(Food::class, "food_recipes")->withPivot("weight");
+    }
+
+    public function getSummaWeightAttribute()
+    {
+        $weight = 0;
+        foreach ($this->foods as $food){
+            $weight += $food->pivot->weight;
+        }
+        return $weight;
     }
 }
