@@ -78,6 +78,18 @@
                         <input type="text" class="form-control @error('household') is-invalid @enderror" id="household-id" name="household" placeholder="Example: 12255a" value="{{old('household')}}"
                                style="float:right;" required>
                     </div>
+                    <script>
+                        window.$(document).on('change', '#new-household-id', function () {
+                            if (this.checked) {
+                                window.$("#household-id").prop('readonly', true);
+                                window.$("#household-id").val(Math.random().toString(36).substr(2, 9));
+                            }
+                            else {
+                                window.$("#household-id").prop('readonly', false);
+                                window.$("#household-id").val('');
+                            }
+                        });
+                    </script>
                     @error("household")
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror

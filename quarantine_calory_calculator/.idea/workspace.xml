@@ -20,12 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e928075-1b8c-4f9c-b2d0-462a777f6ebb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/FoodHousehold.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/FoodRecipe.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_21_174731_create_food_households_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_21_174731_create_food_households_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_11_21_174805_create_food_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_11_21_174805_create_food_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/origin/joinnow.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/origin/joinnow.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +203,7 @@
       <workItem from="1605298878986" duration="7381000" />
       <workItem from="1605365235947" duration="13504000" />
       <workItem from="1605977999138" duration="15696000" />
-      <workItem from="1606000609831" duration="9807000" />
+      <workItem from="1606000609831" duration="10285000" />
     </task>
     <servers />
   </component>
