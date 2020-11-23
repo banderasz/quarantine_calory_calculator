@@ -34,7 +34,7 @@
         </table>
 
         <div>
-            <label class="@if($days<7) table-danger @else table-success @endif">You have enough food for {{$days}} days.</label>
+            <label class="@if($days<7) alert alert-danger @else alert alert-success @endif">You have enough food for {{$days}} days.</label>
 
         </div>
 

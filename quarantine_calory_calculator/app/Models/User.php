@@ -130,8 +130,10 @@ class User extends Authenticatable
     public function getCalorySumTodayAttribute()
     {
         $sum = 0;
-        foreach ($this->foods->where("created_at", ">=", Carbon::today()) as  $food){
-            $sum += $food->Calory*$food->pivot->weight/100;
+        foreach ( $this->foods as $food){
+            if ($food->pivot->created_at >= Carbon::today()){
+                $sum += $food->Calory*$food->pivot->weight/100;
+            }
         }
         return $sum;
     }
@@ -139,8 +141,10 @@ class User extends Authenticatable
     public function getProteinSumTodayAttribute()
     {
         $sum = 0;
-        foreach ($this->foods->where("created_at", ">=", Carbon::today()) as  $food){
-            $sum += $food->protein*$food->pivot->weight/100;
+        foreach ( $this->foods as $food){
+            if ($food->pivot->created_at >= Carbon::today()){
+                $sum += $food->protein*$food->pivot->weight/100;
+            }
         }
         return $sum;
     }
@@ -148,8 +152,10 @@ class User extends Authenticatable
     public function getCarbSumTodayAttribute()
     {
         $sum = 0;
-        foreach ($this->foods->where("created_at", ">=", Carbon::today()) as  $food){
-            $sum += $food->carb*$food->pivot->weight/100;
+        foreach ( $this->foods as $food){
+            if ($food->pivot->created_at >= Carbon::today()){
+                $sum += $food->carb*$food->pivot->weight/100;
+            }
         }
         return $sum;
     }
@@ -157,8 +163,10 @@ class User extends Authenticatable
     public function getFatSumTodayAttribute()
     {
         $sum = 0;
-        foreach ($this->foods->where("created_at", ">=", Carbon::today()) as  $food){
-            $sum += $food->fat*$food->pivot->weight/100;
+        foreach ( $this->foods as $food){
+            if ($food->pivot->created_at >= Carbon::today()){
+                $sum += $food->fat*$food->pivot->weight/100;
+            }
         }
         return $sum;
     }
@@ -166,8 +174,10 @@ class User extends Authenticatable
     public function getSugarSumTodayAttribute()
     {
         $sum = 0;
-        foreach ($this->foods->where("created_at", ">=", Carbon::today()) as  $food){
-            $sum += $food->sugar*$food->pivot->weight/100;
+        foreach ( $this->foods as $food){
+            if ($food->pivot->created_at >= Carbon::today()){
+                $sum += $food->sugar*$food->pivot->weight/100;
+            }
         }
         return $sum;
     }
@@ -175,8 +185,10 @@ class User extends Authenticatable
     public function getFiberSumTodayAttribute()
     {
         $sum = 0;
-        foreach ($this->foods->where("created_at", ">=", Carbon::today()) as  $food){
-            $sum += $food->fiber*$food->pivot->weight/100;
+        foreach ( $this->foods as $food){
+            if ($food->pivot->created_at >= Carbon::today()){
+                $sum += $food->fiber*$food->pivot->weight/100;
+            }
         }
         return $sum;
     }
@@ -184,8 +196,10 @@ class User extends Authenticatable
     public function getWaterSumTodayAttribute()
     {
         $sum = 0;
-        foreach ($this->foods->where("created_at", ">=", Carbon::today()) as  $food){
-            $sum += $food->water*$food->pivot->weight/100;
+        foreach ( $this->foods as $food){
+            if ($food->pivot->created_at >= Carbon::today()){
+                $sum += $food->water*$food->pivot->weight/100;
+            }
         }
         return $sum;
     }
