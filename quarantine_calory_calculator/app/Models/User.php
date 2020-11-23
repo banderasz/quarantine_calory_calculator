@@ -124,7 +124,7 @@ class User extends Authenticatable
 
     public function foods()
     {
-        return $this->belongsToMany(Food::class, "food_users")->withPivot("weight");
+        return $this->belongsToMany(Food::class, "food_users")->withPivot("weight", "created_at", "updated_at");
     }
 
     public function getCalorySumTodayAttribute()

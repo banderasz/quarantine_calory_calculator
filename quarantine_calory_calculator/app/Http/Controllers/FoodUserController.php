@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Food;
 use App\Models\FoodHousehold;
 use App\Models\FoodUser;
 use App\Models\Household;
@@ -20,9 +21,12 @@ class FoodUserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $foods = $user->foods->where("created_at",">=",Carbon::today());
-
-
+        $foods = [];
+        foreach ( $user->foods as $food){
+            if ($food->pivot->created_at >= Carbon::today()){
+                $foods[] = $food;
+            }
+        }
         $recipes = Recipe::all();
         return view("origin.nutrition", compact("user", "foods", "recipes"));
     }
@@ -58,7 +62,7 @@ class FoodUserController extends Controller
         foreach ($recipe->foods as $food) {
             $flag = false;
             foreach ($foodusers as $savedfooduser){
-                if($savedfooduser->food_id == $food->id && $savedfooduser->user_id == $user->id){
+                if($savedfooduser->food_id == $food->id && $savedfooduser->user_id == $user->id  && $savedfooduser->created_at >= Carbon::today()){
                     $savedfooduser->weight += $request->input('weight')*$food->pivot->weight/$recipe->SummaWeight;
                     $savedfooduser->save();
                     $flag = true;
