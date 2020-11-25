@@ -50,7 +50,7 @@ class UserController extends Controller
         $user->household = $request->input('household');
         $user->update();
 
-        return back()->with("messages",["User updated saved!"]);
+        return back()->with("messages",["User updated!"]);
 
     }
 
