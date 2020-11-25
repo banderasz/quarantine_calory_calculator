@@ -12,7 +12,8 @@
                 <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD</a>
             </nav>
 
-            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>PERSONAL</h3></div>
+            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>
+                    PERSONAL</h3></div>
             <div class="row personal-row">
                 <div class="col text-right"><span class="align-middle font-h6">NAME</span></div>
 
@@ -72,15 +73,22 @@
                     </div>
                 </div>
             </div>
+            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"> <a class="nav-link btn btn-outline-success" id="profile.edit" href="{{route("profile.edit")}}">EDIT</a></div>
+
+
+
         </div>
+
 
         <div class="col"></div>
     </div>
     <div class="row personal" style="margin-top: 20px;">
         <div class="col"></div>
+
         <div class="col-md-10 col-sm-12">
 
         </div>
 
     </div>
+
 </x-quarantine-layout>
