@@ -1,17 +1,17 @@
 <x-quarantine-layout>
-
+    <script>$('#home').css('font-weight','500');</script>
     <div class="row">
         <div class="col"></div>
         <div class="col-lg-10 col-md-12">
-            <h2>WELCOME TO</h2>
-            <h3 style="text-align: center; font-weight: bold;">QUARANTINE CALORIE CALCULATOR APPLICATION</h3>
+            <h2 style=" font-size: 25px";>WELCOME TO</h2>
+            <h3 style="text-align: center; font-weight: bold; font-size: 25px">QUARANTINE CALORIE CALCULATOR APPLICATION</h3>
         </div>
         <div class="col"></div>
     </div>
     <div class="row" style="margin-top: 20px;">
         <div class="col"></div>
         <div class="col-lg-10 col-md-12">
-            <h5>ABOUT THE PROJECT</h5>
+            <h5 style=" font-size: 20px; margin-bottom: 10px" >ABOUT THE PROJECT</h5>
             <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et
                 dolore

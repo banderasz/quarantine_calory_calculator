@@ -41,34 +41,34 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{{route("home")}}">HOME</a>
+            <li class="nav-item">
+                <a class="nav-link" id="home" href="{{route("home")}}">HOME</a>
             </li>
             <span class="navbar-text hide">|</span>
             <li class="nav-item">
-                <a class="nav-link" href="{{route("aboutus")}}">ABOUT US</a>
+                <a class="nav-link" id="aboutus" href="{{route("aboutus")}}">ABOUT US</a>
             </li>
             <span class="navbar-text hide logged-out">|</span>
             @guest
                 <li class="nav-item logged-out">
-                    <a class="nav-link" href="{{route("joinnow")}}">JOIN NOW</a>
+                    <a class="nav-link" id="joinnow" href="{{route("joinnow")}}">JOIN NOW</a>
                 </li>
                 <span class="navbar-text hide logged-out">|</span>
                 <li class="nav-item logged-out">
-                    <a class="nav-link" href="{{route("signin")}}">SIGN IN</a>
+                    <a class="nav-link" id="signin" href="{{route("signin")}}">SIGN IN</a>
                 </li>
             @else
-                
+
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route("recipes")}}">RECIPES</a>
+                    <a class="nav-link" id="recipes" href="{{route("recipes")}}">RECIPES</a>
                 </li>
                 <span class="navbar-text hide">|</span>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route("food")}}">FOODS</a>
+                    <a class="nav-link" id="food" href="{{route("food")}}">FOODS</a>
                 </li>
                 <span class="navbar-text hide">|</span>
                 <li class="nav-item logged-in">
-                    <a class="nav-link" href="{{route("profile")}}">PROFILE</a>
+                    <a class="nav-link" id="profile" href="{{route("profile")}}">PROFILE</a>
                 </li>
                 <span class="navbar-text hide logged-out">|</span>
                 <li class="nav-item logged-in">

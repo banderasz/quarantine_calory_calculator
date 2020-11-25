@@ -1,8 +1,9 @@
 <x-quarantine-layout>
+    <script>$('#signin').css('font-weight','500');</script>
     <div class="row">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
-            <h2>SIGN IN</h2>
+            <h2 style="font-size: 25px">SIGN IN</h2>
             <nav class="nav justify-content-center">
                 <a class="nav-link not" href="{{route("joinnow")}}">JOIN NOW</a>
                 <span class="navbar-text"> | </span>

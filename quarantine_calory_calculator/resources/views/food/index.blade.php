@@ -1,5 +1,5 @@
 <x-quarantine-layout>
-
+    <script>$('#food').css('font-weight','500');</script>
     <div class="container">
         <table class="table-datatable table table-bordered">
             <thead>

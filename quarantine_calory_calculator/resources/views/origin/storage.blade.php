@@ -1,15 +1,18 @@
 <x-quarantine-layout>
+    <script>$('#profile').css('font-weight','500');</script>
     <div class="row">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
-            <h2>HOUSEHOLD</h2>
+            <h2 style="font-size: 25px">PROFILE</h2>
             <nav class="nav justify-content-center">
-                <a class="nav-link active" href="{{route("profile")}}">PROFIL</a>
+                <a class="nav-link not" href="{{route("profile")}}">PERSONAL</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link active" href="{{route("nutrition")}}">NUTRITIONS</a>
+                <a class="nav-link not" href="{{route("nutrition")}}">NUTRITIONS</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD</a>
+                <a class="nav-link active" href="{{route("household")}}">HOUSEHOLD</a>
             </nav>
+            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>HOUSEHOLD</h3></div>
+
         </div>
         <div class="col"></div>
     </div>

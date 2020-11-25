@@ -1,4 +1,5 @@
 <x-quarantine-layout>
+    <script>$('#joinnow').css('font-weight','500');</script>
     @if(\Illuminate\Support\Facades\Session::has('errors'))
         <div class="row">
             {{\Illuminate\Support\Facades\Session::get("errors")}}
@@ -7,7 +8,7 @@
     <div class="row">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
-            <h2>JOIN NOW</h2>
+            <h2 style="font-size: 25px">JOIN NOW</h2>
             <nav class="nav justify-content-center">
                 <a class="nav-link active" href="{{route("joinnow")}}">JOIN NOW</a>
                 <span class="navbar-text"> | </span>
