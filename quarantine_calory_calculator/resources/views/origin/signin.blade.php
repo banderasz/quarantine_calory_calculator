@@ -24,7 +24,7 @@
                     <input type="password" class="form-control" id="password1" name="password" placeholder="Password">
                     <div class="row" style="margin-top: 25px;">
                         <div class="col text-center">
-                            <button type='submit' class="btn btn-outline-success">SIGN IN</button>
+                            <button type='submit' class="btn btn-primary">SIGN IN</button>
                         </div>
                     </div>
                 </div>

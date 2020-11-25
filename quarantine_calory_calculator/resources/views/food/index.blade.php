@@ -30,7 +30,9 @@
             </tbody>
         </table>
 
-        <form action="{{route('food.store')}}" method="post">
+
+
+        <form style="margin-top: 40px" action="{{route('food.store')}}" method="post">
             @csrf
             <div class="row">
                 <label class="form-label col" for="name">Name:</label>

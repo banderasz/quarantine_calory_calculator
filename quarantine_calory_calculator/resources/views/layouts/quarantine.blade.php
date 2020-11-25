@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{{asset("css/app.css")}}">
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -28,8 +28,10 @@
             $('.table-datatable').DataTable();
         } );
     </script>
-    ä
+    <link rel="stylesheet" href="{{asset("css/app.css")}}">
+
 </head>
+
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navbar-style">
@@ -64,7 +66,7 @@
                 </li>
                 <span class="navbar-text hide">|</span>
                 <li class="nav-item">
-                    <a class="nav-link" id="food" href="{{route("food")}}">FOODS</a>
+                    <a class="nav-link" id="food" href="{{route("food")}}">INGREDIENTS</a>
                 </li>
                 <span class="navbar-text hide">|</span>
                 <li class="nav-item logged-in">

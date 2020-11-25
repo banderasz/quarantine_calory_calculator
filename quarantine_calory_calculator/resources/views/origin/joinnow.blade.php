@@ -105,7 +105,7 @@
                     @enderror
                     <div class="row" style="margin-top: 25px;">
                         <div class="col text-center">
-                            <button type='submit' class="btn btn-outline-success" id="join-now-btn">JOIN NOW</button>
+                            <button type='submit' class="btn btn-primary" id="join-now-btn">JOIN NOW</button>
                         </div>
                     </div>
                 </div>

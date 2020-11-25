@@ -25,7 +25,7 @@
             </tbody>
         </table>
 
-        <form action="{{route('recipes.store')}}" method="post">
+        <form style="margin-top: 40px" action="{{route('recipes.store')}}" method="post">
             @csrf
             <div class="form-group">
                 <label class="form-label" for="name">NAME:</label>

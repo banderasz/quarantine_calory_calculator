@@ -30,7 +30,7 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required",
+            "name" => "required|unique:recipes",
             "description" => "required",
             "type" => "required"
         ]);

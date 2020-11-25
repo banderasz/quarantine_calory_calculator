@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"> <a class="nav-link btn btn-outline-success" id="profile.edit" href="{{route("profile.edit")}}">EDIT</a></div>
+            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"> <a class="nav-link btn btn-primary" id="profile.edit" href="{{route("profile.edit")}}">EDIT</a></div>
 
 
 

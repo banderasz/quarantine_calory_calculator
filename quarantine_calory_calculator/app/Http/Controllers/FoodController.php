@@ -23,7 +23,7 @@ class FoodController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "name" => "required",
+            "name" => "required|unique:food",
             "type" => "required",
             "protein" => "required|numeric|min:0|max:100",
             "fat" => "required|numeric|min:0|max:100",
