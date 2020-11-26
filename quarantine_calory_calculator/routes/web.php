@@ -25,6 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get("/nutrition", "App\Http\Controllers\FoodUserController@index")->name("nutrition");
     Route::post("/nutrition.store", "App\Http\Controllers\FoodUserController@store")->name("nutrition.store");
+    Route::post("/nutrition.ingredients.store", "App\Http\Controllers\FoodController@store_nutrition")->name("nutrition.ingredients.store");
 
     Route::get("/household", "App\Http\Controllers\HouseholdController@index")->name("household");
     Route::post("/storage.store", "App\Http\Controllers\FoodHouseholdController@store")->name("storage.store");

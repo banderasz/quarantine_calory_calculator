@@ -7,11 +7,11 @@
             <nav class="nav justify-content-center">
                 <a class="nav-link not" href="{{route("profile")}}">PERSONAL</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link active" href="{{route("nutrition")}}">NUTRITIONS</a>
+                <a class="nav-link active" href="{{route("nutrition")}}">NUTRITION INTAKE</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD</a>
+                <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD STOCK</a>
             </nav>
-            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>NUTRITIONS</h3></div>
+            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>NUTRITION INTAKE</h3></div>
         </div>
         <div class="col"></div>
     </div>
@@ -22,13 +22,13 @@
             <thead>
             <tr>
                 <th>NAME</th>
-                <th>Calories (kcal)</th>
-                <th>Protein (g)</th>
-                <th>Carbs (g)</th>
-                <th>Sugar (g)</th>
-                <th>Fiber (g)</th>
-                <th>Fat (g)</th>
-                <th>Water (ml)</th>
+                <th>CALORIES (kcal)</th>
+                <th>PROTEIN (g)</th>
+                <th>CARB (g)</th>
+                <th>FIBER (g)</th>
+                <th>SUGAR (g)</th>
+                <th>FAT (g)</th>
+                <th>WATER (ml)</th>
             </tr>
             </thead>
             <tbody>
@@ -39,8 +39,9 @@
                     <td>{{$food->Calory * $food->pivot->weight/100}}</td>
                     <td>{{$food->protein * $food->pivot->weight/100}}</td>
                     <td>{{$food->carb * $food->pivot->weight/100}}</td>
-                    <td>{{$food->sugar * $food->pivot->weight/100}}</td>
                     <td>{{$food->fiber * $food->pivot->weight/100}}</td>
+                    <td>{{$food->sugar * $food->pivot->weight/100}}</td>
+
                     <td>{{$food->fat * $food->pivot->weight/100}}</td>
                     <td>{{$food->water * $food->pivot->weight/100}}</td>
                 </tr>
@@ -50,9 +51,11 @@
             <th>SUM</th>
             <th class="@if($user->calory_sum_today>$user->calory_demand) table-danger @else table-success @endif">{{$user->calory_sum_today}}</th>
             <th class="@if($user->protein_sum_today<$user->protein_demand) table-danger @else table-success @endif">{{$user->protein_sum_today}}</th>
+
             <th class="@if($user->carb_sum_today>$user->carb_demand) table-danger @else table-success @endif">{{$user->carb_sum_today}}</th>
-            <th class="@if($user->sugar_sum_today>$user->sugar_demand) table-danger @else table-success @endif">{{$user->sugar_sum_today}}</th>
             <th class="@if($user->fiber_sum_today<$user->fiber_demand) table-danger @else table-success @endif">{{$user->fiber_sum_today}}</th>
+            <th class="@if($user->sugar_sum_today>$user->sugar_demand) table-danger @else table-success @endif">{{$user->sugar_sum_today}}</th>
+
             <th class="@if($user->fat_sum_today>$user->fat_demand) table-danger @else table-success @endif">{{$user->fat_sum_today}}</th>
             <th class="@if($user->water_sum_today<$user->water_demand) table-danger @else table-success @endif">{{$user->water_sum_today}}</th>
             </tr>
@@ -70,10 +73,36 @@
             </tfoot>
         </table>
 
+        <h4 style="margin-top: 25px">Add an ingredient:</h4>
+        <form action="{{route('nutrition.ingredients.store')}}" method="post">
+            @csrf
+            <div class="form-group">
+                <label class="form-label" for="recipe">INGREDIENT: </label>
+                <select class="form-control @error("food") is-invalid @enderror()" name="food" id="food">
+                    @foreach(App\Models\Food::all() as $food)
+                        <option value="{{$food->id}}" class="{{$food->type}}">{{$food->name}}</option>
+                    @endforeach
+                </select>
+                @error("food")
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="weight">AMOUNT:</label>
+                <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
+                @error("weight")
+                <div class="alert alert-danger">{{$message}}</div>
+                @enderror
+            </div>
+            <input class="btn btn-primary" type="submit" value="Save">
+        </form>
+
+
+        <h4 style="margin-top: 25px">Add a recipe:</h4>
         <form action="{{route('nutrition.store')}}" method="post">
             @csrf
             <div class="form-group">
-                <label class="form-label" for="recipe">Recipe: </label>
+                <label class="form-label" for="recipe">RECIPE: </label>
                 <select class="form-control @error("recipe") is-invalid @enderror()" name="recipe" id="recipe">
                     @foreach($recipes as $recipe)
                         <option value={{$recipe->id}}>{{$recipe->name}}</option>
@@ -84,7 +113,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="form-label" for="weight">WEIGHT (g):</label>
+                <label class="form-label" for="weight">AMOUNT:</label>
                 <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
                 @error("weight")
                 <div class="alert alert-danger">{{$message}}</div>

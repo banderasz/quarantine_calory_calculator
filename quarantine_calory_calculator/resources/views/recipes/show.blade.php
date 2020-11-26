@@ -1,5 +1,16 @@
 <x-quarantine-layout>
+    <script>
+        $(window).onload('.select-food-for-recipe').each(function (){
+            let selected = $(this).find('option').filter(':selected').attr("class")
 
+            $(this).parent().parent().find('.unit-label').text(selected == "food"? "g" : "ml");
+        });
+
+        $(document).on('change', '.select-food-for-recipe', function (){
+        let selected = $(this).find('option').filter(':selected').attr("class")
+
+            $(this).parent().parent().find('.unit-label').text(selected == "food"? "g" : "ml");
+        });</script>
     <div class="row">
         <div class="col-2 font-bold">NAME:</div>
         <div class="col">{{$recipe->name}}</div>
@@ -20,15 +31,15 @@
             <table class="table table-bordered table-datatable mt-5">
                 <thead>
                 <tr>
-                    <th>Food</th>
-                    <th>Weight</th>
+                    <th>INGREDIENT</th>
+                    <th>AMOUNT</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($recipe->foods as $food)
                     <tr>
                         <td>{{$food->name}}</td>
-                        <td>{{$food->pivot->weight}}</td>
+                        <td>{{$food->pivot->weight}} @if($food->type == "food") g @else ml @endif</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -39,15 +50,14 @@
                 @csrf
                 <input type="hidden" name="recipe_id" value="{{$recipe->id}}">
                 <div class="row">
-                    <label class="form-labels col-5" for="">NAME:</label>
-                    <label class="form-labels col-4" for="">WEIGHT:</label>
-                    <label class="form-labels col-3" for="">ACTION:</label>
+                    <label class="form-labels col-4" for="">NAME</label>
+                    <label class="form-labels col-4" for="">AMOUNT</label>
                 </div>
                 <div class="row input-row">
-                    <div class="form-group col-5">
-                        <select name="food_id[]" class="form-control input-name @error('food_id.*') is-invalid @enderror">
+                    <div class="form-group col-4">
+                        <select name="food_id[]" class="select-food-for-recipe form-control input-name @error('food_id.*') is-invalid @enderror">
                             @foreach(App\Models\Food::all() as $food)
-                                <option value="{{$food->id}}">{{$food->name}}</option>
+                                <option value="{{$food->id}}" class="{{$food->type}}">{{$food->name}}</option>
                             @endforeach
                         </select>
                         @error("food_id.*")
@@ -60,8 +70,12 @@
                         <div class="alert alert-danger">{{$message}}</div>
                         @enderror
                     </div>
+                    <div class="form-group col-1">
+
+                        <p class="unit-label">valami</p>
+                    </div>
                     <div class="form-group col-3">
-                        <input type="button" class="form-control btn btn-danger btn-remove hidden" value="Remove">
+                        <input type="button" class="form-control btn btn-danger btn-remove hidden" value="REMOVE">
                     </div>
                 </div>
                 <div class="row">

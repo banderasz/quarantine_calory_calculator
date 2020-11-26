@@ -7,9 +7,9 @@
             <nav class="nav justify-content-center">
                 <a class="nav-link active" href="{{route("profile")}}">PERSONAL</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link not" href="{{route("nutrition")}}">NUTRITIONS</a>
+                <a class="nav-link not" href="{{route("nutrition")}}">NUTRITION INTAKE</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD</a>
+                <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD STOCK</a>
             </nav>
 
             <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>
@@ -156,7 +156,7 @@
                             @enderror
 
                         </div>
-                        <label>If password is changed, you have to log in again.</label>
+                        <label class="alert alert-warning ">If password is changed, you have to sign in again.</label>
                     </div>
 
                 </div>
@@ -164,7 +164,7 @@
             </div>
             <div class="row" style="margin-top: 25px;">
                 <div class="col text-center">
-                    <button type='submit' class="btn btn-outline-success" id="join-now-btn">SAVE</button>
+                    <button type='submit' class="btn btn-primary" id="join-now-btn">SAVE</button>
                 </div>
             </div>
             </form>

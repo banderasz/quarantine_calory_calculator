@@ -4,14 +4,14 @@
         <table class="table-datatable table table-bordered">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Protein</th>
-                <th>Fat</th>
-                <th>Carb</th>
-                <th>Fiber</th>
-                <th>Sugar</th>
-                <th>Water</th>
+                <th>NAME</th>
+                <th>TYPE</th>
+                <th>PROTEIN</th>
+                <th>CARB</th>
+                <th>FIBER</th>
+                <th>SUGAR</th>
+                <th>FAT</th>
+                <th>WATER</th>
             </tr>
             </thead>
             <tbody>
@@ -20,10 +20,10 @@
                     <td>{{$food->name}}</td>
                     <td>{{$food->type}}</td>
                     <td>{{$food->protein}}</td>
-                    <td>{{$food->fat}}</td>
                     <td>{{$food->carb}}</td>
                     <td>{{$food->fiber}}</td>
                     <td>{{$food->sugar}}</td>
+                    <td>{{$food->fat}}</td>
                     <td>{{$food->water}}</td>
                 </tr>
             @endforeach
@@ -35,7 +35,7 @@
         <form style="margin-top: 40px" action="{{route('food.store')}}" method="post">
             @csrf
             <div class="row">
-                <label class="form-label col" for="name">Name:</label>
+                <label class="form-label col" for="name">NAME:</label>
                 <label class="form-label col" for="name">TYPE:</label>
                 <label class="form-label col" for="name">PROTEIN (g in 100g/100ml):</label>
                 <label class="form-label col" for="name">FAT (g in 100g/100ml):</label>

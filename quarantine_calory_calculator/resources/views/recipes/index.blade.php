@@ -5,9 +5,9 @@
         <table class="table-datatable table table-bordered">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Type</th>
+                <th>NAME</th>
+                <th>DESCRIPTION</th>
+                <th>TYPE</th>
             </tr>
             </thead>
             <tbody>
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label class="form-label" for="description">DESCRIPTION:</label>
-                <textarea class="form-control @error("description") is-invalid @enderror()" name="description" id="description" cols="30" rows="10"></textarea>
+                <textarea class="form-control @error("description") is-invalid @enderror()" name="description" id="description" cols="30" rows="5"></textarea>
                 @error("description")
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
@@ -53,7 +53,7 @@
                 <div class="alert alert-danger">{{$message}}</div>
                 @enderror
             </div>
-            <input class="btn btn-primary" type="submit" value="Save">
+            <input class="btn btn-primary" type="submit" value="SAVE">
         </form>
         <div style="height:100px"></div>
     </div>

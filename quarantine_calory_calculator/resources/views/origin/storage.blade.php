@@ -7,11 +7,11 @@
             <nav class="nav justify-content-center">
                 <a class="nav-link not" href="{{route("profile")}}">PERSONAL</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link not" href="{{route("nutrition")}}">NUTRITIONS</a>
+                <a class="nav-link not" href="{{route("nutrition")}}">NUTRITION INTAKE</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link active" href="{{route("household")}}">HOUSEHOLD</a>
+                <a class="nav-link active" href="{{route("household")}}">HOUSEHOLD STOCK</a>
             </nav>
-            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>HOUSEHOLD</h3></div>
+            <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>HOUSEHOLD STOCK</h3></div>
 
         </div>
         <div class="col"></div>
@@ -22,7 +22,7 @@
             <thead>
             <tr>
                 <th>NAME</th>
-                <th>Quantity</th>
+                <th>AMOUNT</th>
             </tr>
             </thead>
             <tbody>
@@ -44,7 +44,7 @@
         <form action="{{route('storage.store')}}" method="post">
             @csrf
             <div class="form-group">
-                <label class="form-label" for="recipe">Food: </label>
+                <label class="form-label" for="recipe">INGREDIENT: </label>
                 <select class="form-control @error("food") is-invalid @enderror()" name="food" id="food">
                     @foreach($all_foods as $curr_food)
                         <option value={{$curr_food->id}}>{{$curr_food->name}}</option>
@@ -55,7 +55,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="form-label" for="weight">WEIGHT (g/ml):</label>
+                <label class="form-label" for="weight">AMOUNT (g/ml):</label>
                 <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
                 @error("weight")
                 <div class="alert alert-danger">{{$message}}</div>

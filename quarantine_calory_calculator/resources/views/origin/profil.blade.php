@@ -7,9 +7,9 @@
             <nav class="nav justify-content-center">
                 <a class="nav-link active" href="{{route("profile")}}">PERSONAL</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link not" href="{{route("nutrition")}}">NUTRITIONS</a>
+                <a class="nav-link not" href="{{route("nutrition")}}">NUTRITION INTAKE</a>
                 <span class="navbar-text"> | </span>
-                <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD</a>
+                <a class="nav-link not" href="{{route("household")}}">HOUSEHOLD STOCK</a>
             </nav>
 
             <div class="row justify-content-center" style="margin-top: 20px; margin-bottom: 20px; font-size: 20px;"><h3>
