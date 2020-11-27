@@ -60,24 +60,27 @@
             <th class="@if($user->water_sum_today<$user->water_demand) table-danger @else table-success @endif">{{$user->water_sum_today}}</th>
             </tr>
             <tr>
-
                 <th>IDEAL</th>
-                <th>{{$user->CaloryDemand}}</th>
-                <th>{{$user->ProteinDemand}}</th>
-                <th>{{$user->CarbDemand}}</th>
-                <th>{{$user->SugarDemand}}</th>
-                <th>{{$user->FiberDemand}}</th>
-                <th>{{$user->FatDemand}}</th>
-                <th>{{$user->WaterDemand}}</th>
+                <th><{{$user->CaloryDemand}}</th>
+                <th>>{{$user->ProteinDemand}}</th>
+                <th><{{$user->CarbDemand}}</th>
+                <th>>{{$user->FiberDemand}}</th>
+                <th><{{$user->SugarDemand}}</th>
+                <th><{{$user->FatDemand}}</th>
+                <th>>{{$user->WaterDemand}}</th>
             </tr>
             </tfoot>
         </table>
 
-        <h4 style="margin-top: 25px">Add an ingredient:</h4>
+        <h3 style="margin-top: 25px; font-size: 20px; margin-bottom: 20px">ADD NEW NUTRITION INTAKE</h3>
+<div class="row">
+
+    <div class="col">
+
         <form action="{{route('nutrition.ingredients.store')}}" method="post">
             @csrf
             <div class="form-group">
-                <label class="form-label" for="recipe">INGREDIENT: </label>
+                <label class="form-label" style="display: block; text-align: center" for="recipe">INGREDIENT</label>
                 <select class="form-control @error("food") is-invalid @enderror()" name="food" id="food">
                     @foreach(App\Models\Food::all() as $food)
                         <option value="{{$food->id}}" class="{{$food->type}}">{{$food->name}}</option>
@@ -88,7 +91,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="form-label" for="weight">AMOUNT:</label>
+                <label class="form-label" style="display: block; text-align: center" for="weight">AMOUNT</label>
                 <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
                 @error("weight")
                 <div class="alert alert-danger">{{$message}}</div>
@@ -96,13 +99,13 @@
             </div>
             <input class="btn btn-primary" type="submit" value="Save">
         </form>
+    </div>
+    <div class="col">
 
-
-        <h4 style="margin-top: 25px">Add a recipe:</h4>
         <form action="{{route('nutrition.store')}}" method="post">
             @csrf
             <div class="form-group">
-                <label class="form-label" for="recipe">RECIPE: </label>
+                <label class="form-label" style="display: block; text-align: center" for="recipe">RECIPE</label>
                 <select class="form-control @error("recipe") is-invalid @enderror()" name="recipe" id="recipe">
                     @foreach($recipes as $recipe)
                         <option value={{$recipe->id}}>{{$recipe->name}}</option>
@@ -113,7 +116,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="form-label" for="weight">AMOUNT:</label>
+                <label class="form-label" style="display: block; text-align: center" for="weight">AMOUNT</label>
                 <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
                 @error("weight")
                 <div class="alert alert-danger">{{$message}}</div>
@@ -123,5 +126,11 @@
         </form>
         <div style="height:100px"></div>
     </div>
+    </div>
+</div>
+
+
+
+
 
 </x-quarantine-layout>
