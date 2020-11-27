@@ -10,12 +10,12 @@
             <tr>
                 <th>NAME</th>
                 <th>TYPE</th>
-                <th>PROTEIN</th>
-                <th>CARB</th>
-                <th>FIBER</th>
-                <th>SUGAR</th>
-                <th>FAT</th>
-                <th>WATER</th>
+                <th>PROTEIN (g)</th>
+                <th>CARB (g)</th>
+                <th>FIBER (g)</th>
+                <th>SUGAR (g)</th>
+                <th>FAT (g)</th>
+                <th>WATER (ml)</th>
             </tr>
             </thead>
             <tbody>
