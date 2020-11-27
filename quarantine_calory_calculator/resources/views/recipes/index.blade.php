@@ -1,8 +1,8 @@
 <x-quarantine-layout>
-    <script>$('#recipes').css('font-weight','500');</script>
+    <script>$('#recipes').css('font-weight', '500');</script>
     <div class="container">
 
-        <table class="table-datatable table table-bordered">
+        <table class="table-datatable table table-bordered"  style="width: 100%">
             <thead>
             <tr>
                 <th>NAME</th>
@@ -24,37 +24,44 @@
             @endforeach
             </tbody>
         </table>
-
-        <form style="margin-top: 40px" action="{{route('recipes.store')}}" method="post">
-            @csrf
-            <div class="form-group">
-                <label class="form-label" for="name">NAME:</label>
-                <input class="form-control @error("name") is-invalid @enderror()" type="text" id="name" name="name">
-                @error("name")
-                <div class="alert alert-danger">{{$message}}</div>
-                @enderror
+        <div class="row">
+            <div class="col-lg-3 col-md-2 col-sm-1"></div>
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <form style="margin-top: 40px" action="{{route('recipes.store')}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label class="form-label" for="name">NAME:</label>
+                        <input class="form-control @error("name") is-invalid @enderror()" type="text" id="name"
+                               name="name">
+                        @error("name")
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="description">DESCRIPTION:</label>
+                        <textarea class="form-control @error("description") is-invalid @enderror()" name="description"
+                                  id="description" cols="30" rows="5"></textarea>
+                        @error("description")
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="type">TYPE: </label>
+                        <select class="form-control @error("type") is-invalid @enderror()" name="type" id="type">
+                            <option value="breakfast">Breakfast</option>
+                            <option value="lunch">Lunch</option>
+                            <option value="dinner">Dinner</option>
+                            <option value="snack">Snack</option>
+                        </select>
+                        @error("type")
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="SAVE">
+                </form>
             </div>
-            <div class="form-group">
-                <label class="form-label" for="description">DESCRIPTION:</label>
-                <textarea class="form-control @error("description") is-invalid @enderror()" name="description" id="description" cols="30" rows="5"></textarea>
-                @error("description")
-                <div class="alert alert-danger">{{$message}}</div>
-                @enderror
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="type">TYPE: </label>
-                <select class="form-control @error("type") is-invalid @enderror()" name="type" id="type">
-                    <option value="breakfast">Breakfast</option>
-                    <option value="lunch">Lunch</option>
-                    <option value="dinner">Dinner</option>
-                    <option value="snack">Snack</option>
-                </select>
-                @error("type")
-                <div class="alert alert-danger">{{$message}}</div>
-                @enderror
-            </div>
-            <input class="btn btn-primary" type="submit" value="SAVE">
-        </form>
+            <div class="col-lg-3 col-md-2 col-sm-1"></div>
+        </div>
         <div style="height:100px"></div>
     </div>
 

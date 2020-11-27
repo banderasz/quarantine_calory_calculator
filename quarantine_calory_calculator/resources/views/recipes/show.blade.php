@@ -22,7 +22,7 @@
 
     <div class="row mt-5">
         <div class="col">
-            <table class="table table-bordered table-datatable mt-5">
+            <table class="table table-bordered table-datatable mt-5"  style="width: 100%">
                 <thead>
                 <tr>
                     <th>INGREDIENT</th>

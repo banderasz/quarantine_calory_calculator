@@ -1,30 +1,21 @@
 <x-quarantine-layout>
-    <script>$('#food').css('font-weight','500');</script>
-    <script>
-
-        $(document).on('change', '.select-type', function (){
-
-            let selected = $(this).find('option').filter(':selected').attr("value")
-            console.log(selected)
-            $(this).parent().parent().parent().find('.unit-label-protein').text(selected == "food"? "PROTEIN (g in 100g)" : "PROTEIN (g in 100ml)");
-            $(this).parent().parent().parent().find('.unit-label-fat').text(selected == "food"? "FAT (g in 100g)" : "FAT (g in 100ml)");
-            $(this).parent().parent().parent().find('.unit-label-carb').text(selected == "food"? "CARB (g in 100g)" : "CARB (g in 100ml)");
-            $(this).parent().parent().parent().find('.unit-label-fiber').text(selected == "food"? "FIBER (g in 100g)" : "FIBER (g in 100ml)");
-            $(this).parent().parent().parent().find('.unit-label-sugar').text(selected == "food"? "SUGAR (g in 100g)" : "SUGAR (g in 100ml)");
-            $(this).parent().parent().parent().find('.unit-label-water').text(selected == "food"? "WATER (g in 100g)" : "WATER (g in 100ml)");
-        });</script>
+    <script>$('#food').css('font-weight', '500');
+        $('.table-datatable').DataTable({
+            responsive: true
+        })
+    </script>
     <div class="container">
-        <table class="table-datatable table table-bordered">
+        <table class="table table-datatable  table-bordered display responsive nowrap" style="width: 100%">
             <thead>
             <tr>
                 <th>NAME</th>
                 <th>TYPE</th>
-                <th>PROTEIN (g)</th>
-                <th>CARB (g)</th>
-                <th>FIBER (g)</th>
-                <th>SUGAR (g)</th>
-                <th>FAT (g)</th>
-                <th>WATER (ml)</th>
+                <th>PROTEIN</th>
+                <th>CARB</th>
+                <th>FIBER</th>
+                <th>SUGAR</th>
+                <th>FAT</th>
+                <th>WATER</th>
             </tr>
             </thead>
             <tbody>
@@ -44,30 +35,27 @@
         </table>
 
 
-
         <form style="margin-top: 40px" action="{{route('food.store')}}" method="post">
             @csrf
             <div class="row">
-                <label class="form-label col" for="name">NAME:</label>
-                <label class="form-label col" for="name">TYPE:</label>
-                <label class="form-label unit-label-protein col" for="name">PROTEIN (g in 100g):</label>
-                <label class="form-label unit-label-fat col" for="name">FAT (g in 100g):</label>
-                <label class="form-label unit-label-carb col" for="name">CARB (g in 100g):</label>
-                <label class="form-label unit-label-fiber col" for="name">FIBER (g in 100g):</label>
-                <label class="form-label unit-label-sugar col" for="name">SUGAR (g in 100g):</label>
-                <label class="form-label unit-label-water col" for="name">WATER (ml in 100g):</label>
-            </div>
-            <div class="row">
-
-
-                <div class="form-group col">
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <label class="form-label" for="name">NAME</label>
+                </div>
+                <div class="form-group col-lg-5 col-md-6 col-sm-7">
                     <input class="form-control @error("name") is-invalid @enderror()" type="text" id="name" name="name">
                     @error("name")
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-                <div class="form-group col">
-                    <select class="form-control select-type @error("type") is-invalid @enderror()" name="type" id="type">
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <label class="form-label" for="name">TYPE</label>
+                </div>
+                <div class="form-group col-lg-5 col-md-6 col-sm-7">
+                    <select id="food-drink-select" class="form-control @error("type") is-invalid @enderror()"
+                            name="type"
+                            id="type">
                         <option value="food">Food</option>
                         <option value="drink">Drink</option>
                     </select>
@@ -75,42 +63,79 @@
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-                <div class="form-group col">
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <label class="form-label" for="name">PROTEIN (g in 100<span class="g-ml">g</span>)</label>
+                </div>
+
+                <div class="form-group col-lg-5 col-md-6 col-sm-7">
                     <input class="form-control @error("protein") is-invalid @enderror()" name="protein" id="protein"
                            type="number"></input>
                     @error("protein")
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-                <div class="form-group col">
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <label class="form-label" for="name">FAT (g in 100<span class="g-ml">g</span>)</label>
+                </div>
+                <div class="form-group col-lg-5 col-md-6 col-sm-7">
                     <input class="form-control @error("fat") is-invalid @enderror()" name="fat" id="fat"
                            type="number"></input>
                     @error("fat")
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-                <div class="form-group col">
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <label class="form-label" for="name">CARB (g in 100<span class="g-ml">g</span>)</label>
+                </div>
+                <div class="form-group col-lg-5 col-md-6 col-sm-7">
                     <input class="form-control @error("carb") is-invalid @enderror()" name="carb" id="carb"
                            type="number"></input>
                     @error("carb")
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-                <div class="form-group col">
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <label class="form-label" for="name">FIBER (g in 100<span class="g-ml">g</span>)</label>
+                </div>
+                <div class="form-group col-lg-5 col-md-6 col-sm-7">
                     <input class="form-control @error("fiber") is-invalid @enderror()" name="fiber" id="fiber"
                            type="number"></input>
                     @error("fiber")
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-                <div class="form-group col">
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <label class="form-label" for="name">SUGAR (g in 100<span class="g-ml">g</span>)</label>
+                </div>
+                <div class="form-group col-lg-5 col-md-6 col-sm-7">
                     <input class="form-control @error("sugar") is-invalid @enderror()" name="sugar" id="sugar"
                            type="number"></input>
                     @error("sugar")
                     <div class="alert alert-danger">{{$message}}</div>
                     @enderror
                 </div>
-                <div class="form-group col">
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-5">
+                    <label class="form-label" for="name">WATER (ml in 100<span class="g-ml">g</span>)</label>
+                </div>
+                <div class="form-group col-lg-5 col-md-6 col-sm-7">
                     <input class="form-control @error("water") is-invalid @enderror()" name="water" id="water"
                            type="number"></input>
                     @error("water")
@@ -118,6 +143,15 @@
                     @enderror
                 </div>
             </div>
+
+            <script>
+                $(document).on('change', '#food-drink-select', function () {
+                    let value = $(this).children(':selected').val();
+                    $(".g-ml").each(function () {
+                        $(this).text(value == "food" ? "g" : "ml");
+                    });
+                })
+            </script>
             <input class="btn btn-primary" type="submit" value="Save">
         </form>
         <div style="height:100px"></div>

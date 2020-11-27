@@ -25,7 +25,9 @@
 
     <script>
         $(document).ready( function () {
-            $('.table-datatable').DataTable();
+            $('.table-datatable').DataTable({
+                "scrollX": true
+            });
         } );
     </script>
     <link rel="stylesheet" href="{{asset("css/app.css")}}">

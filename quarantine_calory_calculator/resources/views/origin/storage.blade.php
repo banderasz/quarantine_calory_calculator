@@ -24,7 +24,7 @@
     </div>
     <div class="container">
 
-        <table class="table-datatable table table-bordered">
+        <table class="table-datatable table table-bordered"  style="width: 100%">
             <thead>
             <tr>
                 <th>NAME</th>
@@ -47,34 +47,38 @@
 
         </div>
 
-        <form action="{{route('storage.store')}}" method="post">
-            @csrf
-            <div class="form-group">
-                <label class="form-label" for="recipe">INGREDIENT: </label>
-                <select class="select-food form-control @error("food") is-invalid @enderror()" name="food" id="food">
-                    @foreach($all_foods as $curr_food)
-                        <option value={{$curr_food->id}} class="{{$curr_food->type}}">{{$curr_food->name}}</option>
-                    @endforeach
-                </select>
-                @error("food")
-                <div class="alert alert-danger">{{$message}}</div>
-                @enderror
-            </div>
-            <div class="form-group">
-                @if(\App\Models\Food::first()->type == "food")
+        <div class="row">
+            <div class="col-6">
+                <form action="{{route('storage.store')}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label class="form-label" for="recipe">INGREDIENT</label>
+                        <select class="select-food form-control @error("food") is-invalid @enderror()" name="food" id="food">
+                            @foreach($all_foods as $curr_food)
+                                <option value={{$curr_food->id}} class="{{$curr_food->type}}">{{$curr_food->name}}</option>
+                            @endforeach
+                        </select>
+                        @error("food")
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        @if(\App\Models\Food::first()->type == "food")
 
-                    <label class="form-label unit-label" for="weight">AMOUNT (g):</label>
-                @else
-                    <label class="form-label unit-label" for="weight">AMOUNT (ml):</label>
-                @endif
+                            <label class="form-label unit-label" for="weight">AMOUNT (g)</label>
+                        @else
+                            <label class="form-label unit-label" for="weight">AMOUNT (ml)</label>
+                        @endif
 
-                <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
-                @error("weight")
-                <div class="alert alert-danger">{{$message}}</div>
-                @enderror
+                        <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
+                        @error("weight")
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <input class="btn btn-primary" type="submit" value="Save">
+                </form>
             </div>
-            <input class="btn btn-primary" type="submit" value="Save">
-        </form>
+        </div>
         <div style="height:100px"></div>
     </div>
 
