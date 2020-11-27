@@ -1,11 +1,5 @@
 <x-quarantine-layout>
     <script>
-        $(window).onload('.select-food-for-recipe').each(function (){
-            let selected = $(this).find('option').filter(':selected').attr("class")
-
-            $(this).parent().parent().find('.unit-label').text(selected == "food"? "g" : "ml");
-        });
-
         $(document).on('change', '.select-food-for-recipe', function (){
         let selected = $(this).find('option').filter(':selected').attr("class")
 
@@ -71,8 +65,12 @@
                         @enderror
                     </div>
                     <div class="form-group col-1">
+                        @if(\App\Models\Food::first()->type == "food")
 
-                        <p class="unit-label">valami</p>
+                        <p class="unit-label">g</p>
+                        @else
+                            <p class="unit-label">ml</p>
+                        @endif
                     </div>
                     <div class="form-group col-3">
                         <input type="button" class="form-control btn btn-danger btn-remove hidden" value="REMOVE">
@@ -89,18 +87,36 @@
             </form>
         </div>
     </div>
+    @if(\App\Models\Food::first()->type == "food")
 
-    <script type="text/javascript">
-        $(document).ready( function () {
-            $("#btn-add").click(function () {
-                $(".input-row:last").clone().insertAfter(".input-row:last");
-                $(".input-row:last .input-weight").val("0");
-                $(".input-row:last .btn-remove").removeClass("hidden");
-                $(".input-row:last .btn-remove").click(function () {
-                    $(this).closest('.input-row').remove();
+        <script type="text/javascript">
+            $(document).ready( function () {
+                $("#btn-add").click(function () {
+                    $(".input-row:last").clone().insertAfter(".input-row:last");
+                    $(".input-row:last .input-weight").val("0");
+                    $(".input-row:last .unit-label").text("g");
+                    $(".input-row:last .btn-remove").removeClass("hidden");
+                    $(".input-row:last .btn-remove").click(function () {
+                        $(this).closest('.input-row').remove();
+                    });
                 });
-            });
-        } );
-    </script>
+            } );
+        </script>
+    @else
+        <script type="text/javascript">
+            $(document).ready( function () {
+                $("#btn-add").click(function () {
+                    $(".input-row:last").clone().insertAfter(".input-row:last");
+                    $(".input-row:last .input-weight").val("0");
+                    $(".input-row:last .unit-label").text("ml");
+                    $(".input-row:last .btn-remove").removeClass("hidden");
+                    $(".input-row:last .btn-remove").click(function () {
+                        $(this).closest('.input-row').remove();
+                    });
+                });
+            } );
+        </script>
+    @endif
+
 
 </x-quarantine-layout>

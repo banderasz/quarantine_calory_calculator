@@ -1,5 +1,11 @@
 <x-quarantine-layout>
-    <script>$('#profile').css('font-weight','500');</script>
+    <script>$('#profile').css('font-weight','500');</script>>
+    <script>
+        $(document).on('change', '.select-food', function (){
+            let selected = $(this).find('option').filter(':selected').attr("class")
+
+            $(this).parent().parent().find('.unit-label').text(selected == "food"? "AMOUNT (g)" : "AMOUNT (ml)");
+        });</script>
     <div class="row">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
@@ -81,7 +87,7 @@
             @csrf
             <div class="form-group">
                 <label class="form-label" style="display: block; text-align: center" for="recipe">INGREDIENT</label>
-                <select class="form-control @error("food") is-invalid @enderror()" name="food" id="food">
+                <select class="form-control select-food @error("food") is-invalid @enderror()" name="food" id="food">
                     @foreach(App\Models\Food::all() as $food)
                         <option value="{{$food->id}}" class="{{$food->type}}">{{$food->name}}</option>
                     @endforeach
@@ -91,7 +97,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="form-label" style="display: block; text-align: center" for="weight">AMOUNT</label>
+                <label class="form-label unit-label" style="display: block; text-align: center" for="weight">AMOUNT</label>
                 <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
                 @error("weight")
                 <div class="alert alert-danger">{{$message}}</div>
@@ -116,7 +122,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="form-label" style="display: block; text-align: center" for="weight">AMOUNT</label>
+                <label class="form-label" style="display: block; text-align: center" for="weight">AMOUNT (g)</label>
                 <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
                 @error("weight")
                 <div class="alert alert-danger">{{$message}}</div>

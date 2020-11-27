@@ -1,17 +1,30 @@
 <x-quarantine-layout>
     <script>$('#food').css('font-weight','500');</script>
+    <script>
+
+        $(document).on('change', '.select-type', function (){
+
+            let selected = $(this).find('option').filter(':selected').attr("value")
+            console.log(selected)
+            $(this).parent().parent().parent().find('.unit-label-protein').text(selected == "food"? "PROTEIN (g in 100g)" : "PROTEIN (g in 100ml)");
+            $(this).parent().parent().parent().find('.unit-label-fat').text(selected == "food"? "FAT (g in 100g)" : "FAT (g in 100ml)");
+            $(this).parent().parent().parent().find('.unit-label-carb').text(selected == "food"? "CARB (g in 100g)" : "CARB (g in 100ml)");
+            $(this).parent().parent().parent().find('.unit-label-fiber').text(selected == "food"? "FIBER (g in 100g)" : "FIBER (g in 100ml)");
+            $(this).parent().parent().parent().find('.unit-label-sugar').text(selected == "food"? "SUGAR (g in 100g)" : "SUGAR (g in 100ml)");
+            $(this).parent().parent().parent().find('.unit-label-water').text(selected == "food"? "WATER (g in 100g)" : "WATER (g in 100ml)");
+        });</script>
     <div class="container">
         <table class="table-datatable table table-bordered">
             <thead>
             <tr>
                 <th>NAME</th>
                 <th>TYPE</th>
-                <th>PROTEIN</th>
-                <th>CARB</th>
-                <th>FIBER</th>
-                <th>SUGAR</th>
-                <th>FAT</th>
-                <th>WATER</th>
+                <th>PROTEIN (g)</th>
+                <th>CARB (g)</th>
+                <th>FIBER (g)</th>
+                <th>SUGAR (g)</th>
+                <th>FAT (g)</th>
+                <th>WATER (ml)</th>
             </tr>
             </thead>
             <tbody>
@@ -37,12 +50,12 @@
             <div class="row">
                 <label class="form-label col" for="name">NAME:</label>
                 <label class="form-label col" for="name">TYPE:</label>
-                <label class="form-label col" for="name">PROTEIN (g in 100g/100ml):</label>
-                <label class="form-label col" for="name">FAT (g in 100g/100ml):</label>
-                <label class="form-label col" for="name">CARB (g in 100g/100ml):</label>
-                <label class="form-label col" for="name">FIBER (g in 100g/100ml):</label>
-                <label class="form-label col" for="name">SUGAR (g in 100g/100ml):</label>
-                <label class="form-label col" for="name">WATER (ml in 100g/100ml):</label>
+                <label class="form-label unit-label-protein col" for="name">PROTEIN (g in 100g):</label>
+                <label class="form-label unit-label-fat col" for="name">FAT (g in 100g):</label>
+                <label class="form-label unit-label-carb col" for="name">CARB (g in 100g):</label>
+                <label class="form-label unit-label-fiber col" for="name">FIBER (g in 100g):</label>
+                <label class="form-label unit-label-sugar col" for="name">SUGAR (g in 100g):</label>
+                <label class="form-label unit-label-water col" for="name">WATER (ml in 100g):</label>
             </div>
             <div class="row">
 
@@ -54,7 +67,7 @@
                     @enderror
                 </div>
                 <div class="form-group col">
-                    <select class="form-control @error("type") is-invalid @enderror()" name="type" id="type">
+                    <select class="form-control select-type @error("type") is-invalid @enderror()" name="type" id="type">
                         <option value="food">Food</option>
                         <option value="drink">Drink</option>
                     </select>

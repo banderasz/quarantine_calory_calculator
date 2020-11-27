@@ -1,5 +1,11 @@
 <x-quarantine-layout>
     <script>$('#profile').css('font-weight','500');</script>
+    <script>
+        $(document).on('change', '.select-food', function (){
+            let selected = $(this).find('option').filter(':selected').attr("class")
+
+            $(this).parent().parent().find('.unit-label').text(selected == "food"? "AMOUNT (g)" : "AMOUNT (ml)");
+        });</script>
     <div class="row">
         <div class="col"></div>
         <div class="col-md-10 col-sm-12">
@@ -30,7 +36,7 @@
             @foreach($foods as $food)
                 <tr>
                     <td>{{$food->name}}</td>
-                    <td>{{$food->pivot->weight}}</td>
+                    <td>{{$food->pivot->weight}} @if($food->type == "food") g @else ml @endif</td>
                 </tr>
             @endforeach
             </tbody>
@@ -45,9 +51,9 @@
             @csrf
             <div class="form-group">
                 <label class="form-label" for="recipe">INGREDIENT: </label>
-                <select class="form-control @error("food") is-invalid @enderror()" name="food" id="food">
+                <select class="select-food form-control @error("food") is-invalid @enderror()" name="food" id="food">
                     @foreach($all_foods as $curr_food)
-                        <option value={{$curr_food->id}}>{{$curr_food->name}}</option>
+                        <option value={{$curr_food->id}} class="{{$curr_food->type}}">{{$curr_food->name}}</option>
                     @endforeach
                 </select>
                 @error("food")
@@ -55,7 +61,13 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label class="form-label" for="weight">AMOUNT (g/ml):</label>
+                @if(\App\Models\Food::first()->type == "food")
+
+                    <label class="form-label unit-label" for="weight">AMOUNT (g):</label>
+                @else
+                    <label class="form-label unit-label" for="weight">AMOUNT (ml):</label>
+                @endif
+
                 <input class="form-control @error("weight") is-invalid @enderror()" name="weight" id="weight" type="number" ></input>
                 @error("weight")
                 <div class="alert alert-danger">{{$message}}</div>
