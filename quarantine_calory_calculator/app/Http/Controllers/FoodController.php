@@ -55,50 +55,7 @@ class FoodController extends Controller
 
     }
 
-    public function store_nutrition(Request $request)
-    {
-        $user = Auth::user();
-        $request->validate([
-            "weight" => "required|numeric|gt:0",
-        ]);
-        $food = Food::find($request->input('food'));
-        $foodusers = FoodUser::all();
 
-        $household = Household::where('name', '=', $user->household)->firstOrFail();
-        $foodhouseholds = FoodHousehold::all();
-
-        $flag = false;
-        foreach ($foodusers as $savedfooduser) {
-            if ($savedfooduser->food_id == $food->id && $savedfooduser->user_id == $user->id && $savedfooduser->created_at >= Carbon::today()) {
-                $savedfooduser->weight += $request->input('weight');
-                $savedfooduser->save();
-                $flag = true;
-            }
-        }
-        if (!$flag) {
-            $fooduser = new FoodUser();
-            $fooduser->user_id = $user->id;
-            $fooduser->food_id = $food->id;
-            $fooduser->weight = $request->input('weight');
-            $fooduser->save();
-        }
-
-        foreach ($foodhouseholds as $savedfoodhousehold) {
-            if ($savedfoodhousehold->food_id == $food->id && $savedfoodhousehold->household_id == $household->id) {
-                if ($savedfoodhousehold->weight - $request->input('weight') > 0) {
-                    $savedfoodhousehold->weight -= $request->input('weight');
-                    $savedfoodhousehold->save();
-                } else {
-                    $savedfoodhousehold->delete();
-                }
-
-
-            }
-        }
-
-
-        return back()->with("messages", ["Nutritions succesfully saved!"]);
-    }
 
     /**
      * Display the specified resource.
