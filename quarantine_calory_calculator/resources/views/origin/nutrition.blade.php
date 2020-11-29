@@ -1,6 +1,6 @@
 <x-quarantine-layout>
     <script>$('#profile').css('font-weight', '500');</script>
-    >
+
     <script>
         $(document).on('change', '.select-food', function () {
             let selected = $(this).find('option').filter(':selected').attr("class")
